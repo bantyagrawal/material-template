@@ -1,0 +1,58 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 10px;
+}
+
+.stat-card {
+  display: flex;
+}
+
+.stat-card-content {
+  width: 100%;
+  border: 0;
+  color: #ffffff;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.blue {
+  background-color: #052341;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+.red {
+  background-color: #f44336;
+}
+
+.orange {
+  background-color: #6e0536;
+}
+
+
+
+.stat-title {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.stat-amount {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.stat-progress-bar {
+  height: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-footer {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}

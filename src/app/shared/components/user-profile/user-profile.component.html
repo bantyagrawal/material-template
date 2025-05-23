@@ -1,0 +1,32 @@
+<div class="container">
+  <mat-card class="profile-card">
+    <mat-card-content>
+      <img [src]="user.avatar" alt="avatar" class="avatar" />
+      <h2 class="name">{{ user.name }}</h2>
+      <p class="job-title">FE Developer, UE designer</p>
+      <p class="bio">I like reading, writing and drawing.</p>
+
+      <div class="actions">
+        <a mat-flat-button color="primary" href="https://github.com/nzbin" target="_blank">Follow Me</a>
+        <button mat-flat-button color="warn">Contact Me</button>
+      </div>
+    </mat-card-content>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <mat-nav-list class="navlist">
+      <a mat-list-item routerLink="/profile/overview">
+        <mat-icon matListItemIcon>account_circle</mat-icon>
+        {{ 'profile' | translate }}
+      </a>
+      <a mat-list-item routerLink="/profile/settings">
+        <mat-icon matListItemIcon>edit</mat-icon>
+        {{ 'edit_profile' | translate }}
+      </a>
+      <a mat-list-item tabindex="0">
+        <mat-icon matListItemIcon>exit_to_app</mat-icon>
+        {{ 'logout' | translate }}
+      </a>
+    </mat-nav-list>
+  </mat-card>
+</div>

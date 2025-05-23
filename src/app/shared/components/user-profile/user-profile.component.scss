@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.profile-card {
+  width: 300px;
+  text-align: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-bottom: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.name {
+  margin: 8px 0;
+  font-weight: 400;
+}
+
+.job-title {
+  margin: 8px 0;
+}
+
+.bio {
+  margin: 8px 0;
+  color: grey;
+}
+
+.actions {
+  margin-top: 8px;
+
+  a,
+  button {
+    margin-right: 8px;
+    border-radius: 20px;
+  }
+}
+
+.divider {
+  margin: 16px 0;
+}
+
+.navlist {
+    text-align: left;
+}

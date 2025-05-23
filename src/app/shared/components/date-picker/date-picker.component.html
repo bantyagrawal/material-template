@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline" class="date-picker-field" [ngClass]="data.customClass">
+    <mat-label>{{ data.label || 'Select Date' }}</mat-label>
+
+    <input matInput [matDatepicker]="picker" [formControl]="data.control"
+        [placeholder]="data.placeholder || 'Choose a date'" [min]="data.minDate" [max]="data.maxDate"
+        (dateChange)="onDateChange($event)" />
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-error *ngIf="data.control.invalid && (data.control.dirty || data.control.touched)">
+        {{ data.errorMessage || 'Invalid date' }}
+    </mat-error>
+</mat-form-field>

@@ -1,0 +1,43 @@
+.app-footer {
+    background-color: #071b8b;
+    color: rgb(223, 212, 212);
+    padding: 2rem 1rem;
+    width: auto;
+
+    .footer-container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: auto;
+
+        .footer-section {
+            flex: 1 1 200px;
+
+            .footer-title {
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+                font-size: 1.1rem;
+            }
+
+            a {
+                display: block;
+                color: #ccc;
+                margin: 0.2rem 0;
+                font-size: 0.9rem;
+
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.8rem;
+        color: #999;
+    }
+}

@@ -1,0 +1,11 @@
+
+.list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 10vw;
+}
+
+.list button {
+    height: 5vh;
+}

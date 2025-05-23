@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.my-input-style {
+    padding: 8px;
+    height: 70px;
+    width: 40vw;
+}
+
+.my-button-class {
+    // margin-left: 35vw;
+}
+
+.my-date-class {
+    padding: 8px;
+    height: 70px;
+    width: 40vw;
+}
+

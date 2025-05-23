@@ -1,0 +1,10 @@
+<button
+  mat-raised-button
+  [color]="data.color"
+  [type]="data.type || 'button'"
+  [disabled]="data.disabled || false"
+  [ngClass]="data.customClass"
+>
+  <mat-icon *ngIf="data.icon" class="icon-space">{{ data.icon }}</mat-icon>
+  {{ data.label }}
+</button>

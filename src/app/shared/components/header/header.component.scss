@@ -1,0 +1,38 @@
+:host ::ng-deep .mat-badge-content {
+    --mat-badge-background-color: #ef0000;
+    --mat-badge-text-color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end !important;
+    align-items: center;
+
+    .spacer {
+        flex: 1;
+    }
+
+    .avatar {
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+mat-nav-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+}
+
+mat-list-item {
+    width: auto;
+    cursor: pointer;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #e0e7e9;
+        color: #006064;
+    }
+
+}
