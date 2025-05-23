@@ -1,0 +1,12 @@
+
+<div class="heading">
+  <h1>User Management</h1>
+</div>
+<app-table
+  [data]="userList"
+  [displayedColumns]="['name', 'email', 'role']"
+  [totalItems]="totalUsers"
+  [pageSize]="10"
+  [pageIndex]="currentPage"
+  (pageChange)="fetchUsers($event)">
+</app-table>

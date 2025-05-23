@@ -24,13 +24,16 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { TableComponent } from './components/table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, UserProfileComponent, DatePickerComponent],
+  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, UserProfileComponent, DatePickerComponent, TableComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -47,6 +50,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatTableModule,
+    MatPaginatorModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -56,6 +61,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
 
   ],
-  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent]
+  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent]
 })
 export class SharedModule { }

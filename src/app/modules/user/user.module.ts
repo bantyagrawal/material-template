@@ -10,11 +10,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 
 @NgModule({
   declarations: [
     AddUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    UsermanagementComponent
   ],
   imports: [
     CommonModule,
