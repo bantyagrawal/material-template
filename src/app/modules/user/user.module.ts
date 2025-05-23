@@ -11,12 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { RolemanagementComponent } from './rolemanagement/rolemanagement.component';
+import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
 
 @NgModule({
   declarations: [
     AddUserComponent,
     DashboardComponent,
-    UsermanagementComponent
+    UsermanagementComponent,
+    RolemanagementComponent,
+    AddRoleComponent
   ],
   imports: [
     CommonModule,

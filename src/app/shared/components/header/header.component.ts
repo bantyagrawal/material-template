@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import screenfull from 'screenfull';
+import { CommonService } from 'src/app/core/services/common.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import screenfull from 'screenfull';
 })
 export class HeaderComponent {
 
-  constructor(private route: Router) { }
+  constructor(private common: CommonService) { }
   messages = ['Server Error Reports 1', 'Server Error Reports 2', 'Server Error Reports 3'];
   @Input() showToggle = true;
   @Input() showBranding = true;
@@ -25,11 +26,8 @@ export class HeaderComponent {
     }
   }
 
-  redirectToUserProfile() {
-    this.route.navigateByUrl('profile')
+  redirectTo(path: string) {
+    this.common.redirectTo(path);
   }
 
-  redirectTo(path: string) {
-    this.route.navigateByUrl(path);
-  }
 }

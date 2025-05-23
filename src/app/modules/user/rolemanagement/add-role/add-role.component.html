@@ -1,0 +1,21 @@
+<div class="container">
+    <h2 class="heading">Add Role</h2>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="feilds">
+            <app-input
+                [data]="{label: 'Name', placeholder: 'Enter your name', type: 'text', control: nameControl, errorMessage: 'Name is required',customClass: 'my-input-style'}"
+                (onChange)="handleChange($event)">
+            </app-input>
+            <app-input
+                [data]="{label: 'Level', placeholder: 'Enter your level', type: 'text', control: levelControl, errorMessage: 'Level is required',customClass: 'my-input-style'}">
+            </app-input>
+        </div>
+        <div class="button-container">
+            <app-button
+                [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'my-button-class'}">
+            </app-button>
+        </div>
+
+    </form>
+
+</div>

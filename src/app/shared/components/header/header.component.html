@@ -7,7 +7,7 @@
   <mat-list-item (click)="redirectTo('')">
     <span matLine>Home</span>
   </mat-list-item>
-  <mat-list-item (click)="redirectTo('userform')">
+  <mat-list-item (click)="redirectTo('usermanagement')">
     <span matLine>User </span>
   </mat-list-item>
 </mat-nav-list>
@@ -42,7 +42,7 @@
     <img class="avatar" src="https://i.pravatar.cc/150?img=3" width="32" height="32" alt="avatar" />
   </button>
   <mat-menu #menu2="matMenu">
-    <button mat-menu-item (click)="redirectToUserProfile()">
+    <button mat-menu-item (click)="redirectTo('profile')">
       <mat-icon>account_circle</mat-icon>
       <span>Profile</span>
     </button>

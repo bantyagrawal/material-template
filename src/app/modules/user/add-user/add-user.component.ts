@@ -45,15 +45,12 @@ export class AddUserComponent {
   }
 
   onSubmit() {
-          // console.log('Form Value:', this.myForm.value);
-
     if (this.myForm.valid) {
       console.log('Form Value:', this.myForm.value);
     }
   }
 
   handleChange(event: Event) {
-    
     const input = event.target as HTMLInputElement;
     console.log('Input value from event:', input.value);
   }

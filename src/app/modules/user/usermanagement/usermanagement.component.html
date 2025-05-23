@@ -1,12 +1,11 @@
-
 <div class="heading">
   <h1>User Management</h1>
 </div>
-<app-table
-  [data]="userList"
-  [displayedColumns]="['name', 'email', 'role']"
-  [totalItems]="totalUsers"
-  [pageSize]="10"
-  [pageIndex]="currentPage"
-  (pageChange)="fetchUsers($event)">
+<div class="adduser">
+  <app-button
+    [data]="{label: 'Add User',color: 'primary',disabled: false,type: 'button',customClass: 'my-button-class'}" (click)="redirectTo('userform')">
+  </app-button>
+</div>
+<app-table [data]="userList" [displayedColumns]="['name', 'email', 'role']" [totalItems]="totalUsers" [pageSize]="5"
+  [pageIndex]="currentPage" (pageChange)="fetchUsers($event)">
 </app-table>

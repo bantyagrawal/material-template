@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/core/services/common.service';
 
 interface User {
   id: number;
@@ -35,9 +36,13 @@ export class UsermanagementComponent implements OnInit {
   totalUsers = 0;
   currentPage = 0;
 
+  constructor(
+    private common: CommonService
+  ) {}
+
   ngOnInit() {
     this.totalUsers = this.fullUserList.length;
-    this.fetchUsers({ pageIndex: 0, pageSize: 10 });
+    this.fetchUsers({ pageIndex: 0, pageSize: 5 });
   }
 
   fetchUsers(event: { pageIndex: number, pageSize: number }) {
@@ -48,5 +53,9 @@ export class UsermanagementComponent implements OnInit {
     const endIndex = startIndex + pageSize;
 
     this.userList = this.fullUserList.slice(startIndex, endIndex);
+  }
+
+  redirectTo(path: string) {
+    this.common.redirectTo(path);
   }
 }

@@ -1,0 +1,20 @@
+.button-container {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.heading {
+    text-align: center;
+}
+
+.feilds {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}
+
+
