@@ -2,15 +2,18 @@
       <button mat-icon-button (click)="onToggle()">
     <mat-icon>menu</mat-icon>
   </button>
-<mat-nav-list>
-    
-  <mat-list-item (click)="redirectTo('')">
-    <span matLine>Home</span>
+
+  <div class="list">
+
+    <mat-nav-list>
+      <mat-list-item (click)="redirectTo('')">
+        <span matLine>Home</span>
   </mat-list-item>
   <mat-list-item (click)="redirectTo('usermanagement')">
     <span matLine>User </span>
   </mat-list-item>
 </mat-nav-list>
+</div>
 
 
   <span class="spacer"></span>

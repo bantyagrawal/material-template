@@ -9,7 +9,7 @@ import { InputData } from 'src/app/core/models/input.model';
 })
 export class InputComponent {
 
-    @Input() data!: InputData;
+  @Input() data!: InputData;
   @Output() onFocus = new EventEmitter<Event>();
   @Output() onBlur = new EventEmitter<Event>();
   @Output() onInput = new EventEmitter<Event>();
