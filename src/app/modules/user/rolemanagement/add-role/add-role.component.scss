@@ -1,9 +1,16 @@
+// .container {
+//     max-width: 500px;
+//     margin: 0 auto;
+//     padding: 20px;
+// }
+
 .button-container {
     color: black;
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
+    margin-bottom: 20px;
+ }
 
 .heading {
     text-align: center;
@@ -11,10 +18,10 @@
 
 .feilds {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column; /* stack vertically */
     width: 100%;
-    justify-content: space-around;
+    gap: 16px; /* add some space between them */
 }
+
 
 

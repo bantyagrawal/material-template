@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-role',
@@ -9,8 +10,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class AddRoleComponent {
 
   myForm!: FormGroup;
+   levelOptions = [
+    { label: 'Admin', value: 'admin' },
+    { label: 'Editor', value: 'editor' },
+    { label: 'Viewer', value: 'viewer' }
+  ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+      public dialogRef: MatDialogRef<AddRoleComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       level: ['', [Validators.required]],

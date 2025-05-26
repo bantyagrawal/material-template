@@ -13,10 +13,11 @@ export class AddUserComponent implements OnInit {
   myForm!: FormGroup;
   selectData!: SelectData;
 
+  
   constructor(private fb: FormBuilder,
-      public dialogRef: MatDialogRef<AddUserComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+    public dialogRef: MatDialogRef<AddUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
