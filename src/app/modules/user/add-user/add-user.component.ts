@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectData } from 'src/app/core/models/select.model';
 
 @Component({
@@ -12,7 +13,10 @@ export class AddUserComponent implements OnInit {
   myForm!: FormGroup;
   selectData!: SelectData;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+      public dialogRef: MatDialogRef<AddUserComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({

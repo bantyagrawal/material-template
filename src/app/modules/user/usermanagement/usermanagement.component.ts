@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/core/services/common.service';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface User {
   id: number;
@@ -39,7 +41,8 @@ export class UsermanagementComponent implements OnInit {
   pageSize = 5;
 
   constructor(
-    private common: CommonService
+    private common: CommonService,
+       private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -74,4 +77,17 @@ export class UsermanagementComponent implements OnInit {
   redirectTo(path: string) {
     this.common.redirectTo(path);
   }
+
+    openAddUserlDialog(): void {
+      const dialogRef = this.dialog.open(AddUserComponent, {
+        // width: '400px',
+        // maxWidth: '95vw'
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log('Level added:', result);
+        }
+      });
+    }
 }
