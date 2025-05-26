@@ -3,9 +3,9 @@
 </div>
 
 
-<div class="toolbar-row">
+<div class="toolbar-row" >
   <app-search-bar (search)="onSearch($event)"></app-search-bar>
-  <div class="adduser">
+  <div class="adduser" *ngIf="permissions('Role Management','write')">
     <app-button
       [data]="{label: 'Add Role', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}"
       (click)="openAddRolelDialog()">

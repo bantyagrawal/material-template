@@ -20,7 +20,7 @@ export class RolemanagementComponent implements OnInit {
     private common: CommonService,
     private api: ApiService,
     private dialog: MatDialog
-    
+
   ) { }
 
   ngOnInit() {
@@ -57,16 +57,17 @@ export class RolemanagementComponent implements OnInit {
     this.searchText = event;
     this.getRole();
   }
-    openAddRolelDialog(): void {
-        const dialogRef = this.dialog.open(AddRoleComponent, {
-          // width: '400px',
-          // maxWidth: '95vw'
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-            console.log('Level added:', result);
-          }
-        });
-      }
+  openAddRolelDialog(): void {
+    const dialogRef = this.dialog.open(AddRoleComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        this.getRole();
+    });
+  }
+
+  permissions(module: string, operation: string) {
+    const result = this.common.checkpermission(module, operation);
+    return result;
+  }
 }

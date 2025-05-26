@@ -22,29 +22,20 @@
         }">
       </app-select>
 
- <div class="permissions-section">
-  <h3>Module Permissions</h3>
-  <div class="module" *ngFor="let module of modules">
-    <h4>{{ module.label }}</h4>
-    <div class="checkbox-row">
-      <!-- "All" checkbox -->
-      <app-checkbox
-        label="All"
-        [checked]="isAllChecked(module.value)"
-        (changed)="onAllPermissionChange(module.value, $event)">
-      </app-checkbox>
-
-      <!-- Permissions checkboxes -->
-      <app-checkbox *ngFor="let perm of permissionTypes"
-        [label]="perm.label"
-        [checked]="getModuleControl(module.value).get(perm.value)?.value"
-        (changed)="onPermissionChange(module.value, perm.value, $event)">
-      </app-checkbox>
-    </div>
-  </div>
-</div>
-
-
+      <div class="permissions-section">
+        <h3>Module Permissions</h3>
+        <div class="module" *ngFor="let role of roles">
+          <h4>{{ role.module.name }}</h4>
+          <div class="checkbox-row">
+            <app-checkbox label="All" [checked]="isAllChecked(role.permissions)"
+              (changed)="onAllPermissionsChange(role, $event)">
+            </app-checkbox>
+            <app-checkbox *ngFor="let permKey of getPermissionKeys(role.permissions)" [label]="permKey"
+              [checked]="role.permissions[permKey]" (changed)="onPermissionChange(role, permKey, $event)">
+            </app-checkbox>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="button-container">

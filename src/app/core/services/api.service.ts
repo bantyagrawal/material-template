@@ -74,9 +74,9 @@ export class ApiService {
     });
   }
 
-  getLevel(url: any) {
+  getLevel() {
     return this.http.post(
-      `${this.baseurl}/levels/${url}`,
+      `${this.baseurl}/levels/getLevel`,
       {},
       { withCredentials: true }
     );
