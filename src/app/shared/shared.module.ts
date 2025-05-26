@@ -30,13 +30,15 @@ import { SelectComponent } from './components/select/select.component';
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, UserProfileComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent],
+  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, UserProfileComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -58,6 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatPaginatorModule,
     MatOptionModule,
     MatSelectModule,
+    MatCheckboxModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -67,6 +70,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
 
   ],
-  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent]
+  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent]
 })
 export class SharedModule { }

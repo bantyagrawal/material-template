@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
+import { AddRoleComponent } from './add-role/add-role.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-rolemanagement',
@@ -16,7 +18,9 @@ export class RolemanagementComponent implements OnInit {
   searchText = '';
   constructor(
     private common: CommonService,
-    private api: ApiService
+    private api: ApiService,
+    private dialog: MatDialog
+    
   ) { }
 
   ngOnInit() {
@@ -53,4 +57,16 @@ export class RolemanagementComponent implements OnInit {
     this.searchText = event;
     this.getRole();
   }
+    openAddRolelDialog(): void {
+        const dialogRef = this.dialog.open(AddRoleComponent, {
+          // width: '400px',
+          // maxWidth: '95vw'
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            console.log('Level added:', result);
+          }
+        });
+      }
 }

@@ -6,9 +6,15 @@
                 [data]="{label: 'Name', placeholder: 'Enter your name', type: 'text', control: nameControl, errorMessage: 'Name is required',customClass: 'my-input-style'}"
                 (onChange)="handleChange($event)">
             </app-input>
-            <app-input
-                [data]="{label: 'Level', placeholder: 'Enter your level', type: 'text', control: levelControl, errorMessage: 'Level is required',customClass: 'my-input-style'}">
-            </app-input>
+            <app-select [data]="{
+          label: 'Level',
+          placeholder: 'Select a level',
+          options: levelOptions,
+          control: levelControl,
+          errorMessage: 'Level is required',
+          customClass: 'my-input-style'
+        }">
+            </app-select>
         </div>
         <div class="button-container">
             <app-button
