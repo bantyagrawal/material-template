@@ -1,11 +1,23 @@
 <div class="heading">
   <h1>Role Management</h1>
 </div>
-<div class="adduser">
-  <app-button
-    [data]="{label: 'Add Role',color: 'primary',disabled: false,type: 'button',customClass: 'my-button-class'}" (click)="redirectTo('roleform')">
-  </app-button>
+
+
+<div class="toolbar-row">
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+  <div class="adduser">
+    <app-button
+      [data]="{label: 'Add Role', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}"
+      (click)="redirectTo('roleform')">
+    </app-button>
+  </div>
 </div>
-<app-table [data]="roleList" [displayedColumns]="['id','name', 'level']" [totalItems]="totalRoles" [pageSize]="5"
-  [pageIndex]="currentPage" (pageChange)="fetchUsers($event)">
+
+<app-table
+  [data]="roleList"
+  [displayedColumns]="['id','name', 'level']"
+  [totalItems]="totalRoles"
+  [pageSize]="5"
+  [pageIndex]="currentPage"
+  (pageChange)="fetchUsers($event)">
 </app-table>

@@ -31,18 +31,21 @@ export class UsermanagementComponent implements OnInit {
     { id: 13, name: 'Mark Lee', email: 'mark@example.com', role: 'Editor' },
     { id: 14, name: 'Nina Brown', email: 'nina@example.com', role: 'Admin' }
   ];
-
+  
+  filteredUsers: User[] = [];
   userList: User[] = [];
   totalUsers = 0;
   currentPage = 0;
+  pageSize = 5;
 
   constructor(
     private common: CommonService
   ) {}
 
   ngOnInit() {
-    this.totalUsers = this.fullUserList.length;
-    this.fetchUsers({ pageIndex: 0, pageSize: 5 });
+    this.filteredUsers = [...this.fullUserList];
+    this.totalUsers = this.filteredUsers.length;
+    this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
   }
 
   fetchUsers(event: { pageIndex: number, pageSize: number }) {
@@ -52,8 +55,21 @@ export class UsermanagementComponent implements OnInit {
     const startIndex = pageIndex * pageSize;
     const endIndex = startIndex + pageSize;
 
-    this.userList = this.fullUserList.slice(startIndex, endIndex);
+    this.userList = this.filteredUsers.slice(startIndex, endIndex);
+
   }
+
+  onSearch(searchText: string) {
+    const lowerText = searchText.toLowerCase();
+    this.filteredUsers = this.fullUserList.filter(user =>
+      user.name.toLowerCase().includes(lowerText) ||
+      user.email.toLowerCase().includes(lowerText) ||
+      user.role.toLowerCase().includes(lowerText)
+    );
+    this.totalUsers = this.filteredUsers.length;
+    this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
+  }
+  
 
   redirectTo(path: string) {
     this.common.redirectTo(path);

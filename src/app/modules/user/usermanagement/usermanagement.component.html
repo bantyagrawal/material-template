@@ -1,6 +1,7 @@
 <div class="heading">
   <h1>User Management</h1>
 </div>
+<app-search-bar (search)="onSearch($event)"></app-search-bar>
 <div class="adduser">
   <app-button
     [data]="{label: 'Add User',color: 'primary',disabled: false,type: 'button',customClass: 'my-button-class'}" (click)="redirectTo('userform')">
