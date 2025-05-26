@@ -1,0 +1,45 @@
+::ng-deep .mat-dialog-container {
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 90vw;        // responsive width
+  max-width: 400px;   // desktop max limit
+  max-height: 90vh;   // avoid overflow on small screens
+  overflow: auto;     // allow content scroll inside, not on outer window
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialog-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+button[mat-stroked-button] {
+  border-radius: 8px;
+}
+
+button[mat-flat-button] {
+  border-radius: 8px;
+}
+
+.button-container {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+

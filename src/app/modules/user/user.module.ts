@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -15,6 +16,9 @@ import { RolemanagementComponent } from './rolemanagement/rolemanagement.compone
 import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
 import { UserComponent } from './user.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { LevelmanagementComponent } from './levelmanagement/levelmanagement.component';
+import { LevelDialogComponent } from './level-dialog/level-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +28,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     RolemanagementComponent,
     AddRoleComponent,
     UserComponent,
+    LevelmanagementComponent,
+    LevelDialogComponent,
+
   ],
   imports: [
     CommonModule,
@@ -34,7 +41,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatProgressBarModule,
     MatDividerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ]
 })
 export class UserModule { }

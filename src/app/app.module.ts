@@ -15,6 +15,8 @@ import { MatIconModule } from '@angular/material/icon'; // If icons are used
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

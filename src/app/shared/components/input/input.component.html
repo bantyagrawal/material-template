@@ -20,7 +20,7 @@
   >
     <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
   </button>
-  <mat-error *ngIf="data.control.invalid && data.control.touched">
+  <mat-error class="error" *ngIf="data.control.invalid && data.control.touched">
     {{ data.errorMessage || 'Invalid field' }}
   </mat-error>
 </mat-form-field>

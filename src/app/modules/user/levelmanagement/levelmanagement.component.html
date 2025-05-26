@@ -1,0 +1,23 @@
+<div class="heading">
+  <h1>Level Management</h1>
+</div>
+
+
+<div class="toolbar-row">
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+  <div class="adduser">
+    <app-button  (click)="openAddLevelDialog()"
+      [data]="{label: 'Add Level', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}"
+    >
+    </app-button>
+  </div>
+</div>
+
+<app-table
+  [data]="levelList"
+  [displayedColumns]="['id','name', 'level']"
+  [totalItems]="totalRoles"
+  [pageSize]="5"
+  [pageIndex]="currentPage"
+  (pageChange)="fetchUsers($event)">
+</app-table>

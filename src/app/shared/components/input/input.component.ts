@@ -29,6 +29,8 @@ export class InputComponent {
   }
 
   onChangeTrigger(event: Event) {
+    console.log("ERROr MESSAGE", this.data.errorMessage);
+    
     this.onChange.emit(event)
   }
 }
