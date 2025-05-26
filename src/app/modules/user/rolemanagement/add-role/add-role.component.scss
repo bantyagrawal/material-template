@@ -1,27 +1,49 @@
-// .container {
-//     max-width: 500px;
-//     margin: 0 auto;
-//     padding: 20px;
-// }
-
-.button-container {
-    color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
- }
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
 .heading {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .feilds {
-    display: flex;
-    flex-direction: column; /* stack vertically */
-    width: 100%;
-    gap: 16px; /* add some space between them */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+.permissions-section {
+  margin-top: 20px;
+}
 
+.module {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;  
+}
 

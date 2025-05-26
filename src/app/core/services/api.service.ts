@@ -64,4 +64,67 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+
+   postLevel(url: any, data: any) {
+    let body: any = { ...data };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/levels/${url}`, body, {
+      withCredentials: true,
+    });
+  }
+
+  getLevel(url: any) {
+    return this.http.post(
+      `${this.baseurl}/levels/${url}`,
+      {},
+      { withCredentials: true }
+    );
+  }
+
+    addRole(data: any) {
+    const option = {
+      operation: 'write',
+      module: 'Role Management',
+    };
+    let body: any = { ...data, ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/roles/createTestRole`, body, {
+      withCredentials: true,
+    });
+  }
+
+  PostRole(url: any) {
+    const option = {
+      operation: 'write',
+      module: 'Role Management',
+    };
+    let body: any = { ...option };
+    body = this.api.encrypt(body);
+
+    return this.http.post(`${this.baseurl}/roles/${url}`, body, {
+      withCredentials: true,
+    });
+  }
+
+
+   updateRole(url: any, data: any) {
+    const option = {
+      operation: 'write',
+      module: 'Role Management',
+    };
+    let body: any = { ...data, ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/roles/${url}`, body, {
+      withCredentials: true,
+    });
+  }
+
+    loggedInUsers(url: any) {
+    return this.http.post(
+      `${this.baseurl}/roles/${url}`,
+      {},
+      { withCredentials: true }
+    );
+  }
 }

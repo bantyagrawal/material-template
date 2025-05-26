@@ -1,12 +1,18 @@
 <div class="container">
-    <h2 class="heading">Add Role</h2>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <div class="feilds">
-            <app-input
-                [data]="{label: 'Name', placeholder: 'Enter your name', type: 'text', control: nameControl, errorMessage: 'Name is required',customClass: 'my-input-style'}"
-                (onChange)="handleChange($event)">
-            </app-input>
-            <app-select [data]="{
+  <h2 class="heading">Add Role</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="feilds">
+      <app-input [data]="{
+          label: 'Name',
+          placeholder: 'Enter your name',
+          type: 'text',
+          control: nameControl,
+          errorMessage: 'Name is required',
+          customClass: 'my-input-style'
+        }">
+      </app-input>
+
+      <app-select [data]="{
           label: 'Level',
           placeholder: 'Select a level',
           options: levelOptions,
@@ -14,14 +20,43 @@
           errorMessage: 'Level is required',
           customClass: 'my-input-style'
         }">
-            </app-select>
-        </div>
-        <div class="button-container">
-            <app-button
-                [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'my-button-class'}">
-            </app-button>
-        </div>
+      </app-select>
 
-    </form>
+ <div class="permissions-section">
+  <h3>Module Permissions</h3>
+  <div class="module" *ngFor="let module of modules">
+    <h4>{{ module.label }}</h4>
+    <div class="checkbox-row">
+      <!-- "All" checkbox -->
+      <app-checkbox
+        label="All"
+        [checked]="isAllChecked(module.value)"
+        (changed)="onAllPermissionChange(module.value, $event)">
+      </app-checkbox>
 
+      <!-- Permissions checkboxes -->
+      <app-checkbox *ngFor="let perm of permissionTypes"
+        [label]="perm.label"
+        [checked]="getModuleControl(module.value).get(perm.value)?.value"
+        (changed)="onPermissionChange(module.value, perm.value, $event)">
+      </app-checkbox>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+    <div class="button-container">
+      <app-button [data]="{
+          label: 'Submit',
+          color: 'primary',
+          icon: 'send',
+          disabled: false,
+          type: 'submit',
+          customClass: 'my-button-class'
+        }">
+      </app-button>
+    </div>
+  </form>
 </div>
