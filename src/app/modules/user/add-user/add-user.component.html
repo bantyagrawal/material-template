@@ -7,7 +7,7 @@
                 (onChange)="handleChange($event)">
             </app-input>
             <app-input
-                [data]="{label: 'Password', placeholder: 'Enter your password', type: 'password', control: passwordControl, errorMessage: 'Password is required',customClass: 'my-input-style'}">
+                [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: 'Password is required', isPasswordToggle: true, customClass: 'my-input-style'}">
             </app-input>
             <app-input
                 [data]="{label: 'Email', placeholder: 'Enter your email', type: 'email', control: emailControl, errorMessage: 'Email is required',customClass: 'my-input-style'}">
@@ -18,9 +18,12 @@
             <app-date-picker
                 [data]="{ control: dateControl, label: 'Date of Birth', placeholder: 'Select your DOB', errorMessage: 'Date is required', customClass: 'my-date-class'}">
             </app-date-picker>
-             <app-input
+            <app-input
                 [data]="{label: 'Address', placeholder: 'Enter your address', type: 'text', control: addressControl, errorMessage: 'Address is required',customClass: 'my-input-style'}">
             </app-input>
+            <app-select [data]="selectData" (selectionChange)="onStatusChange($event)"></app-select>
+
+
         </div>
         <div class="button-container">
             <app-button

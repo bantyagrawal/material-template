@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -50,5 +50,14 @@ loginForm: FormGroup;
       }
     }, 1500);
   }
+
+    get identifierControl(): FormControl {
+      return this.loginForm.get('identifier') as FormControl;
+    }
+
+
+    get passwordControl(): FormControl {
+      return this.loginForm.get('password') as FormControl;
+    }
 
 }

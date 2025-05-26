@@ -1,8 +1,25 @@
 <mat-form-field [ngClass]="data.customClass" appearance="outline" class="full-width">
   <mat-label>{{ data.label || 'Text Field' }}</mat-label>
-  <input matInput [type]="data.type || 'text'" [formControl]="data.control" [placeholder]="data.placeholder || ''"
-    (focus)="onFocus.emit($event)" (blur)="onBlur.emit($event)" (input)="onInput.emit($event)"
-    (change)="onChange.emit($event)" />
+  <input
+    matInput
+    [type]="inputType"
+    [formControl]="data.control"
+    [placeholder]="data.placeholder || ''"
+    (focus)="onFocus.emit($event)"
+    (blur)="onBlur.emit($event)"
+    (input)="onInput.emit($event)"
+    (change)="onChange.emit($event)"
+  />
+  <button
+    *ngIf="data.isPasswordToggle"
+    mat-icon-button
+    matSuffix
+    tabindex="-1"
+    (click)="togglePasswordVisibility()"
+    type="button"
+  >
+    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
   <mat-error *ngIf="data.control.invalid && data.control.touched">
     {{ data.errorMessage || 'Invalid field' }}
   </mat-error>

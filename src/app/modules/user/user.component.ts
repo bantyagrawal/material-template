@@ -1,13 +1,12 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class AppComponent {
-  title = 'frontendStructure';
- isScreenSmall = false;
+export class UserComponent {
+isScreenSmall = false;
 
   ngOnInit() {
     this.checkScreenSize();

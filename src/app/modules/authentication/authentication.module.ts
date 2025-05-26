@@ -10,9 +10,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthenticationComponent } from './authentication.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    AuthenticationComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    SharedModule
   ]
 })
 export class AuthenticationModule { }

@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'admin',pathMatch:'full'},
-  {path:'',component:AddAdminComponent}
+  {
+    path: '',
+    component: AdminComponent,
+    children: [
+      { path: '', redirectTo: 'admin', pathMatch: 'full' },
+      { path: '', component: AddAdminComponent }
+    ]
+  }
 ];
 
 @NgModule({

@@ -13,6 +13,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 import { RolemanagementComponent } from './rolemanagement/rolemanagement.component';
 import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
+import { UserComponent } from './user.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
     DashboardComponent,
     UsermanagementComponent,
     RolemanagementComponent,
-    AddRoleComponent
+    AddRoleComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
     MatIconModule,
     MatProgressBarModule,
     MatDividerModule,
+    MatSidenavModule
   ]
 })
 export class UserModule { }

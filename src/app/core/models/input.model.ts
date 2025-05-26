@@ -1,10 +1,12 @@
 import { FormControl } from "@angular/forms";
 
- export interface InputData {
-  label: string;
-  placeholder: string;
-  type: string;
+export interface InputData {
+  label?: string;
+  type?: string;
   control: FormControl;
-  errorMessage: string;
-  customClass: string;
+  placeholder?: string;
+  errorMessage?: string;
+  customClass?: string;
+  icon?: string; 
+  isPasswordToggle?: boolean;
 }

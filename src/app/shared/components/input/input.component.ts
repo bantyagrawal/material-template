@@ -14,4 +14,17 @@ export class InputComponent {
   @Output() onBlur = new EventEmitter<Event>();
   @Output() onInput = new EventEmitter<Event>();
   @Output() onChange = new EventEmitter<Event>();
+
+  hidePassword = true;
+
+  get inputType(): string {
+    if (this.data.type === 'password' && this.data.isPasswordToggle) {
+      return this.hidePassword ? 'password' : 'text';
+    }
+    return this.data.type || 'text';
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
 }
