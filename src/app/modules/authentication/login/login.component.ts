@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ApiService } from 'src/app/core/services/api.service';
+import { CommonService } from 'src/app/core/services/common.service';
+import { DecryptionService } from 'src/app/core/services/decryption.service';
 
 @Component({
   selector: 'app-login',
@@ -8,56 +12,106 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-loginForm: FormGroup;
-  hide: boolean = true; // controls password visibility
+
+  loginForm: FormGroup;
+  hide: boolean = true;
   isProcessing: boolean = false;
-  errMessage: string = 'Password is required'; // customize based on validation
 
   constructor(
     private fb: FormBuilder,
-    private router: Router // for navigation
+    private router: Router,
+    private toastr: ToastrService,
+    private encry: DecryptionService,
+    private api: ApiService,
+    private common: CommonService
+
   ) {
-    this.loginForm = this.fb.group({
-      identifier: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+    this.loginForm = new FormGroup({
+      identifier: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{6,}$/
+        ),
+      ]),
     });
   }
 
-  showPasswordError() {
-    const control = this.loginForm.get('password');
-    return control?.invalid && (control.dirty || control.touched);
+  get identifierControl(): FormControl {
+    return this.loginForm.get('identifier') as FormControl;
+  }
+
+  get passwordControl(): FormControl {
+    return this.loginForm.get('password') as FormControl;
+  }
+
+  hasUppercase(): boolean {
+    return /[A-Z]/.test(this.loginForm.get('password')?.value);
+  }
+
+  hasLowercase(): boolean {
+    return /[a-z]/.test(this.loginForm.get('password')?.value);
+  }
+
+  hasNumber(): boolean {
+    return /\d/.test(this.loginForm.get('password')?.value);
+  }
+
+  hasSpecialCharacter(): boolean {
+    return /[@$!%*?&]/.test(this.loginForm.get('password')?.value);
+  }
+
+  showPasswordError(): string {
+    const passwordControl = this.loginForm.get('password');
+
+    if (passwordControl?.hasError('required')) {
+      return "Password is required";
+    }
+    if (passwordControl?.hasError('minlength')) {
+      return "Password should be more then 6 digit";
+    }
+    if (!this.hasUppercase()) {
+      return "Password must have one upper case";
+    }
+    if (!this.hasLowercase()) {
+      return "Password must have one lowwer case";
+    }
+    if (!this.hasNumber()) {
+      return "Password must have one digit";
+    }
+    if (!this.hasSpecialCharacter()) {
+     return "Password must have one special latter";
+    }
+    return "";
   }
 
   loginSubmit(): void {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
+    if (this.isProcessing) {
       return;
     }
-
     this.isProcessing = true;
 
-    const { identifier, password } = this.loginForm.value;
-
-    // Simulate login API call
-    setTimeout(() => {
+    if (this.loginForm.invalid) {
       this.isProcessing = false;
-
-      if (identifier === 'admin@example.com' && password === 'admin123') {
-        // this.toastr.success('Login successful!');
-        this.router.navigate(['/dashboard']); // change route as needed
-      } else {
-        // this.toastr.error('Invalid credentials');
+      this.toastr.error('Form is invalid');
+      return;
+    }
+    const encryptedData = this.encry.encrypt(this.loginForm.value);
+    this.api.login({ encryptedData }).subscribe({
+      next: async (res: any) => {
+        try {
+          await this.common.assignPermission();
+          this.router.navigate(['/user']);
+          this.toastr.success('Login Successful');
+        } catch (error) {
+        } finally {
+          this.isProcessing = false;
+        }
+      },
+      error: (err: any) => {
+        this.isProcessing = false;
       }
-    }, 1500);
+    });
   }
-
-    get identifierControl(): FormControl {
-      return this.loginForm.get('identifier') as FormControl;
-    }
-
-
-    get passwordControl(): FormControl {
-      return this.loginForm.get('password') as FormControl;
-    }
-
 }

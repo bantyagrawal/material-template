@@ -27,4 +27,8 @@ export class InputComponent {
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }
+
+  onChangeTrigger(event: Event) {
+    this.onChange.emit(event)
+  }
 }

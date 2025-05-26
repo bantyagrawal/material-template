@@ -8,7 +8,7 @@
     (focus)="onFocus.emit($event)"
     (blur)="onBlur.emit($event)"
     (input)="onInput.emit($event)"
-    (change)="onChange.emit($event)"
+    (change)="onChangeTrigger($event)"
   />
   <button
     *ngIf="data.isPasswordToggle"
