@@ -10,3 +10,28 @@
     justify-content: flex-end;
     padding-bottom: 15px;
 }
+
+.toolbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+  
+    app-search-bar {
+      flex: 1 1 300px;
+      min-width: 250px;
+    }
+  
+    .adduser {
+      flex: 0 0 auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .adduser app-button {
+      width: 100%;
+    }
+  }
+  
