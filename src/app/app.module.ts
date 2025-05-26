@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpinterceptorInterceptor } from './core/interceptors/httpinterceptor.interceptor';
+import { CookieService } from 'ngx-cookie-service';
+import { CommonService } from './core/services/common.service';
+
+export function initApp(common: CommonService,) {
+  return () => common.assignPermission(window.location.href.slice(-5))
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +51,20 @@ import { MatDialogModule } from '@angular/material/dialog';
     }),
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpinterceptorInterceptor,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      deps: [CommonService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,4 +31,37 @@ export class ApiService {
       { withCredentials: true }
     );
   }
+
+  logOut() {
+    return this.http.post(
+      `${this.baseurl}/users/logout`,
+      {},
+      { withCredentials: true }
+    );
+  }
+
+  getUser(data: any) {
+    const option = {
+      operation: 'read',
+      module: 'Users Management',
+    };
+    let body: any = { ...option, ...data };
+    body = this.api.encrypt(body);
+
+    return this.http.post(`${this.baseurl}/users/getUser`, body, {
+      withCredentials: true,
+    });
+  }
+
+  getRole(data: any) {
+    const option = {
+      operation: 'read',
+      module: 'Role Management',
+    };
+    let body: any = { ...option, ...data };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/roles/getRole`, body, {
+      withCredentials: true,
+    });
+  }
 }

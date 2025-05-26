@@ -23,4 +23,12 @@
       font-size: 14px;
     }
   }
-  
+
+  .search {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .search-button{
+    height: 55px;
+  }

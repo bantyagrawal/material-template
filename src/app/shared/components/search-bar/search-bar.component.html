@@ -1,19 +1,11 @@
-<mat-form-field appearance="outline" class="search-bar-field">
+<div class="search">
+  <mat-form-field class = 'search' appearance="outline" class="search-bar-field">
     <mat-label>Search</mat-label>
-    <input
-      matInput
-      [(ngModel)]="searchText"
-      (input)="onSearchChange()"
-      placeholder="Search..."
-    />
-    <button
-      *ngIf="searchText"
-      mat-icon-button
-      matSuffix
-      aria-label="Clear"
-      (click)="clearSearch()"
-    >
+    <input matInput style="color: black !important;" [(ngModel)]="searchText"  placeholder="Search..." />
+    <button *ngIf="searchText" mat-icon-button matSuffix aria-label="Clear" (click)="clearSearch()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  
+  <button class="search-button" (click)="onSearchChange()"><mat-icon>search</mat-icon>
+  </button>
+</div>

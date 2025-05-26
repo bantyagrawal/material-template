@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -33,7 +34,7 @@ export class UsermanagementComponent implements OnInit {
     { id: 13, name: 'Mark Lee', email: 'mark@example.com', role: 'Editor' },
     { id: 14, name: 'Nina Brown', email: 'nina@example.com', role: 'Admin' }
   ];
-  
+
   filteredUsers: User[] = [];
   userList: User[] = [];
   totalUsers = 0;
@@ -42,24 +43,23 @@ export class UsermanagementComponent implements OnInit {
 
   constructor(
     private common: CommonService,
-       private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
     this.filteredUsers = [...this.fullUserList];
     this.totalUsers = this.filteredUsers.length;
     this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
+    this.getUsers()
   }
 
   fetchUsers(event: { pageIndex: number, pageSize: number }) {
     const { pageIndex, pageSize } = event;
     this.currentPage = pageIndex;
-
     const startIndex = pageIndex * pageSize;
     const endIndex = startIndex + pageSize;
-
     this.userList = this.filteredUsers.slice(startIndex, endIndex);
-
   }
 
   onSearch(searchText: string) {
@@ -72,22 +72,45 @@ export class UsermanagementComponent implements OnInit {
     this.totalUsers = this.filteredUsers.length;
     this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
   }
-  
 
   redirectTo(path: string) {
     this.common.redirectTo(path);
   }
 
-    openAddUserlDialog(): void {
-      const dialogRef = this.dialog.open(AddUserComponent, {
-        // width: '400px',
-        // maxWidth: '95vw'
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('Level added:', result);
-        }
-      });
-    }
+  openAddUserlDialog(): void {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      // width: '400px',
+      // maxWidth: '95vw'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Level added:', result);
+      }
+    });
+  }
+  getUsers(page = 1, limit = 5) {
+    const params: any = {
+      page,
+      limit
+    };
+    // if (this.searchText?.trim()) {
+    //   params.searchTxt = this.searchText.trim();
+    // }
+    this.api.getUser(params).subscribe((res: any) => {
+      console.log("RESPONSE DATA", res.data);
+
+      // this.userDetailsList = res.data
+      // const modules = res.data.users || [];
+      // this.dataSource = new MatTableDataSource(modules);
+      // this.metaData = {
+      //   currentPage: res.data.meta.currentPage,
+      //   itemsPerPage: res.data.meta.itemsPerPage,
+      //   totalItems: res.data.meta.totalItems,
+      //   totalPages: res.data.meta.totalPages
+      // };
+
+      // this.cdr.detectChanges(); 
+    })
+  }
 }

@@ -16,22 +16,24 @@ export class SidebarComponent {
     private common: CommonService
   ) { }
 
-
-
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
 
-
   isSidebarOpen = true;
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
+
   redirectTo(path: string) {
     this.common.redirectTo(path);
+  }
+  
+    permissions(module: string, operation: string) {
+    const result = this.common.checkpermission(module, operation);
+    return result;
   }
 
 }

@@ -11,6 +11,8 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { DecryptionService } from '../services/decryption.service';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../services/api.service';
+import { CommonService } from '../services/common.service';
 
 @Injectable()
 export class HttpinterceptorInterceptor implements HttpInterceptor {
@@ -19,6 +21,8 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
     private router: Router,
     private decrypt: DecryptionService,
     private toastr: ToastrService,
+    private api: ApiService,
+    private common: CommonService
 
   ) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -28,7 +32,7 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
           try {
             const decryptedData = JSON.parse(
               this.decrypt.decrypt(event.body.data)
-            );
+            );            
             return event.clone({ body: decryptedData });
           } catch (error) { }
         }
@@ -46,11 +50,10 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
           message == 'jwt expired' ||
           error.status === 401
         ) {
-          // this.service.clearAllCookies();
-          // this.service.logOut('logout').subscribe({
-          //   next: (res: any) => { },
-          // });
-          // this.common.permissions = null;
+          this.api.logOut().subscribe({
+            next: (res: any) => { },
+          });
+          this.common.permissions = null;
           this.router.navigate(['/login']);
         }
         return throwError(() => error);

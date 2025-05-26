@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
@@ -6,54 +7,50 @@ import { CommonService } from 'src/app/core/services/common.service';
   templateUrl: './rolemanagement.component.html',
   styleUrls: ['./rolemanagement.component.scss']
 })
-export class RolemanagementComponent {
+export class RolemanagementComponent implements OnInit {
 
-  fullRoleList: any[] = [
-    { id: 1, name: 'ADMIN', level: 1 },
-    { id: 2, name: 'SUB-ADMIN', level: 2 },
-    { id: 3, name: 'BIG-ADMIN', level: 3 },
-    { id: 4, name: 'USER', level: 4 },
-    { id: 5, name: 'SUB-USER', level: 5 },
-  ];
-
-  filteredRoles: any[] = [];
   roleList: any[] = [];
   totalRoles = 0;
   currentPage = 0;
   pageSize = 5;
-
+  searchText = '';
   constructor(
-    private common: CommonService
+    private common: CommonService,
+    private api: ApiService
   ) { }
 
   ngOnInit() {
-    this.filteredRoles = [...this.fullRoleList];
-    this.totalRoles = this.fullRoleList.length;
-    this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
+    this.getRole();
   }
 
-  fetchUsers(event: { pageIndex: number, pageSize: number }) {
-    const { pageIndex, pageSize } = event;
-    this.currentPage = pageIndex;
-
-    const startIndex = pageIndex * pageSize;
-    const endIndex = startIndex + pageSize;
-
-    this.roleList = this.filteredRoles.slice(startIndex, endIndex);
-  }
-
-  onSearch(searchText: string) {
-    const lowerText = searchText.toLowerCase();
-    this.filteredRoles = this.fullRoleList.filter(role =>
-      role.name.toLowerCase().includes(lowerText) ||
-      role.level.toString().includes(lowerText) ||
-      role.id.toString().includes(lowerText)
-    );
-    this.totalRoles = this.filteredRoles.length;
-    this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
+  fetchUsers(event: { pageIndex: number; pageSize: number }) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getRole(this.currentPage + 1, this.pageSize);
   }
 
   redirectTo(path: string) {
     this.common.redirectTo(path);
+  }
+
+  getRole(page = 1, limit = 5) {
+    let params: any = { page, limit };
+    if (this.searchText?.trim()) {
+      params.searchTxt = this.searchText.trim();
+    }
+    this.api.getRole(params).subscribe((res: any) => {
+      const { roles, meta } = res.data;
+      this.roleList = roles.map((role: any, index: number) => ({
+        id: (page - 1) * limit + index + 1,
+        name: role.roleName,
+        level: `Level ${role.level.levelId}`
+      }));
+      this.totalRoles = meta.totalItems;
+    });
+  }
+
+  onSearch(event: string) {
+    this.searchText = event;
+    this.getRole();
   }
 }
