@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
-import { AddUserComponent } from '../add-user/add-user.component';
+import { AddUserComponent } from './add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 
 interface User {
