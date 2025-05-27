@@ -18,5 +18,6 @@
   [totalItems]="totalModules"
   [pageSize]="5"
   [pageIndex]="currentPage"
+  (pageChange)="fetchModules($event)"
 >
 </app-table>

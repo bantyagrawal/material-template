@@ -28,9 +28,7 @@ export class InputComponent {
     this.hidePassword = !this.hidePassword;
   }
 
-  onChangeTrigger(event: Event) {
-    console.log("ERROr MESSAGE", this.data.errorMessage);
-    
+  onChangeTrigger(event: Event) {    
     this.onChange.emit(event)
   }
 }

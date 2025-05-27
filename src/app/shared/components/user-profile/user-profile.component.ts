@@ -10,7 +10,6 @@ export class UserProfileComponent {
   data:any
 constructor(private profile:CommonService){
    this.data=profile.permissions;
-  console.log(this.data,"hhshshsh");
   
 }
 

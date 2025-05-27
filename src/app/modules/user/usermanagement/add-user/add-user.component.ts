@@ -103,16 +103,13 @@ export class AddUserComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.myForm.valid) {
-      console.log('Form Value:', this.myForm.value);
     }
   }
 
   handleChange(event: Event): void {
     const input = event.target as HTMLInputElement;
-    console.log('Input value from event:', input.value);
   }
 
   onStatusChange(value: any): void {
-    console.log('Selected Status:', value);
   }
 }
