@@ -73,12 +73,12 @@ export class ApiService {
     });
   }
 
-  getLevel() {
+  getLevel(data: any = {}) {
     const option = {
       operation: 'read',
       module: 'Level Management',
     };
-    let body: any = { ...option, };
+    let body: any = { ...option, ...data };
     body = this.api.encrypt(body);
 
     return this.http.post(

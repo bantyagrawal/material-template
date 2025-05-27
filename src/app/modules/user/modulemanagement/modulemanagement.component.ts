@@ -45,7 +45,7 @@ export class ModulemanagementComponent {
         name: module.name,
         description: module.description
       }));
-      this.totalModules = meta.totalItems;
+      this.totalModules = meta.totalItems;      
     });
   }
 

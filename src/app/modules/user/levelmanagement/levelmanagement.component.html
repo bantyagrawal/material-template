@@ -12,6 +12,6 @@
   </div>
 </div>
 
-<app-table [data]="levelList" [displayedColumns]="['id','name', 'level']" [totalItems]="totalRoles" [pageSize]="5"
-  [pageIndex]="currentPage" (pageChange)="fetchUsers($event)">
+<app-table [data]="levelList" [displayedColumns]="['id','name', 'level']" [totalItems]="totalLevels" [pageSize]="5"
+  [pageIndex]="currentPage" (pageChange)="fetchLevels($event)">
 </app-table>

@@ -18,7 +18,6 @@ export class DeleteDialogComponent {
     private dialogRef: MatDialogRef<DeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    console.log("DATA", data);
   }
 
   closeDialog() {

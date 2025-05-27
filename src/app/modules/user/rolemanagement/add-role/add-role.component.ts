@@ -69,13 +69,11 @@ export class AddRoleComponent implements OnInit {
         },
       });
     } else {
-      console.log('Form is invalid.');
     }
   }
 
   handleChange(event: Event) {
     const input = event.target as HTMLInputElement;
-    console.log('Input value from event:', input.value);
   }
 
   getRole() {
