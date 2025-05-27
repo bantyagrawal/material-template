@@ -40,5 +40,12 @@ export class RoleUpdateComponent {
     role.permissions[permissionKey] = isChecked;
   }
 
+  removeModule(roleToRemove: any) {
+  this.roles = this.roles.filter(role => role !== roleToRemove);
+}
+  onClose() {
+    this.dialogRef.close();
+  }
+
 
 }

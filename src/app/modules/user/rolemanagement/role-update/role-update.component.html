@@ -1,8 +1,16 @@
-<div class="permissions-section">
-  <h3>Module Permissions</h3>
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h3>Module Permissions</h3>
 
-  <div class="module" *ngFor="let role of roles">
-    <h4>{{ role.module.name }}</h4>
+    <button mat-icon-button color="warn" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="permissions-section" *ngFor="let role of roles">
+    <div class="module-header">
+      <h4>{{ role.module.name }}</h4>
+    </div>
 
     <div class="checkbox-row">
       <app-checkbox
