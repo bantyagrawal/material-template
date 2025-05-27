@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RoleUpdateComponent } from './role-update/role-update.component';
 
 @Component({
   selector: 'app-rolemanagement',
@@ -77,6 +78,15 @@ export class RolemanagementComponent implements OnInit {
     });
   }
 
+   openUpdateRolelDialog(): void {
+    const dialogRef = this.dialog.open(RoleUpdateComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getRole();
+    });
+  }
+
   permissions(module: string, operation: string) {
     const result = this.common.checkpermission(module, operation);
     return result;
@@ -84,5 +94,6 @@ export class RolemanagementComponent implements OnInit {
 
   openPermissionDialog(data: any) {
     console.log("OPENED DIALOG", data);
+    this.openUpdateRolelDialog()
   }
 }

@@ -1,0 +1,51 @@
+<div class="permissions-section">
+  <h3>Module Permissions</h3>
+
+  <div class="module" *ngFor="let role of roles">
+    <h4>{{ role.module.name }}</h4>
+
+    <div class="checkbox-row">
+      <app-checkbox
+        label="All"
+        [checked]="isAllChecked(role.permissions)"
+        (changed)="onAllPermissionsChange(role, $event)">
+      </app-checkbox>
+
+      <app-checkbox
+        label="Write"
+        [checked]="role.permissions.write"
+        (changed)="onPermissionChange(role, 'write', $event)">
+      </app-checkbox>
+
+      <app-checkbox
+        label="Update"
+        [checked]="role.permissions.update"
+        (changed)="onPermissionChange(role, 'update', $event)">
+      </app-checkbox>
+
+      <app-checkbox
+        label="Delete"
+        [checked]="role.permissions.delete"
+        (changed)="onPermissionChange(role, 'delete', $event)">
+      </app-checkbox>
+
+      <app-checkbox
+        label="Read"
+        [checked]="role.permissions.read"
+        (changed)="onPermissionChange(role, 'read', $event)">
+      </app-checkbox>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <app-button [data]="{
+        label: 'Submit',
+        color: 'primary',
+        icon: 'send',
+        disabled: false,
+        type: 'submit',
+        customClass: 'my-button-class'
+      }">
+    </app-button>
+  </div>
+</div>

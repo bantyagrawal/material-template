@@ -1,0 +1,71 @@
+.permissions-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #fefefe;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.permissions-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
+
+.module {
+  margin-bottom: 1.8rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.module h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #222;
+}
+
+.checkbox-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+app-checkbox {
+  flex: 1 1 120px;
+  min-width: 120px;
+}
+
+.button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .checkbox-row {
+    gap: 0.5rem;
+  }
+
+  app-checkbox {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+
+  .permissions-section {
+    padding: 0.75rem;
+  }
+
+  .permissions-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .module h4 {
+    font-size: 1.1rem;
+  }
+}

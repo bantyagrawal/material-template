@@ -17,6 +17,7 @@ import { UserComponent } from './user.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LevelmanagementComponent } from './levelmanagement/levelmanagement.component';
 import { LevelDialogComponent } from './level-dialog/level-dialog.component';
+import { RoleUpdateComponent } from './rolemanagement/role-update/role-update.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { LevelDialogComponent } from './level-dialog/level-dialog.component';
     UserComponent,
     LevelmanagementComponent,
     LevelDialogComponent,
+    RoleUpdateComponent,
 
   ],
   imports: [
