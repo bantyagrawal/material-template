@@ -1,5 +1,31 @@
-<h2 mat-dialog-title>Add New Module</h2>
+<h2 mat-dialog-title class="dialog-title">Add New Module</h2>
+<div class="dialog-container">
+  <mat-dialog-content>
+    <form [formGroup]="ModuleForm" class="module-form">
+      <app-input
+        [data]="{
+          label: 'Module Name', 
+          placeholder: 'Enter module name', 
+          type: 'text', 
+          control: ModuleControl, 
+          errorMessage: 'Module name is required',
+          customClass: 'form-input'
+        }">
+      </app-input>
+      
+      <app-input
+        [data]="{
+          label: 'Description', 
+          placeholder: 'Enter description (optional)', 
+          type: 'text', 
+          control: ModuledesControl,
+          customClass: 'form-input'
+        }">
+      </app-input>
+    </form>
+  </mat-dialog-content>
 
+<<<<<<< Updated upstream
 <mat-dialog-content>
   <form [formGroup]="ModuleForm">
     <app-input
@@ -15,4 +41,18 @@
   <app-button (click)="onSave()"
     [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'my-button-class'}">
   </app-button>
+=======
+  <mat-dialog-actions class="dialog-actions">
+    <app-button
+      [data]="{
+        label: 'Submit', 
+        color: 'primary', 
+        icon: 'save', 
+        disabled: false, 
+        type: 'submit',
+        customClass: 'submit-button'
+      }">
+    </app-button>
+  </mat-dialog-actions>
+>>>>>>> Stashed changes
 </div>
