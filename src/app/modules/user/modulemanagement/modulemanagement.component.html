@@ -1,0 +1,22 @@
+<div class="heading">
+  <h1>Module Management</h1>
+</div>
+
+<div class="toolbar-row">
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+  <div class="add-module">
+    <app-button
+      (click)="openAddModuleDialog()"
+      [data]="{label: 'Add Module', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}">
+    </app-button>
+  </div>
+</div>
+
+<app-table
+  [data]="moduleList"
+  [displayedColumns]="['id', 'name', 'description']"
+  [totalItems]="totalModules"
+  [pageSize]="5"
+  [pageIndex]="currentPage"
+>
+</app-table>

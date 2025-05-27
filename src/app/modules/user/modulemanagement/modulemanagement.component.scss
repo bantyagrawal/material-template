@@ -1,0 +1,59 @@
+.heading h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Toolbar container */
+.toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  gap: 1rem;
+}
+
+/* Search bar full width on small screens */
+app-search-bar {
+  flex: 1 1 300px; /* grow and shrink, min 300px */
+  min-width: 200px;
+}
+
+/* Button container aligned right */
+.add-module {
+  flex: 0 0 auto;
+}
+.custom-dialog-container {
+  padding: 0;  /* remove extra padding */
+  overflow: visible !important;  /* allow content to expand naturally */
+  box-sizing: border-box;
+}
+
+
+
+/* Table wrapper for responsiveness */
+app-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* For smaller screens, center heading and stack toolbar items */
+@media (max-width: 600px) {
+  .heading h1 {
+    font-size: 1.5rem;
+  }
+
+
+
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-module {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+}

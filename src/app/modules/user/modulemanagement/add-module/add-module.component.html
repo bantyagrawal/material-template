@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Add New Module</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="ModuleForm">
+    <app-input
+      [data]="{label: 'Module Name', placeholder: 'Enter your Module', type: 'text', control: ModuleControl, errorMessage: 'Module is required',customClass: 'my-input-style'}">
+    </app-input>
+     <app-input
+      [data]="{label: 'Description', placeholder: 'Enter your Description', type: 'text', control: ModuledesControl, errorMessage: 'Description is required',customClass: 'my-input-style'}">
+    </app-input>
+  </form>
+</mat-dialog-content>
+
+<div class="button-container">
+  <app-button
+    [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'my-button-class'}">
+  </app-button>
+</div>
