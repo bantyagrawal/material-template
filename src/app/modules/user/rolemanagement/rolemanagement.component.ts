@@ -4,6 +4,7 @@ import { CommonService } from 'src/app/core/services/common.service';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RoleUpdateComponent } from './role-update/role-update.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-rolemanagement',
@@ -97,6 +98,25 @@ export class RolemanagementComponent implements OnInit {
     });
   }
 
+    deleteDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+
+  ) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '400px',
+      maxWidth: '90vw',
+      panelClass: 'dialog-layout',
+      disableClose: true,
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe((res: any) => {
+      this.getRole()
+    });
+  }
+
   checkUpdatePermission() {
     if (!this.common.checkUpdatePermission('Role Management')) {
       const index = this.tableColumns.indexOf('status');
@@ -116,6 +136,6 @@ export class RolemanagementComponent implements OnInit {
   }
 
   openDeleteDialog(data: any) {
-
+   this.deleteDialog('500ms','500ms')
   }
 }

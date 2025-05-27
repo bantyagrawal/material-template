@@ -1,0 +1,57 @@
+.dialog-wrapper {
+  text-align: center;
+  padding: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.icon-circle {
+  background-color: #ffe5e5;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+mat-icon {
+  font-size: 36px;
+  color: #d32f2f; /* material red shade */
+}
+
+.confirm-text {
+  font-weight: 700;
+  color: #333;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+button[mat-flat-button] {
+  border-radius: 20px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+@media (max-width: 480px) {
+  button[mat-flat-button] {
+    min-width: 80px;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+}

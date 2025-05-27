@@ -21,6 +21,7 @@ import { RoleUpdateComponent } from './rolemanagement/role-update/role-update.co
 import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
 import { AddModuleComponent } from './modulemanagement/add-module/add-module.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RoleUpdateComponent,
     ModulemanagementComponent,
     AddModuleComponent,
+    DeleteDialogComponent,
 
   ],
   imports: [
