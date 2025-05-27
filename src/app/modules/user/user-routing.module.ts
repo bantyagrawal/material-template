@@ -7,6 +7,7 @@ import { RolemanagementComponent } from './rolemanagement/rolemanagement.compone
 import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
 import { UserComponent } from './user.component';
 import { LevelmanagementComponent } from './levelmanagement/levelmanagement.component';
+import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'usermanagement', component: UsermanagementComponent },
       { path: 'rolemanagement', component: RolemanagementComponent },
       { path: 'levelmanagement', component: LevelmanagementComponent },
+         { path: 'modulemanagement', component: ModulemanagementComponent },
       { path: 'roleform', component: AddRoleComponent }]
     }
 ];

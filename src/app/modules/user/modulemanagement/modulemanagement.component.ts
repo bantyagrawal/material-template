@@ -54,7 +54,7 @@ const dialogRef = this.dialog.open(AddModuleComponent, {
   width: '400px',         
   maxWidth: '90vw',       
   height: 'auto',       
-  maxHeight: 'none',      
+  maxHeight: '',      
   panelClass: 'custom-dialog-container'
 });
 

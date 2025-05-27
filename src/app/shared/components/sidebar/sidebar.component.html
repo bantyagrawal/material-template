@@ -5,5 +5,7 @@
         <button mat-button *ngIf="permissions('Users Management','read')" (click)="redirectTo('usermanagement')">User Management</button>
         <button mat-button *ngIf="permissions('Module Management','read')" (click)="redirectTo('rolemanagement')">Role Management</button>
         <button mat-button  (click)="redirectTo('levelmanagement')">Level Management</button>
+       <button mat-button  (click)="redirectTo('modulemanagement')">Module Management</button>
+
     </div>
 </div>
