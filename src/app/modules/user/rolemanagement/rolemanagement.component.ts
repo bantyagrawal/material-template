@@ -78,6 +78,7 @@ export class RolemanagementComponent implements OnInit {
 
   openAddRolelDialog(): void {
     const dialogRef = this.dialog.open(AddRoleComponent, {
+      
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getRole();

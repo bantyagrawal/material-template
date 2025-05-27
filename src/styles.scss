@@ -278,6 +278,15 @@ body {
   border-radius: 0px 10px 10px 0px !important;
 }
 
+.uniform-width {
+    width: 212px !important;
+    min-width: 100px !important;
+    max-width: 400% !important;
+    box-sizing: border-box !important;
+}
+
+
+
 /* outline border css */
 
 .custom-form-input
@@ -323,6 +332,11 @@ body {
 .form-input {
   width: 100%;
 }
+.form-input,
+.form-select {
+  width: 100%;
+}
+
 
 .error-message {
   color: #f44336; /* Material red */
