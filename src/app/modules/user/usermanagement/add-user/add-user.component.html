@@ -3,54 +3,54 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="feilds">
             <app-input
-                [data]="{label: 'Name', placeholder: 'Enter your name', type: 'text', control: nameControl, errorMessage: 'Name is required',customClass: 'my-input-style'}"
+                [data]="{label: 'Name', placeholder: 'Enter your name', type: 'text', control: nameControl, errorMessage: 'Name is required',customClass: ''}"
                 (onChange)="handleChange($event)">
             </app-input>
             <app-input
-                [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: 'Password is required', isPasswordToggle: true, customClass: 'my-input-style'}">
+                [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: 'Password is required', isPasswordToggle: true, customClass: ''}">
             </app-input>
             <app-input
-                [data]="{label: 'Email', placeholder: 'Enter your email', type: 'email', control: emailControl, errorMessage: 'Email is required',customClass: 'my-input-style'}">
+                [data]="{label: 'Email', placeholder: 'Enter your email', type: 'email', control: emailControl, errorMessage: 'Email is required',customClass: ''}">
             </app-input>
             <app-input
-                [data]="{label: 'Mobile', placeholder: 'Enter your mobile', type: 'number', control: mobileControl, errorMessage: 'Mobile is required',customClass: 'my-input-style'}">
+                [data]="{label: 'Mobile', placeholder: 'Enter your mobile', type: 'number', control: mobileControl, errorMessage: 'Mobile is required',customClass: ''}">
             </app-input>
             <app-date-picker
-                [data]="{ control: dateControl, label: 'Date of Birth', placeholder: 'Select your DOB', errorMessage: 'Date is required', customClass: 'my-date-class'}">
+                [data]="{ control: dateControl, label: 'Date of Birth', placeholder: 'Select your DOB', errorMessage: 'Date is required', customClass: ''}">
             </app-date-picker>
             <app-input
-                [data]="{label: 'Address', placeholder: 'Enter your address', type: 'text', control: addressControl, errorMessage: 'Address is required',customClass: 'my-input-style'}">
+                [data]="{label: 'Address', placeholder: 'Enter your address', type: 'text', control: addressControl, errorMessage: 'Address is required',customClass: ''}">
             </app-input>
 
             <app-input
-                [data]="{label: 'deviceId', placeholder: 'Enter your deviceId', type: 'text', control: deviceIdControl, errorMessage: 'deviceId is required',customClass: 'my-input-style'}">
+                [data]="{label: 'deviceId', placeholder: 'Enter your deviceId', type: 'text', control: deviceIdControl, errorMessage: 'deviceId is required',customClass: ''}">
             </app-input>
             <app-input
-                [data]="{label: 'userId', placeholder: 'Enter your userId', type: 'text', control: userIdControl, errorMessage: 'userId is required',customClass: 'my-input-style'}">
+                [data]="{label: 'userId', placeholder: 'Enter your userId', type: 'text', control: userIdControl, errorMessage: 'userId is required',customClass: ''}">
             </app-input>
             <app-input
-                [data]="{label: 'iv4', placeholder: 'Enter your iv4', type: 'text', control: iv4Control, errorMessage: 'iv4 is required',customClass: 'my-input-style'}">
+                [data]="{label: 'iv4', placeholder: 'Enter your iv4', type: 'text', control: iv4Control, errorMessage: 'iv4 is required',customClass: ''}">
             </app-input>
             <app-input
-                [data]="{label: 'iv6', placeholder: 'Enter your iv6', type: 'text', control: iv6Control, errorMessage: 'iv6 is required',customClass: 'my-input-style'}">
+                [data]="{label: 'iv6', placeholder: 'Enter your iv6', type: 'text', control: iv6Control, errorMessage: 'iv6 is required',customClass: ''}">
             </app-input>
             <app-select [data]="{
-          label: 'Level',
+          label: ' Select Role',
           placeholder: 'Select a Role',
           options: roleOptions,
           control: roleControl,
           errorMessage: 'Role is required',
-          customClass: 'my-input-style'
+          customClass: ''
         }">
             </app-select>
 
             <app-select [data]="{
-          label: 'Level',
+          label: 'Select Wallet',
           placeholder: 'Select a Wallet',
           options: walletOptions,
           control: walletControl,
           errorMessage: 'Role is required',
-          customClass: 'my-input-style'
+          customClass: ''
         }">
             </app-select>
             <app-select [data]="selectData" (selectionChange)="onStatusChange($event)"></app-select>
