@@ -9,6 +9,6 @@
   </app-button>
 </div>
 </div>
-<app-table [data]="userList" [displayedColumns]="['name', 'email', 'role']" [totalItems]="totalUsers" [pageSize]="5"
+<app-table [data]="userList" [displayedColumns]="['id','name', 'email','mobile', 'role', 'userId']" [totalItems]="totalUsers" [pageSize]="5"
   [pageIndex]="currentPage" (pageChange)="fetchUsers($event)">
 </app-table>

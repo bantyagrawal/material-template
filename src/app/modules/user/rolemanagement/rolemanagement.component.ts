@@ -45,7 +45,7 @@ export class RolemanagementComponent implements OnInit {
     this.api.getRole(params).subscribe((res: any) => {
       const { roles, meta } = res.data;
       this.roleList = roles.map((role: any, index: number) => ({
-        id: (page - 1) * limit + index + 1,
+        id: index + 1,
         name: role.roleName,
         level: `Level ${role.level.levelId}`
       }));
