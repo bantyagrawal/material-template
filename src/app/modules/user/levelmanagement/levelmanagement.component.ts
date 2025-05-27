@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/core/services/common.service';
 import { LevelDialogComponent } from '../level-dialog/level-dialog.component';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'app-levelmanagement',
@@ -26,6 +27,7 @@ export class LevelmanagementComponent {
 
   constructor(
     private common: CommonService,
+    private api: ApiService,
     private dialog: MatDialog
   ) { }
 
@@ -33,6 +35,7 @@ export class LevelmanagementComponent {
     this.filteredLevels = [...this.fullLevelList];
     this.totalRoles = this.fullLevelList.length;
     this.fetchUsers({ pageIndex: 0, pageSize: this.pageSize });
+    this.getLevel();
   }
 
   fetchUsers(event: { pageIndex: number, pageSize: number }) {
@@ -62,15 +65,27 @@ export class LevelmanagementComponent {
 
   openAddLevelDialog(): void {
     const dialogRef = this.dialog.open(LevelDialogComponent, {
-      // width: '400px',
-      // maxWidth: '95vw'
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Level added:', result);
       }
     });
+  }
+
+  getLevel() {
+    this.api.getLevel().subscribe((res: any) => {
+      this.api.getLevel().subscribe({
+        next: (res: any) => {
+          this.levelList = res.data.map((level: any, index: number) => ({
+            id: index + 1,
+            name: `Level ${level.levelId}`,
+            level: level.levelId
+          }));
+        }
+      })
+
+    })
   }
 
 }

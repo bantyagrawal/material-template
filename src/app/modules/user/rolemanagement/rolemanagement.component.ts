@@ -17,23 +17,28 @@ export class RolemanagementComponent implements OnInit {
   currentPage = 0;
   pageSize = 5;
   searchText = '';
+  tableColumns: string[] = ['id', 'name', 'level', 'status', 'delete'];
   @ViewChild('statusTemplate') statusTemplate: any;
+  @ViewChild('deleteTemplate') deleteTemplate: any;
+
   columnTemplatesMap: { [key: string]: any } = {};
 
   constructor(
     private common: CommonService,
     private api: ApiService,
     private dialog: MatDialog
-
   ) { }
 
   ngOnInit() {
+    this.checkUpdatePermission();
+    this.checkDeletePermission();
     this.getRole();
   }
 
   ngAfterViewInit() {
     this.columnTemplatesMap = {
-      status: this.statusTemplate
+      status: this.statusTemplate,
+      delete: this.deleteTemplate
     };
   }
 
@@ -53,7 +58,7 @@ export class RolemanagementComponent implements OnInit {
       params.searchTxt = this.searchText.trim();
     }
     this.api.getRole(params).subscribe((res: any) => {
-      const { roles, meta } = res.data;      
+      const { roles, meta } = res.data;
       this.roleList = roles.map((role: any, index: number) => ({
         id: index + 1,
         name: role.roleName,
@@ -69,19 +74,10 @@ export class RolemanagementComponent implements OnInit {
     this.searchText = event;
     this.getRole();
   }
+
   openAddRolelDialog(): void {
     const dialogRef = this.dialog.open(AddRoleComponent, {
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.getRole();
-    });
-  }
-
-   openUpdateRolelDialog(): void {
-    const dialogRef = this.dialog.open(RoleUpdateComponent, {
-    });
-
     dialogRef.afterClosed().subscribe(result => {
       this.getRole();
     });
@@ -93,7 +89,33 @@ export class RolemanagementComponent implements OnInit {
   }
 
   openPermissionDialog(data: any) {
-    console.log("OPENED DIALOG", data);
-    this.openUpdateRolelDialog()
+    const dialogRef = this.dialog.open(RoleUpdateComponent, {
+      data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getRole();
+    });
+  }
+
+  checkUpdatePermission() {
+    if (!this.common.checkUpdatePermission('Role Management')) {
+      const index = this.tableColumns.indexOf('status');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  checkDeletePermission() {
+    if (!this.common.checkDeletePermission('Role Management')) {
+      const index = this.tableColumns.indexOf('delete');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  openDeleteDialog(data: any) {
+
   }
 }

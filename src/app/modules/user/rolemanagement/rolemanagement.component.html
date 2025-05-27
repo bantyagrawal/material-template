@@ -2,7 +2,6 @@
   <h1>Role Management</h1>
 </div>
 
-
 <div class="toolbar-row">
   <app-search-bar (search)="onSearch($event)"></app-search-bar>
   <div class="adduser" *ngIf="permissions('Role Management','write')">
@@ -13,10 +12,14 @@
   </div>
 </div>
 
-<app-table [data]="roleList" [displayedColumns]="['id','name', 'level', 'status']" [totalItems]="totalRoles" [pageSize]="5"
-  [pageIndex]="currentPage" (pageChange)="fetchUsers($event)" [columnTemplates]="columnTemplatesMap">
+<app-table [data]="roleList" [displayedColumns]="tableColumns" [totalItems]="totalRoles"
+  [pageSize]="5" [pageIndex]="currentPage" (pageChange)="fetchUsers($event)" [columnTemplates]="columnTemplatesMap">
 </app-table>
 
-<ng-template #statusTemplate let-row >
+<ng-template #statusTemplate let-row>
   <mat-icon (click)="openPermissionDialog(row)" color="primary">{{ 'add' }}</mat-icon>
+</ng-template>
+
+<ng-template #deleteTemplate let-row>
+  <mat-icon (click)="openDeleteDialog(row)" color="primary">{{ 'delete' }}</mat-icon>
 </ng-template>

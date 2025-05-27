@@ -47,4 +47,12 @@ export class CommonService {
     return result;
   }
 
+  checkUpdatePermission(module: string) {
+    return this.checkpermission(module, 'write');
+  }
+
+    checkDeletePermission(module: string) {
+    return this.checkpermission(module, 'delete');
+  }
+
 }

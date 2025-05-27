@@ -7,46 +7,23 @@
     </button>
   </div>
 
-  <div class="permissions-section" *ngFor="let role of roles">
+  <div class="permissions-section" *ngFor="let permission of roleData.permissions">
     <div class="module-header">
-      <h4>{{ role.module.name }}</h4>
+      <h4>{{ permission.module.name }}</h4>
     </div>
 
     <div class="checkbox-row">
-      <app-checkbox
-        label="All"
-        [checked]="isAllChecked(role.permissions)"
-        (changed)="onAllPermissionsChange(role, $event)">
+      <app-checkbox label="All" [checked]="isAllChecked(permission.permission)"
+        (changed)="onAllPermissionsChange(permission, $event)">
       </app-checkbox>
-
-      <app-checkbox
-        label="Write"
-        [checked]="role.permissions.write"
-        (changed)="onPermissionChange(role, 'write', $event)">
-      </app-checkbox>
-
-      <app-checkbox
-        label="Update"
-        [checked]="role.permissions.update"
-        (changed)="onPermissionChange(role, 'update', $event)">
-      </app-checkbox>
-
-      <app-checkbox
-        label="Delete"
-        [checked]="role.permissions.delete"
-        (changed)="onPermissionChange(role, 'delete', $event)">
-      </app-checkbox>
-
-      <app-checkbox
-        label="Read"
-        [checked]="role.permissions.read"
-        (changed)="onPermissionChange(role, 'read', $event)">
+      <app-checkbox *ngFor="let permKey of getPermissionKeys(permission.permission)" [label]="permKey"
+        [checked]="permission.permission[permKey]" (changed)="onPermissionChange(permission, permKey, $event)">
       </app-checkbox>
     </div>
   </div>
 
   <div class="button-container">
-    <app-button [data]="{
+    <app-button (click)="updatePermission()" [data]="{
         label: 'Submit',
         color: 'primary',
         icon: 'send',

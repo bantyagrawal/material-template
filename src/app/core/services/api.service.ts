@@ -66,7 +66,7 @@ export class ApiService {
   }
 
 
-   postLevel(url: any, data: any) {
+  postLevel(url: any, data: any) {
     let body: any = { ...data };
     body = this.api.encrypt(body);
     return this.http.post(`${this.baseurl}/levels/${url}`, body, {
@@ -75,13 +75,20 @@ export class ApiService {
   }
 
   getLevel() {
+    const option = {
+      operation: 'read',
+      module: 'Role Management',
+    };
+    let body: any = { ...option, };
+    body = this.api.encrypt(body);
+
     return this.http.post(
       `${this.baseurl}/levels/getLevel`,
-      {},
+      body,
       { withCredentials: true }
     );
   }
-  
+
   createLevel(data: any) {
     const option = {
       operation: 'write',
@@ -94,7 +101,7 @@ export class ApiService {
     });
   }
 
-    addRole(data: any) {
+  addRole(data: any) {
     const option = {
       operation: 'write',
       module: 'Role Management',
@@ -120,19 +127,19 @@ export class ApiService {
   }
 
 
-   updateRole(url: any, data: any) {
+  updateRole(data: any) {
     const option = {
-      operation: 'write',
+      operation: 'update',
       module: 'Role Management',
     };
     let body: any = { ...data, ...option };
     body = this.api.encrypt(body);
-    return this.http.post(`${this.baseurl}/roles/${url}`, body, {
+    return this.http.post(`${this.baseurl}/roles/updateRole`, body, {
       withCredentials: true,
     });
   }
 
-    loggedInUsers(url: any) {
+  loggedInUsers(url: any) {
     return this.http.post(
       `${this.baseurl}/roles/${url}`,
       {},
