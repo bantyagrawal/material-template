@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 import { AddRoleComponent } from './add-role/add-role.component';
@@ -16,6 +16,9 @@ export class RolemanagementComponent implements OnInit {
   currentPage = 0;
   pageSize = 5;
   searchText = '';
+  @ViewChild('statusTemplate') statusTemplate: any;
+  columnTemplatesMap: { [key: string]: any } = {};
+
   constructor(
     private common: CommonService,
     private api: ApiService,
@@ -25,6 +28,12 @@ export class RolemanagementComponent implements OnInit {
 
   ngOnInit() {
     this.getRole();
+  }
+
+  ngAfterViewInit() {
+    this.columnTemplatesMap = {
+      status: this.statusTemplate
+    };
   }
 
   fetchUsers(event: { pageIndex: number; pageSize: number }) {
@@ -43,11 +52,13 @@ export class RolemanagementComponent implements OnInit {
       params.searchTxt = this.searchText.trim();
     }
     this.api.getRole(params).subscribe((res: any) => {
-      const { roles, meta } = res.data;
+      const { roles, meta } = res.data;      
       this.roleList = roles.map((role: any, index: number) => ({
         id: index + 1,
         name: role.roleName,
-        level: `Level ${role.level.levelId}`
+        level: `Level ${role.level.levelId}`,
+        roleId: role.uuid,
+        permissions: role.RoleModulePermissions
       }));
       this.totalRoles = meta.totalItems;
     });
@@ -62,12 +73,16 @@ export class RolemanagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-        this.getRole();
+      this.getRole();
     });
   }
 
   permissions(module: string, operation: string) {
     const result = this.common.checkpermission(module, operation);
     return result;
+  }
+
+  openPermissionDialog(data: any) {
+    console.log("OPENED DIALOG", data);
   }
 }
