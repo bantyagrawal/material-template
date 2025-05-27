@@ -21,6 +21,38 @@
             <app-input
                 [data]="{label: 'Address', placeholder: 'Enter your address', type: 'text', control: addressControl, errorMessage: 'Address is required',customClass: 'my-input-style'}">
             </app-input>
+
+            <app-input
+                [data]="{label: 'deviceId', placeholder: 'Enter your deviceId', type: 'text', control: deviceIdControl, errorMessage: 'deviceId is required',customClass: 'my-input-style'}">
+            </app-input>
+            <app-input
+                [data]="{label: 'userId', placeholder: 'Enter your userId', type: 'text', control: userIdControl, errorMessage: 'userId is required',customClass: 'my-input-style'}">
+            </app-input>
+            <app-input
+                [data]="{label: 'iv4', placeholder: 'Enter your iv4', type: 'text', control: iv4Control, errorMessage: 'iv4 is required',customClass: 'my-input-style'}">
+            </app-input>
+            <app-input
+                [data]="{label: 'iv6', placeholder: 'Enter your iv6', type: 'text', control: iv6Control, errorMessage: 'iv6 is required',customClass: 'my-input-style'}">
+            </app-input>
+            <app-select [data]="{
+          label: 'Level',
+          placeholder: 'Select a Role',
+          options: roleOptions,
+          control: roleControl,
+          errorMessage: 'Role is required',
+          customClass: 'my-input-style'
+        }">
+            </app-select>
+
+            <app-select [data]="{
+          label: 'Level',
+          placeholder: 'Select a Wallet',
+          options: walletOptions,
+          control: walletControl,
+          errorMessage: 'Role is required',
+          customClass: 'my-input-style'
+        }">
+            </app-select>
             <app-select [data]="selectData" (selectionChange)="onStatusChange($event)"></app-select>
 
 

@@ -12,8 +12,8 @@ export class AddUserComponent implements OnInit {
 
   myForm!: FormGroup;
   selectData!: SelectData;
-
-  
+  walletOptions: any = [];
+  roleOptions: any = [];
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -27,7 +27,13 @@ export class AddUserComponent implements OnInit {
       mobile: ['', Validators.required],
       date: [null, Validators.required],
       address: ['', Validators.required],
-      select: ['active', Validators.required]
+      select: ['active', Validators.required],
+      deviceId: ['', Validators.required],
+      userId: ['', Validators.required],
+      role: ['', Validators.required],
+      iv4: ['', Validators.required],
+      iv6: ['', Validators.required],
+      walletType: ['', Validators.required],
     });
 
     this.selectData = {
@@ -72,6 +78,29 @@ export class AddUserComponent implements OnInit {
     return this.myForm.get('select') as FormControl;
   }
 
+  get deviceIdControl(): FormControl {
+    return this.myForm.get('deviceId') as FormControl;
+  }
+
+  get userIdControl(): FormControl {
+    return this.myForm.get('userId') as FormControl;
+  }
+
+  get iv4Control(): FormControl {
+    return this.myForm.get('iv4') as FormControl;
+  }
+
+  get iv6Control(): FormControl {
+    return this.myForm.get('iv6') as FormControl;
+  }
+
+  get roleControl(): FormControl {
+    return this.myForm.get('role') as FormControl;
+  }
+
+  get walletControl(): FormControl {
+    return this.myForm.get('walletType') as FormControl;
+  }
   onSubmit(): void {
     if (this.myForm.valid) {
       console.log('Form Value:', this.myForm.value);
