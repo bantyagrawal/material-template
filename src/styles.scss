@@ -123,7 +123,10 @@ body {
 }
 
 .custom-input .mdc-text-field .mdc-text-field__input {
-  caret-color: var(--dark-text);
+  :root {
+    --primary-color: #E7BE43;
+    --dark-text: #000; // Add this if needed
+  }
 }
 
 /* outline border css */
@@ -323,5 +326,4 @@ body {
   margin-top: 4px;
   text-align: left;
 }
-
 /******************* custom form input css end **************/

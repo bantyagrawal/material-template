@@ -81,6 +81,18 @@ export class ApiService {
       { withCredentials: true }
     );
   }
+  
+  createLevel(data: any) {
+    const option = {
+      operation: 'write',
+      module: 'Level Management',
+    };
+    let body: any = { ...option, ...data };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/levels/createLevel`, body, {
+      withCredentials: true,
+    });
+  }
 
     addRole(data: any) {
     const option = {

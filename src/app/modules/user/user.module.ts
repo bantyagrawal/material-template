@@ -20,6 +20,7 @@ import { LevelDialogComponent } from './level-dialog/level-dialog.component';
 import { RoleUpdateComponent } from './rolemanagement/role-update/role-update.component';
 import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
 import { AddModuleComponent } from './modulemanagement/add-module/add-module.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { AddModuleComponent } from './modulemanagement/add-module/add-module.com
     MatProgressBarModule,
     MatDividerModule,
     MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class UserModule { }
