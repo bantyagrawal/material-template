@@ -98,10 +98,10 @@ export class RolemanagementComponent implements OnInit {
     });
   }
 
-    deleteDialog(
+  deleteDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string,
-
+    data: any
   ) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '400px',
@@ -110,6 +110,7 @@ export class RolemanagementComponent implements OnInit {
       disableClose: true,
       enterAnimationDuration,
       exitAnimationDuration,
+      data
     });
 
     dialogRef.afterClosed().subscribe((res: any) => {
@@ -136,6 +137,6 @@ export class RolemanagementComponent implements OnInit {
   }
 
   openDeleteDialog(data: any) {
-   this.deleteDialog('500ms','500ms')
+    this.deleteDialog('500ms', '500ms', data)
   }
 }

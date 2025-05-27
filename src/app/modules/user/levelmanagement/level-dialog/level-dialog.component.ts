@@ -4,7 +4,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/core/services/api.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-level-dialog',
@@ -17,7 +17,7 @@ export class LevelDialogComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private snackBar: MatSnackBar,
+    private toaster: ToastrService,
     public dialogRef: MatDialogRef<LevelDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -37,19 +37,16 @@ export class LevelDialogComponent {
   onSave(): void {
     if (this.levelForm.valid) {
       const payload = {
-        levelId: +this.levelForm.value.id,         // match backend requirement
-        status: 'active'                           // optional; backend defaults to this
+        levelId: +this.levelForm.value.id,        
+        status: 'active'                           
       };
   
       this.apiService.createLevel(payload).subscribe({
         next: (res) => {
-          this.snackBar.open('Level created successfully', 'Close', { duration: 3000 });
+          this.toaster.success('Level created successfully');
           this.dialogRef.close(true);
         },
         error: (err) => {
-          const errorMessage = err?.error?.message || 'Failed to create level';
-          this.snackBar.open(errorMessage, 'Close', { duration: 3000 });
-          console.error(err);
         }
       });
     }

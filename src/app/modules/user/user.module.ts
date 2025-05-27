@@ -16,11 +16,10 @@ import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
 import { UserComponent } from './user.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LevelmanagementComponent } from './levelmanagement/levelmanagement.component';
-import { LevelDialogComponent } from './level-dialog/level-dialog.component';
+import { LevelDialogComponent } from './levelmanagement/level-dialog/level-dialog.component';
 import { RoleUpdateComponent } from './rolemanagement/role-update/role-update.component';
 import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
 import { AddModuleComponent } from './modulemanagement/add-module/add-module.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
@@ -51,7 +50,6 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     MatDividerModule,
     MatSidenavModule,
     MatDialogModule,
-    MatSnackBarModule
   ]
 })
 export class UserModule { }

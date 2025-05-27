@@ -14,7 +14,6 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private api: DecryptionService,
-    private cookieService: CookieService
   ) { }
 
   login(data: any) {
@@ -77,7 +76,7 @@ export class ApiService {
   getLevel() {
     const option = {
       operation: 'read',
-      module: 'Role Management',
+      module: 'Level Management',
     };
     let body: any = { ...option, };
     body = this.api.encrypt(body);
@@ -145,5 +144,41 @@ export class ApiService {
       {},
       { withCredentials: true }
     );
+  }
+
+  deleteRole(data: any) {
+    const option = {
+      operation: 'delete',
+      module: 'Role Management',
+    };
+    let body: any = { ...data, ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/roles/deleteRole`, body, {
+      withCredentials: true,
+    });
+  }
+
+  getModules(data: any) {
+    const option = {
+      operation: 'delete',
+      module: 'Module Management',
+    };
+    let body: any = { ...data, ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/modules/getModule`, body, {
+      withCredentials: true,
+    });
+  }
+
+  AddModule(data: any) {
+    const option = {
+      operation: 'write',
+      module: 'Module Management',
+    };
+    let body: any = { ...data, ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/modules/createModule`, body, {
+      withCredentials: true,
+    });
   }
 }

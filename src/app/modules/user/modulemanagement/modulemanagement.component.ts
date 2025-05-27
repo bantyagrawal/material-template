@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AddModuleComponent } from './add-module/add-module.component';
+import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
   selector: 'app-modulemanagement',
@@ -16,7 +17,11 @@ export class ModulemanagementComponent {
   pageSize = 5;
   searchText = '';
 
-  constructor(private api: ApiService, private dialog: MatDialog) {}
+  constructor(
+    private api: ApiService,
+    private dialog: MatDialog,
+    private common: CommonService
+  ) { }
 
   ngOnInit() {
     this.getModules();
@@ -33,15 +38,15 @@ export class ModulemanagementComponent {
     if (this.searchText?.trim()) {
       params.searchTxt = this.searchText.trim();
     }
-    // this.api.getModules(params).subscribe((res: any) => {
-    //   const { modules, meta } = res.data;
-    //   this.moduleList = modules.map((module: any, index: number) => ({
-    //     id: (page - 1) * limit + index + 1,
-    //     name: module.moduleName,
-    //     description: module.description
-    //   }));
-    //   this.totalModules = meta.totalItems;
-    // });
+    this.api.getModules(params).subscribe((res: any) => {
+      const { modules, meta } = res.data;
+      this.moduleList = modules.map((module: any, index: number) => ({
+        id: (page - 1) * limit + index + 1,
+        name: module.name,
+        description: module.description
+      }));
+      this.totalModules = meta.totalItems;
+    });
   }
 
   onSearch(event: string) {
@@ -49,21 +54,22 @@ export class ModulemanagementComponent {
     this.getModules();
   }
 
-openAddModuleDialog(): void {
-const dialogRef = this.dialog.open(AddModuleComponent, {
-  width: '400px',         
-  maxWidth: '90vw',       
-  height: 'auto',       
-  maxHeight: '',      
-  panelClass: 'custom-dialog-container'
-});
+  openAddModuleDialog(): void {
+    const dialogRef = this.dialog.open(AddModuleComponent, {
+      width: '400px',
+      maxWidth: '90vw',
+      height: 'auto',
+      maxHeight: '',
+      panelClass: 'custom-dialog-container'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getModules();
+      }
+    });
+  }
 
-
-
-  dialogRef.afterClosed().subscribe(result => {
-    this.getModules();
-  });
-}
-
-
+  checkAddPermission() {
+    return this.common.checkAddPermission("Module Management");
+  }
 }

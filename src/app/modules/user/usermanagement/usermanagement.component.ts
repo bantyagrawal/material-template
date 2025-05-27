@@ -79,4 +79,8 @@ export class UsermanagementComponent implements OnInit {
       this.totalUsers = meta.totalItems;
     })
   }
+
+  checkAddPermission() {
+    return this.common.checkAddPermission("Users Management");
+  }
 }

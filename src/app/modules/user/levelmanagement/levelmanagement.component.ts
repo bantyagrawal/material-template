@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/core/services/common.service';
-import { LevelDialogComponent } from '../level-dialog/level-dialog.component';
+import { LevelDialogComponent } from './level-dialog/level-dialog.component';
 import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
@@ -68,6 +68,7 @@ export class LevelmanagementComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.getLevel();
         console.log('Level added:', result);
       }
     });
@@ -86,6 +87,10 @@ export class LevelmanagementComponent {
       })
 
     })
+  }
+
+  checkAddPermission() {
+    return this.common.checkAddPermission("Level Management");
   }
 
 }

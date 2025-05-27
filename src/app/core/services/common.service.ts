@@ -39,7 +39,7 @@ export class CommonService {
     });
   }
 
-  checkpermission(module: string, operation: string): boolean {    
+  checkpermission(module: string, operation: string): boolean {
     const modulePermission = this.permissions?.RoleModulePermissions.find(
       (perm: any) => perm.module.name.trim() === module
     );
@@ -48,11 +48,15 @@ export class CommonService {
   }
 
   checkUpdatePermission(module: string) {
-    return this.checkpermission(module, 'write');
+    return this.checkpermission(module, 'update');
   }
 
-    checkDeletePermission(module: string) {
+  checkDeletePermission(module: string) {
     return this.checkpermission(module, 'delete');
+  }
+
+  checkAddPermission(module: string) {
+    return this.checkpermission(module, 'write');
   }
 
 }
