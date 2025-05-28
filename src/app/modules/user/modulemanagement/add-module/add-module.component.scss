@@ -8,11 +8,22 @@
   text-align: center;
 }
 
+<<<<<<< Updated upstream
+=======
+.dialog-container {
+  padding: 20px 24px;
+}
+
+>>>>>>> Stashed changes
 /* Form styling */
 .module-form {
   display: flex;
   flex-direction: column;
+<<<<<<< Updated upstream
   // gap: 1.5rem;
+=======
+  gap: 1.5rem;
+>>>>>>> Stashed changes
   width: 100%;
   min-width: 300px;
   max-width: 500px;
@@ -25,8 +36,20 @@
 .dialog-actions {
   display: flex;
   justify-content: center;
+<<<<<<< Updated upstream
 }
 
+=======
+  padding: 16px 24px;
+  margin-top: 1rem;
+}
+
+.submit-button {
+  min-width: 120px;
+  padding: 0 24px;
+}
+
+>>>>>>> Stashed changes
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .dialog-container {
