@@ -1,49 +1,157 @@
+// .container {
+//   width: 90%;
+//   max-width: 600px;
+//   margin: auto;
+//   background: #fff;
+//   padding: 20px;
+//   border-radius: 12px;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+// }
+
+// .heading {
+//   text-align: center;
+//   margin-bottom: 20px;
+// }
+
+// .feilds {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 20px;
+// }
+
+// .permissions-section {
+//   margin-top: 20px;
+// }
+
+// .module {
+//   margin-bottom: 15px;
+//   padding: 10px;
+//   border: 1px solid #ddd;
+//   border-radius: 8px;
+// }
+
+// .checkbox-group {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 10px;
+// }
+
+// .button-container {
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 20px;
+// }
+// .checkbox-row {
+//   display: flex;
+//   align-items: center;
+//   gap: 1.5rem;  
+// }
+
 .container {
   width: 90%;
   max-width: 600px;
-  margin: auto;
+  margin: 40px auto;
   background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .heading {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
-.feilds {
+.fields {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .permissions-section {
-  margin-top: 20px;
+  margin-top: 30px;
+  max-height: 300px;         /* fixed height for the whole section */
+  overflow-y: auto;          /* vertical scroll on entire section */
+  padding-right: 6px;        /* space for scrollbar */
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
 }
 
 .module {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fafafa;
+  margin-bottom: 12px;       /* tighter spacing between modules */
 }
 
-.checkbox-group {
+.module-header {
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.module-header h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.module-body {
+  padding: 12px 16px;
+}
+
+.checkbox-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Custom scrollbar for permissions-section */
+.permissions-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.permissions-section::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.permissions-section::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.permissions-section::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-}
-.checkbox-row {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;  
+  margin-top: 30px;
 }
 
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .module-header h4 {
+    font-size: 1.1rem;
+  }
+}

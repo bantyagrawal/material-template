@@ -1,14 +1,14 @@
 <div class="container">
   <h2 class="heading">Add Role</h2>
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <div class="feilds">
+    <div class="fields">
       <app-input [data]="{
           label: 'Name',
           placeholder: 'Enter your name',
           type: 'text',
           control: nameControl,
           errorMessage: 'Name is required',
-          customClass: 'my-input-style'
+          customClass: 'input-style'
         }">
       </app-input>
 
@@ -18,21 +18,24 @@
           options: levelOptions,
           control: levelControl,
           errorMessage: 'Level is required',
-          customClass: 'my-input-style'
+          customClass: 'input-style'
         }">
       </app-select>
-
       <div class="permissions-section">
-        <h3>Module Permissions</h3>
+        <h3 class="section-title">Module Permissions</h3>
         <div class="module" *ngFor="let role of roles">
-          <h4>{{ role.module.name }}</h4>
-          <div class="checkbox-row">
-            <app-checkbox label="All" [checked]="isAllChecked(role.permissions)"
-              (changed)="onAllPermissionsChange(role, $event)">
-            </app-checkbox>
-            <app-checkbox *ngFor="let permKey of getPermissionKeys(role.permissions)" [label]="permKey"
-              [checked]="role.permissions[permKey]" (changed)="onPermissionChange(role, permKey, $event)">
-            </app-checkbox>
+          <div class="module-header">
+            <h4>{{ role.module.name }}</h4>
+          </div>
+          <div class="module-body">
+            <div class="checkbox-row">
+              <app-checkbox label="All" [checked]="isAllChecked(role.permissions)"
+                (changed)="onAllPermissionsChange(role, $event)">
+              </app-checkbox>
+              <app-checkbox *ngFor="let permKey of getPermissionKeys(role.permissions)" [label]="permKey"
+                [checked]="role.permissions[permKey]" (changed)="onPermissionChange(role, permKey, $event)">
+              </app-checkbox>
+            </div>
           </div>
         </div>
       </div>

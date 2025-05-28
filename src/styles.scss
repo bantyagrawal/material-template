@@ -21,6 +21,10 @@ body {
     width: 40vw;
 }
 
+.input-style{
+  width: 100%;
+}
+
 .my-button-class {
     // margin-left: 35vw;
 }
@@ -283,6 +287,10 @@ body {
     min-width: 100px !important;
     max-width: 400% !important;
     box-sizing: border-box !important;
+}
+
+.select-all {
+  margin-left: auto !important;
 }
 
 
