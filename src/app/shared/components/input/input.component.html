@@ -5,7 +5,7 @@
     [type]="inputType"
     [formControl]="data.control"
     [placeholder]="data.placeholder || ''"
-    (focus)="onFocus.emit($event)"
+    (focus)="onfocus($event)"
     (blur)="onBlur.emit($event)"
     (input)="onInput.emit($event)"
     (change)="onChangeTrigger($event)"

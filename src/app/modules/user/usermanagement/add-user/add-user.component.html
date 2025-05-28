@@ -1,6 +1,6 @@
 <div class="responsive-form">
     <h2 class="form-title">Add User</h2>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
         <div class="form-grid">
             <div class="form-group">
                 <app-input
@@ -14,11 +14,11 @@
             </div>
             <div class="form-group">
                 <app-input
-                    [data]="{label: 'Password', type: 'password', placeholder: 'Enter password', control: passwordControl, errorMessage: showPasswordError(), isPasswordToggle: true,customClass: 'uniform-width'}">
+                    [data]="{label: 'Password', type: 'password', placeholder: 'Enter password', control: passwordControl, errorMessage: showPasswordError(), isPasswordToggle: true,customClass: 'add-user-password'}">
                 </app-input>
             </div>
             <div class="form-group">
-                <app-input [data]="{label: 'Confirm Password', type: 'password', placeholder: 'Re-enter Password ', control: confirmPasswordControl, errorMessage: 'Password and confirm password do not match', isPasswordToggle: true,customClass: 'uniform-width'}">
+                <app-input [data]="{label: 'Confirm Password', type: 'password', placeholder: 'Re-enter Password ', control: confirmPasswordControl, errorMessage: 'Password and confirm password do not match', isPasswordToggle: true,customClass: 'add-user-password'}">
                 </app-input>
             </div>
             <div class="form-group">
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
                 <app-select
-                    [data]="{label: 'User Role',placeholder: 'Select role',options: roleOptions, control: roleControl, errorMessage: 'Role is required'}">
+                    [data]="{label: 'User Role',placeholder: 'Select role',options: roleOptions, control: roleControl, errorMessage: 'Role is required', customClass: 'add-user-select'}">
                 </app-select>
             </div>
             <div class="form-group">

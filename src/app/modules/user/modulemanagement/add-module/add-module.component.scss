@@ -8,15 +8,11 @@
   text-align: center;
 }
 
-.dialog-container {
-  padding: 16px 24px 8px; /* Reduced bottom padding */
-}
-
 /* Form styling */
 .module-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  // gap: 1.5rem;
   width: 100%;
   min-width: 300px;
   max-width: 500px;
@@ -29,13 +25,6 @@
 .dialog-actions {
   display: flex;
   justify-content: center;
-  padding: 16px 24px;
-  margin-top: 1rem;
-}
-
-.submit-button {
-  min-width: 120px;
-  padding: 0 24px;
 }
 
 /* Responsive adjustments */
