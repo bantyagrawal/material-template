@@ -336,10 +336,19 @@ body {
 //   text-align: left;
 // }
 
-.login-input {
+.login-input  {
+  width: 100%;
+}
+
+app-input .login-input 
+  .mdc-text-field--no-label:not(.mdc-text-field--textarea)
+  .mat-mdc-form-field-input-control.mdc-text-field__input,
+app-input .login-input 
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
   width: 100%;
   color: white !important;
 }
+
 
 .add-user-password {
   width: 212px !important;
