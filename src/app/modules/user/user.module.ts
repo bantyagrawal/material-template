@@ -21,7 +21,9 @@ import { RoleUpdateComponent } from './rolemanagement/role-update/role-update.co
 import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
 import { AddModuleComponent } from './modulemanagement/add-module/add-module.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
-
+import { MatListModule } from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     ModulemanagementComponent,
     AddModuleComponent,
     DeleteDialogComponent,
-
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,8 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     MatDividerModule,
     MatSidenavModule,
     MatDialogModule,
+    MatListModule,
+    TranslateModule,
   ]
 })
 export class UserModule { }

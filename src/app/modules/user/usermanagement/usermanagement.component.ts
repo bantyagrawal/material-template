@@ -55,6 +55,7 @@ export class UsermanagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.getUsers();
       }
     });
   }

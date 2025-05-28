@@ -9,3 +9,8 @@ export interface SelectData {
     customClass?: string;
     errorMessage?: string;
 }
+
+export interface SelectOption {
+    label: string;
+    value: any
+}

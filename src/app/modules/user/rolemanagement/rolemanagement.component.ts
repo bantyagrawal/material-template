@@ -18,7 +18,7 @@ export class RolemanagementComponent implements OnInit {
   currentPage = 0;
   pageSize = 5;
   searchText = '';
-  tableColumns: string[] = ['id', 'name', 'level', 'status', 'delete'];
+  tableColumns: string[] = ['id', 'name', 'level', 'status'];
   @ViewChild('statusTemplate') statusTemplate: any;
   @ViewChild('deleteTemplate') deleteTemplate: any;
 

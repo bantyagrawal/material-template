@@ -1,81 +1,10 @@
-<!-- <div class="container">
-    <h2 class="heading">Add User</h2>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <div class="feilds">
-            <app-input
-                [data]="{label: 'Name', placeholder: 'Enter your name', type: 'text', control: nameControl, errorMessage: 'Name is required',customClass: ''}"
-                (onChange)="handleChange($event)">
-            </app-input>
-            <app-input
-                [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: 'Password is required', isPasswordToggle: true, customClass: ''}">
-            </app-input>
-            <app-input
-                [data]="{label: 'Email', placeholder: 'Enter your email', type: 'email', control: emailControl, errorMessage: 'Email is required',customClass: ''}">
-            </app-input>
-            <app-input
-                [data]="{label: 'Mobile', placeholder: 'Enter your mobile', type: 'number', control: mobileControl, errorMessage: 'Mobile is required',customClass: ''}">
-            </app-input>
-            <app-date-picker
-                [data]="{ control: dateControl, label: 'Date of Birth', placeholder: 'Select your DOB', errorMessage: 'Date is required', customClass: ''}">
-            </app-date-picker>
-            <app-input
-                [data]="{label: 'Address', placeholder: 'Enter your address', type: 'text', control: addressControl, errorMessage: 'Address is required',customClass: ''}">
-            </app-input>
-
-            <app-input
-                [data]="{label: 'deviceId', placeholder: 'Enter your deviceId', type: 'text', control: deviceIdControl, errorMessage: 'deviceId is required',customClass: ''}">
-            </app-input>
-            <app-input
-                [data]="{label: 'userId', placeholder: 'Enter your userId', type: 'text', control: userIdControl, errorMessage: 'userId is required',customClass: ''}">
-            </app-input>
-            <app-input
-                [data]="{label: 'iv4', placeholder: 'Enter your iv4', type: 'text', control: iv4Control, errorMessage: 'iv4 is required',customClass: ''}">
-            </app-input>
-            <app-input
-                [data]="{label: 'iv6', placeholder: 'Enter your iv6', type: 'text', control: iv6Control, errorMessage: 'iv6 is required',customClass: ''}">
-            </app-input>
-            <app-select [data]="{
-          label: ' Select Role',
-          placeholder: 'Select a Role',
-          options: roleOptions,
-          control: roleControl,
-          errorMessage: 'Role is required',
-          customClass: ''
-        }">
-            </app-select>
-
-            <app-select [data]="{
-          label: 'Select Wallet',
-          placeholder: 'Select a Wallet',
-          options: walletOptions,
-          control: walletControl,
-          errorMessage: 'Role is required',
-          customClass: ''
-        }">
-            </app-select>
-            <app-select [data]="selectData" (selectionChange)="onStatusChange($event)"></app-select>
-
-
-        </div>
-        <div class="button-container">
-            <app-button
-                [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'my-button-class'}">
-            </app-button>
-        </div>
-
-    </form>
-
-</div> -->
-
-
 <div class="responsive-form">
     <h2 class="form-title">Add User</h2>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-grid">
-            <!-- Row 1 -->
             <div class="form-group">
                 <app-input
-                    [data]="{label: 'Name', placeholder: 'Enter name', type: 'text', control: nameControl, errorMessage: 'Required'}">
+                    [data]="{label: 'Name', placeholder: 'Enter name', type: 'text', control: nameControl, errorMessage: 'Name is required'}">
                 </app-input>
             </div>
             <div class="form-group">
@@ -83,33 +12,15 @@
                     [data]="{label: 'Email', placeholder: 'Enter email', type: 'email', control: emailControl, errorMessage: 'Valid email required'}">
                 </app-input>
             </div>
-
-            <!-- Row 2 -->
             <div class="form-group">
-                <app-input [data]="{
-            label: 'Password', 
-            type: 'password', 
-            placeholder: 'Enter password', 
-            control: passwordControl, 
-            errorMessage: 'Min 8 characters', 
-            isPasswordToggle: true,
-            customClass: 'uniform-width'
-        }">
+                <app-input
+                    [data]="{label: 'Password', type: 'password', placeholder: 'Enter password', control: passwordControl, errorMessage: showPasswordError(), isPasswordToggle: true,customClass: 'uniform-width'}">
                 </app-input>
             </div>
-
             <div class="form-group">
-                <app-date-picker [data]="{
-            control: dateControl, 
-            label: 'Date of Birth', 
-            placeholder: 'Select DOB', 
-            errorMessage: 'Required',
-            customClass: 'uniform-width'
-        }">
-                </app-date-picker>
+                <app-input [data]="{label: 'Confirm Password', type: 'password', placeholder: 'Re-enter Password ', control: confirmPasswordControl, errorMessage: 'Password and confirm password do not match', isPasswordToggle: true,customClass: 'uniform-width'}">
+                </app-input>
             </div>
-
-            <!-- Row 3 -->
             <div class="form-group">
                 <app-input
                     [data]="{label: 'Mobile', placeholder: 'Enter mobile', type: 'tel', control: mobileControl, errorMessage: 'Valid number required'}">
@@ -117,23 +28,14 @@
             </div>
             <div class="form-group">
                 <app-input
-                    [data]="{label: 'Address', placeholder: 'Enter address', type: 'text', control: addressControl, errorMessage: 'Required'}">
-                </app-input>
-            </div>
-
-            <!-- Row 4 -->
-            <div class="form-group">
-                <app-input
-                    [data]="{label: 'Device ID', placeholder: 'Enter device ID', type: 'text', control: deviceIdControl, errorMessage: 'Required'}">
+                    [data]="{label: 'Device ID', placeholder: 'Enter device ID', type: 'text', control: deviceIdControl, errorMessage: 'DeviceId is required'}">
                 </app-input>
             </div>
             <div class="form-group">
                 <app-input
-                    [data]="{label: 'User ID', placeholder: 'Enter user ID', type: 'text', control: userIdControl, errorMessage: 'Required'}">
+                    [data]="{label: 'User ID', placeholder: 'Enter user ID', type: 'text', control: userIdControl, errorMessage: 'UserId id required'}">
                 </app-input>
             </div>
-
-            <!-- Row 5 -->
             <div class="form-group">
                 <app-input
                     [data]="{label: 'IPv4', placeholder: 'Enter IPv4', type: 'text', control: iv4Control, errorMessage: 'Valid IPv4 required'}">
@@ -144,35 +46,19 @@
                     [data]="{label: 'IPv6', placeholder: 'Enter IPv6', type: 'text', control: iv6Control, errorMessage: 'Valid IPv6 required'}">
                 </app-input>
             </div>
-
-            <!-- Row 6 -->
             <div class="form-group">
-                <app-select [data]="{
-                    label: 'User Role',
-                    placeholder: 'Select role',
-                    options: roleOptions,
-                    control: roleControl,
-                    errorMessage: 'Required'
-                }"></app-select>
+                <app-select
+                    [data]="{label: 'User Role',placeholder: 'Select role',options: roleOptions, control: roleControl, errorMessage: 'Role is required'}">
+                </app-select>
             </div>
             <div class="form-group">
-                <app-select [data]="{
-                    label: 'Wallet Type',
-                    placeholder: 'Select wallet',
-                    options: walletOptions,
-                    control: walletControl,
-                    errorMessage: 'Required'
-                }"></app-select>
+                <app-select
+                    [data]="{label: 'Wallet Type',placeholder: 'Select wallet',options: walletOptions, control: walletControl, errorMessage: 'Wallet is required'}">
+                </app-select>
             </div>
         </div>
-
         <div class="form-footer">
-            <app-button [data]="{
-                    label: 'Submit',
-                    color: 'primary',
-                    type: 'submit',
-                    customClass: 'submit-btn'
-                }">
+            <app-button [data]="{label: 'Submit',color: 'primary',type: 'submit',customClass: 'submit-btn'}">
             </app-button>
         </div>
     </form>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import screenfull from 'screenfull';
+import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 
 
@@ -11,7 +12,10 @@ import { CommonService } from 'src/app/core/services/common.service';
 })
 export class HeaderComponent {
 
-  constructor(private common: CommonService) { }
+  constructor(
+    private common: CommonService,
+    private api: ApiService
+  ) { }
   messages = ['Server Error Reports 1', 'Server Error Reports 2', 'Server Error Reports 3'];
   @Input() showToggle = true;
   @Input() showBranding = true;
@@ -28,6 +32,12 @@ export class HeaderComponent {
 
   redirectTo(path: string) {
     this.common.redirectTo(path);
+  }
+
+  logout() {
+    this.api.logOut().subscribe((res: any) => {
+      this.redirectTo('login');
+    })
   }
 
 }

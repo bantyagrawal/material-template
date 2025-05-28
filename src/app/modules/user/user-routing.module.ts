@@ -8,6 +8,7 @@ import { AddRoleComponent } from './rolemanagement/add-role/add-role.component';
 import { UserComponent } from './user.component';
 import { LevelmanagementComponent } from './levelmanagement/levelmanagement.component';
 import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -20,9 +21,10 @@ const routes: Routes = [
       { path: 'usermanagement', component: UsermanagementComponent },
       { path: 'rolemanagement', component: RolemanagementComponent },
       { path: 'levelmanagement', component: LevelmanagementComponent },
-         { path: 'modulemanagement', component: ModulemanagementComponent },
+      { path: 'modulemanagement', component: ModulemanagementComponent },
+      { path: 'profile', component: UserProfileComponent },
       { path: 'roleform', component: AddRoleComponent }]
-    }
+  }
 ];
 
 @NgModule({

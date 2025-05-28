@@ -41,8 +41,8 @@ export class AddRoleComponent implements OnInit {
 
   getLevelOptions() {
     this.api.getLevel().subscribe({
-      next: (res: any) => {
-        this.levelOptions = res.data.map((level: any) => ({
+      next: (res: any) => {        
+        this.levelOptions = res.data.levels.map((level: any) => ({
           label: (level.levelId),
           value: level.uuid
         }));
@@ -77,8 +77,8 @@ export class AddRoleComponent implements OnInit {
   }
 
   getRole() {
-    this.api.loggedInUser().subscribe((res: any) => {
-      const roleData = res.data
+    this.api.loggedInUser().subscribe((res: any) => {      
+      const roleData = res.data      
       if (roleData) {
         this.roles = roleData.RoleModulePermissions.map((permission: any) => {
           const permissionObj = permission.permission;

@@ -1,115 +1,214 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { SelectData } from 'src/app/core/models/select.model';
-
+import { SelectOption } from 'src/app/core/models/select.model';
+import { ApiService } from 'src/app/core/services/api.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss']
 })
+
 export class AddUserComponent implements OnInit {
 
   myForm!: FormGroup;
   selectData!: SelectData;
-  walletOptions: any = [];
-  roleOptions: any = [];
+  walletOptions: SelectOption[] = [
+    {
+      label: 'SINGLE',
+      value: 'Single'
+    },
+    {
+      label: 'MULTI',
+      value: 'Multi'
+    },
+    {
+      label: 'BOTH',
+      value: 'Both'
+    }
+  ];
+  roleOptions!: SelectOption[];
+  isProcessing!: boolean;
+
   constructor(private fb: FormBuilder,
+    private toastr: ToastrService,
+    private api: ApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {
+    this.getChildRole();
+  }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      mobile: ['', Validators.required],
-      date: [null, Validators.required],
-      address: ['', Validators.required],
-      select: ['active', Validators.required],
-      deviceId: ['', Validators.required],
       userId: ['', Validators.required],
-      role: ['', Validators.required],
-      iv4: ['', Validators.required],
-      iv6: ['', Validators.required],
-      walletType: ['', Validators.required],
-    });
-
-    this.selectData = {
-      label: 'Status',
-      control: this.selectControl,
-      options: [
-        { label: 'Active', value: 'active' },
-        { label: 'Inactive', value: 'inactive' }
+      password: [
+        '', [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
+          ),
+        ],
       ],
-      placeholder: 'Choose status',
-      appearance: 'fill',
-      customClass: 'my-input-style',
-      errorMessage: 'Please choose a status'
-    };
+      confirmPassword: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobileNumber: ['', Validators.required],
+      ipv4: ['', Validators.required],
+      ipv6: ['', Validators.required],
+      deviceId: ['', Validators.required],
+      walletType: ['', Validators.required],
+      role: ['', Validators.required]
+    }, { validators: this.matchPasswords });
   }
 
-  get emailControl(): FormControl {
-    return this.myForm.get('email') as FormControl;
-  }
-
-  get addressControl(): FormControl {
-    return this.myForm.get('address') as FormControl;
-  }
-
-  get dateControl(): FormControl {
-    return this.myForm.get('date') as FormControl;
-  }
-
-  get mobileControl(): FormControl {
-    return this.myForm.get('mobile') as FormControl;
-  }
-
-  get passwordControl(): FormControl {
-    return this.myForm.get('password') as FormControl;
+  matchPasswords(group: AbstractControl) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
   get nameControl(): FormControl {
     return this.myForm.get('name') as FormControl;
   }
 
-  get selectControl(): FormControl {
-    return this.myForm.get('select') as FormControl;
+  get userIdControl(): FormControl {
+    return this.myForm.get('userId') as FormControl;
+  }
+
+  get passwordControl(): FormControl {
+    return this.myForm.get('password') as FormControl;
+  }
+
+  get confirmPasswordControl(): FormControl {
+    return this.myForm.get('confirmPassword') as FormControl;
+  }
+
+  get emailControl(): FormControl {
+    return this.myForm.get('email') as FormControl;
+  }
+
+  get mobileControl(): FormControl {
+    return this.myForm.get('mobileNumber') as FormControl;
+  }
+
+  get iv4Control(): FormControl {
+    return this.myForm.get('ipv4') as FormControl;
+  }
+
+  get iv6Control(): FormControl {
+    return this.myForm.get('ipv6') as FormControl;
   }
 
   get deviceIdControl(): FormControl {
     return this.myForm.get('deviceId') as FormControl;
   }
 
-  get userIdControl(): FormControl {
-    return this.myForm.get('userId') as FormControl;
-  }
-
-  get iv4Control(): FormControl {
-    return this.myForm.get('iv4') as FormControl;
-  }
-
-  get iv6Control(): FormControl {
-    return this.myForm.get('iv6') as FormControl;
+  get walletControl(): FormControl {
+    return this.myForm.get('walletType') as FormControl;
   }
 
   get roleControl(): FormControl {
     return this.myForm.get('role') as FormControl;
   }
 
-  get walletControl(): FormControl {
-    return this.myForm.get('walletType') as FormControl;
+  hasUppercase(): boolean {
+    return /[A-Z]/.test(this.myForm.get('password')?.value);
   }
-  onSubmit(): void {
-    if (this.myForm.valid) {
+
+  hasLowercase(): boolean {
+    return /[a-z]/.test(this.myForm.get('password')?.value);
+  }
+
+  hasNumber(): boolean {
+    return /\d/.test(this.myForm.get('password')?.value);
+  }
+
+  hasSpecialCharacter(): boolean {
+    return /[@$!%*?&]/.test(this.myForm.get('password')?.value);
+  }
+
+  showPasswordError(): string {
+    const passwordControl = this.myForm.get('password');
+
+    if (passwordControl?.hasError('required')) {
+      return "Password is required";
     }
+
+    if (passwordControl?.hasError('minlength')) {
+      return "Password should be more then 6 digit";
+    }
+
+    if (!this.hasUppercase()) {
+      return "Password must have one upper case";
+    }
+
+    if (!this.hasLowercase()) {
+      return "Password must have one lowwer case";
+    }
+
+    if (!this.hasNumber()) {
+      return "Password must have one digit";
+    }
+
+    if (!this.hasSpecialCharacter()) {
+      return "Password must have one special latter";
+    }
+    return '';
   }
 
-  handleChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
+  getChildRole() {
+    this.api.getChildRole().subscribe({
+      next: (res: any) => {
+        console.log("CHILD ROLE", res);
+        if (res.data.length === 0) {
+          this.toastr.error('Please add the child role first');
+          this.dialogRef.close();
+        }
+        this.roleOptions = res.data.map((item: any) => {
+          return { lebel: item.roleName, value: item.uuid }
+        })
+      }
+    })
   }
 
-  onStatusChange(value: any): void {
+  onSubmit() {
+    if (this.isProcessing) {
+      return;
+    }
+    this.isProcessing = true;
+    if (this.myForm.invalid) {
+      this.isProcessing = false;
+      this.toastr.error('Form invailid');
+      return;
+    }
+    let newUser = this.myForm.value;
+
+    if (newUser) {
+      newUser.deviceIdVerified = true;
+      newUser.emailVerified = true;
+      newUser.ipv4Verified = true;
+      newUser.ipv6Verified = true;
+      newUser.mobileVerified = true;
+      newUser.multiLogin = true;
+      delete newUser.confirmPassword;
+    }
+
+    this.api.AddUser(newUser).subscribe({
+      next: (res: any) => {
+        this.toastr.success('User added successfully!');
+        this.myForm.reset();
+        this.isProcessing = false;
+        this.dialogRef.close(res.data);
+      },
+      error: (err: any) => {
+        this.isProcessing = false;
+        this.dialogRef.close();
+
+      },
+    });
   }
 }

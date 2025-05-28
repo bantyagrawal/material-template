@@ -181,4 +181,28 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  AddUser(data: any) {
+    const option = {
+      operation: 'write',
+      module: 'Users Management',
+    };
+    let body: any = { ...data, ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/users/addUser`, body, {
+      withCredentials: true,
+    });
+  }
+
+  getChildRole() {
+    const option = {
+      operation: 'write',
+      module: 'Users Management',
+    };
+    let body: any = { ...option };
+    body = this.api.encrypt(body);
+    return this.http.post(`${this.baseurl}/roles/getChildRole`, body, {
+      withCredentials: true,
+    });
+  }
 }

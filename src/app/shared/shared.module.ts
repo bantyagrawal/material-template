@@ -17,7 +17,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -38,7 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, UserProfileComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent],
+  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
