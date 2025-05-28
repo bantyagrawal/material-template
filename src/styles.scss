@@ -228,11 +228,15 @@ body {
   .mat-mdc-form-field-input-control.mdc-text-field__input,
 .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
   font-size: 14px !important;
-  // color: #414141 !important;
+  color:green!important;
   font-weight: 500 !important;
   letter-spacing: 0px;
-  /* color: #9D9D9D; */
+  //  color: #9D9D9D; 
+    //  color: #23967b01 !important; 
+
 }
+
+
 
 .custom-form-input .mat-mdc-form-field-hint-wrapper,
 .custom-form-input .mat-mdc-form-field-error-wrapper {
