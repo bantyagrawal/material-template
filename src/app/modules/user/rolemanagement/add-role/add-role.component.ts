@@ -41,7 +41,7 @@ export class AddRoleComponent implements OnInit {
 
   getLevelOptions() {
     this.api.getLevel().subscribe({
-      next: (res: any) => {        
+      next: (res: any) => {
         this.levelOptions = res.data.levels.map((level: any) => ({
           label: (level.levelId),
           value: level.uuid

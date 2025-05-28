@@ -14,11 +14,10 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
 .my-input-style {
-    padding: 8px;
-    height: 70px;
-    width: 40vw;
+  padding: 2px;
+  width: 100%;  
+  box-sizing: border-box;
 }
 
 .input-style{
