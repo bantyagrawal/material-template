@@ -28,7 +28,13 @@ export class InputComponent {
     this.hidePassword = !this.hidePassword;
   }
 
-  onChangeTrigger(event: Event) {    
+  onChangeTrigger(event: Event) {
     this.onChange.emit(event)
+  }
+
+  onfocus(event: Event) {
+    this.onFocus.emit(event)
+    console.log(this.data.customClass, "CUSTOM CLASS");
+
   }
 }

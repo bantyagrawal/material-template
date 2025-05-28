@@ -1,12 +1,12 @@
 <h2 mat-dialog-title class="dialog-title">Add New Module</h2>
-<div class="dialog-container">
+<div>
   <mat-dialog-content>
     <form [formGroup]="ModuleForm">
       <app-input
-        [data]="{label: 'Module Name', placeholder: 'Enter your Module', type: 'text', control: ModuleControl, errorMessage: 'Module is required',customClass: 'form-input'}">
+        [data]="{label: 'Module Name', placeholder: 'Enter your Module', type: 'text', control: ModuleControl, errorMessage: 'Module is required',customClass: 'add-module-input'}">
       </app-input>
       <app-input
-        [data]="{label: 'Description', placeholder: 'Enter your Description', type: 'text', control: ModuledesControl, errorMessage: 'Description is required',customClass: 'form-input'}">
+        [data]="{label: 'Description', placeholder: 'Enter your Description', type: 'text', control: ModuledesControl, errorMessage: 'Description is required',customClass: 'add-module-input'}">
       </app-input>
     </form>
   </mat-dialog-content>
@@ -14,7 +14,7 @@
   <div class="button-container">
     <mat-dialog-actions class="dialog-actions">
       <app-button (click)="onSave()"
-        [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'submit-button'}">
+        [data]="{label: 'Submit',color: 'primary',icon: 'send',disabled: false,type: 'submit',customClass: 'add-module-submit-button'}">
       </app-button>
     </mat-dialog-actions>
   </div>

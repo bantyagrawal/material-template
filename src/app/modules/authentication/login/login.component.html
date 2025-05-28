@@ -4,13 +4,13 @@
     <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="login-form">
       <div class="custom-input mb-20">
         <app-input
-          [data]="{label: 'Email', placeholder: 'Enter your email', type: 'email', control: identifierControl, errorMessage: 'Email is required',customClass: ''}">
+          [data]="{label: 'Email', placeholder: 'Enter your email', type: 'email', control: identifierControl, errorMessage: 'Email is required',customClass: 'login-input'}">
         </app-input>
       </div>
 
       <div class="custom-input mb-20">
         <app-input
-          [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: showPasswordError(), isPasswordToggle: true, customClass: ''}">
+          [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: showPasswordError(), isPasswordToggle: true, customClass: 'login-input'}">
         </app-input>
       </div>
 

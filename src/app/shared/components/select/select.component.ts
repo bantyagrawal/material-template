@@ -14,4 +14,9 @@ export class SelectComponent {
   getValidAppearance(value?: string): 'fill' | 'outline' {
   return value === 'fill' || value === 'outline' ? value : 'outline';
 }
+
+onfocus() {
+  console.log(this.data.customClass,"CUSTOM CLASS");
+  
+}
 }
