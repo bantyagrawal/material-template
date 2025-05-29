@@ -1,3 +1,6 @@
+
+<app-pageheader [title]="'Dashboard'" [subtitle]="'Home > Dashboard'" [customClass]="'dashboard-custom-header'"></app-pageheader>
+  <!-- Your content here -->
 <div class="stats-grid">
   <div class="stat-card" *ngFor="let stat of stats">
     <mat-card [ngClass]="['stat-card-content', stat.color]">
