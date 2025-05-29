@@ -1,26 +1,24 @@
-<div class="login-page">
-  <div class="login-container">
-    <img src="../../../assets/images/logo-awc.png" alt="Logo" class="login-logo" />
-    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="login-form">
-      <div class="custom-input mb-20">
-        <app-input 
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>👋 {{ 'Welcome Back' | translate }}!</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <app-input
           [data]="{label: 'Email',  placeholder: 'Enter your email', type: 'email', control: identifierControl, errorMessage: 'Email is required',customClass: 'login-input'}">
         </app-input>
-      </div>
 
-      <div class="custom-input mb-20">
-        <app-input 
+        <app-input
           [data]="{label: 'Password', type: 'password', placeholder: 'Enter your password', control: passwordControl, errorMessage: showPasswordError(), isPasswordToggle: true, customClass: 'login-input'}">
         </app-input>
-      </div>
-
-      <app-button
-        [data]="{label: 'Submit',color: 'primary',icon: '',disabled: false,type: 'submit',customClass: 'my-button-class'}">
-      </app-button>
-    </form>
-
-    <div *ngIf="isProcessing" class="loader-overlay">
-      <div class="spinner"></div>
-    </div>
-  </div>
+        <div class="submit">
+          <app-button
+            [data]="{label: 'login',color: 'primary',icon: '',disabled: false,type: 'submit',customClass: 'login-submit-button'}">
+          </app-button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

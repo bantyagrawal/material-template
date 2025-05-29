@@ -58,7 +58,7 @@ export class AddModuleComponent {
         error: (err: any) => {
           this.isProcessing = false;
         }
-      });
+      }); 
     }
   }
 
