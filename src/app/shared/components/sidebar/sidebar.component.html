@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
-    mode="side"
-    [opened]="(isHandset$ | async) === false"
+    [mode]="isHandset ? 'over' : 'side'"
+    [opened]="!isHandset"
     class="sidenav"
   >
     <mat-toolbar color="primary">Menu</mat-toolbar>

@@ -10,15 +10,20 @@ import { CommonService } from 'src/app/core/services/common.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  isHandset: boolean = false;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private common: CommonService
-  ) { }
+  ) { 
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
+        map(result => {
+          this.isHandset = result.matches;
+          return result.matches;
+        }),
       shareReplay()
     );
 
@@ -35,5 +40,4 @@ export class SidebarComponent {
     const result = this.common.checkpermission(module, operation);
     return result;
   }
-
 }
