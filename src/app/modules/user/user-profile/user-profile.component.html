@@ -15,11 +15,11 @@
     <mat-divider class="divider"></mat-divider>
 
     <mat-nav-list class="navlist">
-      <a mat-list-item routerLink="/profile/overview">
+      <a mat-list-item routerLink="/user/profile/overview">
         <mat-icon matListItemIcon>account_circle</mat-icon>
         {{ 'profile' | translate }}
       </a>
-      <a mat-list-item routerLink="/profile/settings">
+      <a mat-list-item routerLink="/edit">
         <mat-icon matListItemIcon>edit</mat-icon>
         {{ 'edit_profile' | translate }}
       </a>
@@ -27,6 +27,6 @@
         <mat-icon matListItemIcon>exit_to_app</mat-icon>
         {{ 'logout' | translate }}
       </a>
-    </mat-nav-list>
+    </mat-nav-list>  
   </mat-card>
 </div>

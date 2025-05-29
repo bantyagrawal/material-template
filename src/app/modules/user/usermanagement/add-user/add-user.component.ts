@@ -169,7 +169,7 @@ export class AddUserComponent implements OnInit {
           this.dialogRef.close();
         }
         this.roleOptions = res.data.map((item: any) => {
-          return { lebel: item.roleName, value: item.uuid }
+          return { label: item.roleName, value: item.uuid }
         })
       }
     })

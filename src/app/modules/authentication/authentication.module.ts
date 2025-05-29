@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthenticationComponent } from './authentication.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -27,7 +29,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ]
 })
 export class AuthenticationModule { }

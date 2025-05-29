@@ -21,6 +21,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpinterceptorInterceptor } from './core/interceptors/httpinterceptor.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { CommonService } from './core/services/common.service';
+import { NgApexchartsModule } from 'ng-apexcharts'; // ✅ Make sure this is directly imported
 
 export function initApp(common: CommonService,) {
   return () => common.assignPermission(window.location.href.slice(-5))
@@ -44,6 +45,7 @@ export function initApp(common: CommonService,) {
     ReactiveFormsModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    NgApexchartsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',

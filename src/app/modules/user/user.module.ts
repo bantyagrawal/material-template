@@ -24,6 +24,14 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core'; // For datepicker
+
 
 @NgModule({
   declarations: [
@@ -39,7 +47,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ModulemanagementComponent,
     AddModuleComponent,
     DeleteDialogComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     CommonModule,
@@ -54,6 +63,16 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatDialogModule,
     MatListModule,
     TranslateModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatIconModule,
+    
   ]
 })
 export class UserModule { }
