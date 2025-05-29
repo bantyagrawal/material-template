@@ -1,11 +1,57 @@
-<div class="contsiner">
-    <mat-toolbar color="primary"></mat-toolbar>
-    <div class="list">
-        <button mat-button  (click)="redirectTo('')">Dashboard</button>
-        <button mat-button *ngIf="permissions('Users Management','read')" (click)="redirectTo('usermanagement')">User Management</button>
-        <button mat-button *ngIf="permissions('Module Management','read')" (click)="redirectTo('rolemanagement')">Role Management</button>
-        <button mat-button  (click)="redirectTo('levelmanagement')">Level Management</button>
-       <button mat-button  (click)="redirectTo('modulemanagement')">Module Management</button>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    mode="side"
+    [opened]="(isHandset$ | async) === false"
+    class="sidenav"
+  >
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="redirectTo('')" routerLink="/" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+      <a
+        mat-list-item
+        *ngIf="permissions('Users Management', 'read')"
+        (click)="redirectTo('usermanagement')"
+        routerLink="/usermanagement"
+        routerLinkActive="active"
+      >
+        <mat-icon>group</mat-icon>
+        <span>User Management</span>
+      </a>
+      <a
+        mat-list-item
+        *ngIf="permissions('Module Management', 'read')"
+        (click)="redirectTo('rolemanagement')"
+        routerLink="/rolemanagement"
+        routerLinkActive="active"
+      >
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span>Role Management</span>
+      </a>
+      <a
+        mat-list-item
+        (click)="redirectTo('levelmanagement')"
+        routerLink="/levelmanagement"
+        routerLinkActive="active"
+      >
+        <mat-icon>layers</mat-icon>
+        <span>Level Management</span>
+      </a>
+      <a
+        mat-list-item
+        (click)="redirectTo('modulemanagement')"
+        routerLink="/modulemanagement"
+        routerLinkActive="active"
+      >
+        <mat-icon>view_module</mat-icon>
+        <span>Module Management</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-    </div>
-</div>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
