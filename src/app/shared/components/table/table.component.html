@@ -28,40 +28,10 @@
 </div> -->
 
 <div class="main-table">
-  <!-- <div class="table-head">
-    <div class="head-options">Data Grid Toolbar</div>
-    <div>
-      <button class="head-option-btn">Columns Shown</button>
-    </div>
-  </div> -->
   <div class="table-layout">
     <div class="table-container">
-      <!-- <table>
-        <thead>
-          <tr>
-            <th *ngFor="let column of displayedColumns; let i = index">
-              <ng-container *ngIf="columnTemplates[column]; else defaultCell">
-                <label class="checkbox-label">
-                  <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll($event)" />
-                  {{ column }}
-                </label>
-                <ng-container *ngTemplateOutlet="columnTemplates[column]; context: { $implicit: row }"></ng-container>
-
-              </ng-container>
-              <ng-template #defaultCell>{{ column }}</ng-template>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of data">
-            <td *ngFor="let key of objectKeys(row)">
-              {{ row[key] }}
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
       <table>
-        <thead>
+        <thead [ngClass]="customClass? customClass: 'table-head-bg'">
           <tr>
             <th *ngFor="let column of displayedColumns">{{ column}}
             </th>

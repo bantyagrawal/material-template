@@ -122,6 +122,7 @@ export class TableComponent {
   @Input() pageSize = 10;
   @Input() pageIndex = 0;
   @Input() columnTemplates: { [key: string]: any } = {};
+  @Input() customClass!: string;
   @Output() pageChange = new EventEmitter<{ pageIndex: number, pageSize: number }>();
 
   objectKeys = Object.keys;

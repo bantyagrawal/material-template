@@ -43,13 +43,13 @@ $icon-color: #666;
   margin: 0 auto;
   // padding: 20px;
   box-sizing: border-box;
-
+  border: 1px solid #b1b1b1;
   .table-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: $background-light;
+    // background-color: $background-light;
     border-bottom: 1px solid $border-color;
 
     .head-options {
@@ -92,7 +92,7 @@ $icon-color: #666;
         }
 
         th {
-          background-color: lighten($background-light, 2%);
+          // background-color: lighten($background-light, 2%);
           font-weight: bold;
         }
 
@@ -165,4 +165,8 @@ $icon-color: #666;
   .head-options {
     font-size: 1em;
   }
+}
+
+.table-head-bg{
+  background-color: rgb(221, 218, 218) !important;
 }
