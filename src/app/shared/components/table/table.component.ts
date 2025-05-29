@@ -122,10 +122,13 @@ export class TableComponent {
   @Input() pageSize = 10;
   @Input() pageIndex = 0;
   @Input() columnTemplates: { [key: string]: any } = {};
-
   @Output() pageChange = new EventEmitter<{ pageIndex: number, pageSize: number }>();
 
+  objectKeys = Object.keys;
+
   ngOnChanges(changes: SimpleChanges) {
+    console.log("DATA", this.data);
+    console.log('DISPLAY COLUMN', this.displayedColumns);
     if (changes) {
     }
   }

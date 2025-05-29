@@ -36,46 +36,51 @@
   </div> -->
   <div class="table-layout">
     <div class="table-container">
-      <table>
+      <!-- <table>
         <thead>
           <tr>
-            <th *ngFor="let column of columns; let i = index">
-              <ng-container *ngIf="column === 'Position'; else regularHeader">
+            <th *ngFor="let column of displayedColumns; let i = index">
+              <ng-container *ngIf="columnTemplates[column]; else defaultCell">
                 <label class="checkbox-label">
                   <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll($event)" />
                   {{ column }}
                 </label>
+                <ng-container *ngTemplateOutlet="columnTemplates[column]; context: { $implicit: row }"></ng-container>
+
               </ng-container>
-              <ng-template #regularHeader>{{ column }}</ng-template>
+              <ng-template #defaultCell>{{ column }}</ng-template>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of tableData">
-            <td>
-              <label class="checkbox-label">
-                <input type="checkbox" [(ngModel)]="row.selected" (change)="updateSelectAll()" />
-                {{ row.position }}
-              </label>
+          <tr *ngFor="let row of data">
+            <td *ngFor="let key of objectKeys(row)">
+              {{ row[key] }}
             </td>
-            <td>{{ row.name }}</td>
-            <td>{{ row.weight }}</td>
-            <td>{{ row.symbol }}</td>
-            <td>{{ row.gender }}</td>
-            <td>{{ row.telephone }}</td>
-            <td>{{ row.birthday }}</td>
-            <td>{{ row.city }}</td>
-            <td>{{ row.address }}</td>
-            <td>{{ row.company }}</td>
-            <td>{{ row.website }}</td>
-            <td>{{ row.email }}</td>
-            <td class="operation">
-              <span class="icon edit">✏️</span>
-              <span class="icon delete">🗑️</span>
+          </tr>
+        </tbody>
+      </table> -->
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let column of displayedColumns">{{ column}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data">
+            <td *ngFor="let column of displayedColumns">
+              <ng-container *ngIf="columnTemplates[column]; else defaultCell">
+                <ng-container *ngTemplateOutlet="columnTemplates[column]; context: { $implicit: row }"></ng-container>
+              </ng-container>
+              <ng-template #defaultCell>{{ row[column] }}</ng-template>
             </td>
           </tr>
         </tbody>
       </table>
+      <mat-paginator class="full-width" [length]="totalItems" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons (page)="onPageChange($event)">
+      </mat-paginator>
     </div>
   </div>
 </div>
