@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChartOptions } from 'src/app/core/models/chart.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
-    stats = [
+  stats = [
     {
       title: 'Total Sales',
       amount: '180,200',
@@ -41,4 +42,55 @@ export class DashboardComponent {
       color: 'orange',
     },
   ];
+
+  public chartOptions: ChartOptions = {
+    series: [
+      {
+        name: 'Sales',
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+      },
+    ],
+    chart: {
+      height: 350,
+      type: 'line',
+      zoom: {
+        enabled: false,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: 'smooth',
+    },
+    title: {
+      text: 'Product Trends by Month',
+      align: 'left',
+    },
+    grid: {
+      row: {
+        colors: ['#f3f3f3', 'transparent'],
+        opacity: 0.5,
+      },
+    },
+    xaxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    },
+    tooltip: {
+      enabled: true,
+      theme: 'dark',
+    },
+    yaxis: {
+      title: {
+        text: 'Sales (in thousands)',
+      },
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      floating: true,
+      offsetY: -25,
+      offsetX: -5,
+    },
+  };
 }

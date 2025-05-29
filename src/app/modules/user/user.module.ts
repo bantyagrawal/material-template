@@ -54,6 +54,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatDialogModule,
     MatListModule,
     TranslateModule,
+    
   ]
 })
 export class UserModule { }
