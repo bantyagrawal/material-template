@@ -7,3 +7,13 @@
 .custom-header mat-card-subtitle{
   color: white;           
 }
+
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.span {
+  cursor: pointer;
+}

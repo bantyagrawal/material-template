@@ -72,4 +72,10 @@ export class ModulemanagementComponent {
   checkAddPermission() {
     return this.common.checkAddPermission("Module Management");
   }
+
+    redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.common.redirectTo('user');
+    }
+  }
 }

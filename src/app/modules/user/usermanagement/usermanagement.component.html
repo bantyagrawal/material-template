@@ -1,4 +1,4 @@
-<app-pageheader [title]="'User Management'" [subtitle]="'Home > User Management'" [customClass]="'user-custom-header'"></app-pageheader>
+<app-pageheader [title]="'User Management'" [subtitle]="['Home','User Management']" [customClass]="'user-custom-header'" (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
 
 <div class="toolbar-row">
   <app-search-bar (search)="onSearch($event)"></app-search-bar>

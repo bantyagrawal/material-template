@@ -74,4 +74,11 @@ export class LevelmanagementComponent {
     return this.common.checkAddPermission("Level Management");
   }
 
+
+    redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.common.redirectTo('user');
+    }
+  }
+
 }
