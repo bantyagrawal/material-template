@@ -33,13 +33,14 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChartComponent } from './components/chart/chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { PageheaderComponent } from './components/pageheader/pageheader.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent],
+  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -72,6 +73,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
 
   ],
-  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent]
+  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent]
 })
 export class SharedModule { }

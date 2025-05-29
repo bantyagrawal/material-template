@@ -8,6 +8,7 @@ import { ChartOptions } from 'src/app/core/models/chart.model';
 })
 export class DashboardComponent {
 
+  title= 'dash';
   stats = [
     {
       title: 'Total Sales',
