@@ -7,15 +7,16 @@
       <mat-card-content>
         <h2 class="stat-amount">{{ stat.amount }}</h2>
 
-        <mat-progress-bar
-          mode="determinate"
-          [value]="stat.progress.value"
-          color="primary"
-          class="stat-progress-bar"
-        ></mat-progress-bar>
+        <mat-progress-bar mode="determinate" [value]="stat.progress.value" color="primary"
+          class="stat-progress-bar"></mat-progress-bar>
 
         <small class="stat-footer">Monthly</small>
       </mat-card-content>
     </mat-card>
   </div>
 </div>
+<div class="chart">
+  <app-chart [chartOptions]="chartOptions"></app-chart>
+  <app-chart [chartOptions]="chartOptions"></app-chart>
+</div>
+  
