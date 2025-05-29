@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ChartOptions } from 'src/app/core/models/chart.model';
+import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,10 @@ import { ChartOptions } from 'src/app/core/models/chart.model';
 })
 export class DashboardComponent {
 
-  title= 'dash';
+  constructor(
+    private common: CommonService
+  ) { }
+  title = 'dash';
   stats = [
     {
       title: 'Total Sales',
@@ -94,4 +98,11 @@ export class DashboardComponent {
       offsetX: -5,
     },
   };
+
+
+  redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.common.redirectTo('user');
+    }
+  }
 }

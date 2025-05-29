@@ -83,4 +83,10 @@ export class UsermanagementComponent implements OnInit {
   checkAddPermission() {
     return this.common.checkAddPermission("Users Management");
   }
+
+  redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.common.redirectTo('user');
+    }
+  }
 }

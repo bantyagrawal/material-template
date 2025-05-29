@@ -1,4 +1,4 @@
-<app-pageheader [title]="'Level Management'" [subtitle]="'Home > Level Management'" [customClass]="'level-custom-header'"></app-pageheader>
+<app-pageheader [title]="'Level Management'" (spanClicked)="redirectFromPageHeader($event)" [subtitle]="['Home','Level Management']" [customClass]="'level-custom-header'"></app-pageheader>
 
 <div class="toolbar-row">
   <app-search-bar (search)="onSearch($event)"></app-search-bar>

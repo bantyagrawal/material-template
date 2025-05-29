@@ -1,4 +1,4 @@
-<app-pageheader [title]="'Role Management'" [subtitle]="'Home > Role Management'"></app-pageheader>
+<app-pageheader [title]="'Role Management'" [subtitle]="['Home','Role Management']" (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
 
 <div class="toolbar-row">
   <app-search-bar (search)="onSearch($event)"></app-search-bar>

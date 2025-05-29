@@ -1,5 +1,5 @@
 
-<app-pageheader [title]="'Dashboard'" [subtitle]="'Home > Dashboard'" [customClass]="'dashboard-custom-header'"></app-pageheader>
+<app-pageheader [title]="'Dashboard'" [subtitle]="['Home']" [customClass]="'dashboard-custom-header'" (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
   <!-- Your content here -->
 <div class="stats-grid">
   <div class="stat-card" *ngFor="let stat of stats">
