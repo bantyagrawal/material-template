@@ -1,20 +1,116 @@
-.example-container {
-    height: 70vh;
-}
 .main-container {
-  height: 70vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+// .fixed-header {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1000;
+//   background: white;
+//   padding: 0 16px;
+//   height: 64px;
+//   display: flex;
+//   align-items: center;
+
+//   @media (max-width: 768px) {
+//     height: 56px;
+//     padding: 0 8px;
+//   }
+// }
+
+// .fixed-header {
+//   // position: sticky;
+//   top: 0;
+//   z-index: 1000;
+//   background: white;
+//   // width: 100%;          /* Ensure full width */
+//   // padding: 8px 16px;    /* Flexible vertical space */
+//   display: flex;
+//   align-items: center;
+//   box-sizing: border-box;
+
+//   /* Optional: min/max height for consistency */
+//   // min-height: 48px;    
+//   // max-height: 80px;    
+
+//   // @media (max-width: 768px) {
+//   //   padding: 6px 8px;
+//   //   min-height: 40px;
+//   // }
+// }
+
 .fixed-header {
-  position: sticky;
+  position: sticky;    /* Fix to top */
   top: 0;
   z-index: 1000;
-  background: white;
+  background: #3f51b5;
+  width: 100%;         /* Full width */
+  // padding: 8px 16px;   /* Padding for some vertical and horizontal space */
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  min-height: 48px;
+  max-height: 80px;
+
+  @media (max-width: 768px) {
+    padding: 6px 8px;
+    min-height: 40px;
+  }
 }
+
 
 .content-body {
   padding: 16px;
-  overflow: auto;
-  height: calc(100vh - 64px);
-  box-sizing: border-box;
+  height: calc(100vh - 64px - 40px); // minus header and footer height
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+app-footer {
+  height: 40px;
+  text-align: center;
+  background: #f1f1f1;
+  line-height: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+}
+
+mat-sidenav {
+  width: 250px;
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+.fixed-header {
+  display: block !important;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .fixed-header {
+  display: block !important;
+  }
 }

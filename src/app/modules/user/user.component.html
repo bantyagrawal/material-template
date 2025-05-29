@@ -1,7 +1,8 @@
 <mat-sidenav-container class="main-container">
-  <mat-sidenav #sidenav mode="side" opened>
+  <mat-sidenav #sidenav [mode]="isSmallScreen ? 'over' : 'side'" [opened]="!isSmallScreen">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <div class="fixed-header">
       <app-header (menuToggle)="sidenav.toggle()"></app-header>
