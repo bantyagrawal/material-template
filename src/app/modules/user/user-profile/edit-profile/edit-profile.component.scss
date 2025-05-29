@@ -1,0 +1,29 @@
+.two-column-container {
+  display: flex;
+  gap: 24px; 
+  flex-wrap: nowrap; 
+}
+
+.column {
+  // flex: 1 1 300px; /* grow, shrink, basis */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* space between inputs */
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+/* Make all app-input fill their column's width */
+.column app-input {
+  width: 100%;
+}
+
+/* Responsive: On smaller screens, stack columns vertically */
+@media (max-width: 768px) {
+  .two-column-container {
+    flex-wrap: wrap;
+  }
+}

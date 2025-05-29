@@ -9,7 +9,10 @@
     (blur)="onBlur.emit($event)"
     (input)="onInput.emit($event)"
     (change)="onChangeTrigger($event)"
-  />
+  >
+
+  <mat-icon *ngIf="data.icon?.length" matSuffix>{{ data.icon }}</mat-icon>
+
   <button
     *ngIf="data.isPasswordToggle"
     mat-icon-button

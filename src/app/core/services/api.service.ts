@@ -205,4 +205,11 @@ export class ApiService {
       withCredentials: true,
     });
   }
+
+  editUser(data: any) {
+    const encryptedBody = this.api.encrypt(data);
+    return this.http.post(`${this.baseurl}/users/edituser`, encryptedBody, {
+      withCredentials: true,
+    });
+  }
 }
