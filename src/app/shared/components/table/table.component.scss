@@ -170,3 +170,24 @@ $icon-color: #666;
 .table-head-bg{
   background-color: rgb(221, 218, 218) !important;
 }
+
+.full-width-table {
+  width: 100%;
+}
+
+.table-header-cell {
+  font-weight: bold;
+}
+
+.custom-header {
+  background-color: #eceaea !important; // Light grey
+  color: #000;
+  font-weight: 500;
+}
+
+.sticky-column {
+  position: sticky;
+  right: 0;
+  background: #fff; /* or grey like #f0f0f0 if you want it visible */
+  z-index: 10;
+}
