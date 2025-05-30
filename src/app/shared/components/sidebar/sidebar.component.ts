@@ -69,7 +69,7 @@ export class SidebarComponent {
       icon: 'link',
       sublist: [
               {
-          name: 'Item2',
+          name: 'Item1',
           redirectTo: '/testlink/item2'
         },
         {
@@ -77,11 +77,11 @@ export class SidebarComponent {
           redirectTo: '/testlink/item2'
         },
                 {
-          name: 'Item2',
+          name: 'Item3',
           redirectTo: '/testlink/item2'
         },
                 {
-          name: 'Item2',
+          name: 'Item4',
           redirectTo: '/testlink/item2'
         },
       ]
