@@ -11,6 +11,7 @@ import { CommonService } from 'src/app/core/services/common.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+    isDarkTheme = false;
 
   constructor(
     private common: CommonService,
@@ -39,5 +40,18 @@ export class HeaderComponent {
       this.redirectTo('login');
     })
   }
+
+toggleDarkMode() {
+  this.isDarkTheme = !this.isDarkTheme;
+  const body = document.body;
+
+  if (this.isDarkTheme) {
+    body.classList.add('dark-theme');
+  } else {
+    body.classList.remove('dark-theme');
+  }
+}
+
+
 
 }

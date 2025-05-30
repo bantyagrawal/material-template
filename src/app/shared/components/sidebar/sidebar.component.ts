@@ -70,22 +70,25 @@ export class SidebarComponent {
       sublist: [
               {
           name: 'Item1',
-          redirectTo: '/testlink/item2'
+          icon: 'dashboard',
+          redirectTo: '/testlink/item2',
+          sublist: [
+            { name: "levels", icon: "layers" },
+            { name: "level2", icon: "stairs" }
+          ]
         },
         {
           name: 'Item2',
+          icon: 'dashboard',
           redirectTo: '/testlink/item2'
         },
                 {
           name: 'Item3',
-          redirectTo: '/testlink/item2'
-        },
-                {
-          name: 'Item4',
+          icon: 'dashboard',
           redirectTo: '/testlink/item2'
         },
       ]
-    }
+    },
   ];
 
   redirectTo(path?: string) {

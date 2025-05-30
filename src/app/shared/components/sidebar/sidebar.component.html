@@ -1,6 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav [mode]="isHandset ? 'over' : 'side'" [opened]="!isHandset" class="sidenav">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-toolbar color="primary" class="sidenav-toolbar">
+      <img src="assets/images/applogo.png" alt="Logo" class="sidenav-logo" />
+      <span>MyApp</span>
+    </mat-toolbar>
     <mat-nav-list>
       <ng-container *ngFor="let item of sidebarItems">
         <ng-container *ngIf="hasPermission(item)">

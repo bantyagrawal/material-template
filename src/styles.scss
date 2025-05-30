@@ -105,3 +105,47 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
 .edit-profile-input {
   width: 100%;
 }
+ .mdc-list-item__primary-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+  } 
+
+.mat-mdc-list-item, .mat-mdc-list-option {
+    width: 100%;
+    box-sizing: content-box !important ; 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.mat-expansion-panel-header{
+  padding: 0 10px !important;
+  height: var(--mdc-list-list-item-one-line-container-height) !important;
+  background-color: transparent !important;
+  color: var(--mdc-list-list-item-label-text-color);
+  font-size: 16px;
+}
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+  gap: 15px !important;
+  height: var(--mdc-list-list-item-one-line-container-height) !important;
+  color: #333 !important;       // good contrast text color
+  font-size: 16.1px !important; // slightly increased font size if you want
+  font-weight: 500 !important;  // valid font-weight for medium boldness
+  letter-spacing: 0.02em !important;  // subtle letter spacing for readability
+  line-height: 1.5 !important;  // improves vertical spacing
+}
+
+
+.mat-expansion-panel {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+:root {
+  --mdc-list-list-item-label-text-color: #333; /* Adjust as needed */
+}
+
+.mdc-list-item__content{
+  padding: 10px !important;
+}

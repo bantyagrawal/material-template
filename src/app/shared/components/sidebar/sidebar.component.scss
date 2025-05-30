@@ -1,7 +1,13 @@
-.sidenav-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+// .sidenav-container {
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.sidenav-container[_ngcontent-ng-c2647033644] {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidenav {
@@ -21,7 +27,7 @@ mat-nav-list {
     display: flex;
     align-items: center;
     color: #333;
-    padding: 10px;
+    padding: 0;
 
     mat-icon {
       margin-right: 16px;
@@ -50,5 +56,18 @@ mat-nav-list {
 @media screen and (max-width: 768px) {
   .sidenav {
     width: 200px;
+  }
+}
+
+.sidenav-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img.sidenav-logo {
+    height: 38px;
+    width: auto;
+    max-width: 80px;
+    object-fit: contain;
   }
 }
