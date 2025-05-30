@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, map, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonService } from 'src/app/core/services/common.service';
@@ -22,6 +23,12 @@ interface SidebarItem {
 export class SidebarComponent {
   isHandset: boolean = false;
 
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private common: CommonService,
+    private router: Router
+  ) {}
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => {
@@ -30,11 +37,6 @@ export class SidebarComponent {
       }),
       shareReplay()
     );
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private common: CommonService
-  ) {}
 
   sidebarItems: SidebarItem[] = [
     {
@@ -68,13 +70,13 @@ export class SidebarComponent {
       name: 'Test Link',
       icon: 'link',
       sublist: [
-              {
+        {
           name: 'Item1',
           icon: 'dashboard',
-          redirectTo: '/testlink/item2',
+          redirectTo: '/testlink/item1',
           sublist: [
-            { name: "levels", icon: "layers" },
-            { name: "level2", icon: "stairs" }
+            { name: "levels", icon: "layers", redirectTo: "/usermanagement" },
+            { name: "level2", icon: "stairs", redirectTo: "/testlink/item1/level2" }
           ]
         },
         {
@@ -82,10 +84,10 @@ export class SidebarComponent {
           icon: 'dashboard',
           redirectTo: '/testlink/item2'
         },
-                {
+        {
           name: 'Item3',
           icon: 'dashboard',
-          redirectTo: '/testlink/item2'
+          redirectTo: '/testlink/item3'
         },
       ]
     },
@@ -95,6 +97,11 @@ export class SidebarComponent {
     if (path) {
       this.common.redirectTo(path);
     }
+  }
+
+  isActive(path?: string): boolean {
+    if (!path) return false;
+    return this.router.url === path || this.router.url.startsWith(path + '/');
   }
 
   permissions(module: string, operation: string): boolean {

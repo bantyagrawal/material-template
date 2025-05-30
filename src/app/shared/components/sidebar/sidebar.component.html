@@ -21,7 +21,9 @@
 <!-- Recursive Template -->
 <ng-template #renderItem let-item>
   <ng-container *ngIf="!item.sublist || item.sublist.length === 0; else expandable">
-    <a mat-list-item (click)="redirectTo(item.redirectTo)">
+    <a mat-list-item 
+       (click)="redirectTo(item.redirectTo)" 
+       [class.active]="isActive(item.redirectTo)">
       <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
       <span>{{ item.name }}</span>
     </a>
