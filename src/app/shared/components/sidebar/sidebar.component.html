@@ -1,11 +1,48 @@
-<div class="contsiner">
-    <mat-toolbar color=""></mat-toolbar>
-    <div class="list">
-        <button mat-button  (click)="redirectTo('')">Dashboard</button>
-        <button mat-button *ngIf="permissions('Users Management','read')" (click)="redirectTo('usermanagement')">User Management</button>
-        <button mat-button *ngIf="permissions('Module Management','read')" (click)="redirectTo('rolemanagement')">Role Management</button>
-        <button mat-button  (click)="redirectTo('levelmanagement')">Level Management</button>
-       <button mat-button  (click)="redirectTo('modulemanagement')">Module Management</button>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav [mode]="isHandset ? 'over' : 'side'" [opened]="!isHandset" class="sidenav">
+    <mat-toolbar color="primary" class="sidenav-toolbar">
+      <img src="assets/images/applogo.png" alt="Logo" class="sidenav-logo" />
+      <span>MyApp</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <ng-container *ngFor="let item of sidebarItems">
+        <ng-container *ngIf="hasPermission(item)">
+          <ng-container *ngTemplateOutlet="renderItem; context: { $implicit: item }"></ng-container>
+        </ng-container>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
 
-    </div>
-</div>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- Recursive Template -->
+<ng-template #renderItem let-item>
+  <ng-container *ngIf="!item.sublist || item.sublist.length === 0; else expandable">
+    <a mat-list-item 
+       (click)="redirectTo(item.redirectTo)" 
+       [class.active]="isActive(item.redirectTo)">
+      <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+      <span>{{ item.name }}</span>
+    </a>
+  </ng-container>
+
+  <ng-template #expandable>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+          {{ item.name }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-nav-list>
+        <ng-container *ngFor="let child of item.sublist">
+          <ng-container *ngTemplateOutlet="renderItem; context: { $implicit: child }"></ng-container>
+        </ng-container>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </ng-template>
+</ng-template>

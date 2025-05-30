@@ -1,39 +1,42 @@
-.heading{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .adduser {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-bottom: 15px;
 }
 
 .toolbar-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem 0;
-    flex-wrap: wrap;  // allows wrapping on smaller screens
-    gap: 1rem;
-  
-    app-search-bar {
-      flex: 1 1 300px; // grow, shrink, min width
-      min-width: 250px;
-    }
-  
-    .adduser {
-      flex: 0 0 auto; // no grow, no shrink, width auto
-      // make button smaller on mobile if needed
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+  flex-wrap: wrap; // allows wrapping on smaller screens
+  gap: 1rem;
+
+  app-search-bar {
+    flex: 1 1 300px; // grow, shrink, min width
+    min-width: 250px;
   }
-  
-  /* Optional: tweak button size on small screens */
-  @media (max-width: 480px) {
-    .adduser app-button {
-      width: 100%;  // full width on small screens
-    }
+
+  .adduser {
+    flex: 0 0 auto; // no grow, no shrink, width auto
+    // make button smaller on mobile if needed
   }
-  
+}
+
+/* Optional: tweak button size on small screens */
+@media (max-width: 480px) {
+  .adduser app-button {
+    width: 100%;
+  }
+}
+
+.main-containt {
+  padding: 16px
+}

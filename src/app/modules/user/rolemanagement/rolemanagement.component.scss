@@ -4,6 +4,8 @@
     justify-content: center;
 }
 
+app-header
+
 .adduser {
     display: flex;
     flex-direction: row;
@@ -37,3 +39,7 @@
     }
   }
   
+
+  .main-containt{
+    padding: 16px
+  }

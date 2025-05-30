@@ -7,7 +7,7 @@
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
         <app-input
-          [data]="{label: 'Email',  placeholder: 'Enter your email', type: 'email', control: identifierControl, errorMessage: 'Email is required',customClass: 'login-input'}">
+          [data]="{label: 'Email',  placeholder: 'Enter your email', type: 'email', control: identifierControl, errorMessage: emailError(),customClass: 'login-input'}">
         </app-input>
 
         <app-input

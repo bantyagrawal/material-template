@@ -10,6 +10,7 @@ import { InputData } from 'src/app/core/models/input.model';
 export class InputComponent {
 
   @Input() data!: InputData;
+  @Input() customClass?: string;
   @Output() onFocus = new EventEmitter<Event>();
   @Output() onBlur = new EventEmitter<Event>();
   @Output() onInput = new EventEmitter<Event>();
@@ -34,7 +35,7 @@ export class InputComponent {
 
   onfocus(event: Event) {
     this.onFocus.emit(event)
-    console.log(this.data.customClass, "CUSTOM CLASS");
-
+ }
+  ngOnChanges() {
   }
 }

@@ -1,22 +1,17 @@
-<app-pageheader [title]="'Module Management'" [subtitle]="'Home > Module Management'"></app-pageheader>
+<app-pageheader [title]="'Module Management'" [subtitle]="['Home','Module Management']"
+  (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
 
-
-<div class="toolbar-row">
-  <app-search-bar (search)="onSearch($event)"></app-search-bar>
-  <div class="add-module" *ngIf="checkAddPermission()">
-    <app-button
-      (click)="openAddModuleDialog()"
-      [data]="{label: 'Add Module', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}">
-    </app-button>
+<div class="main-containt">
+  <div class="toolbar-row">
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
+    <div class="add-module" *ngIf="checkAddPermission()">
+      <app-button (click)="openAddModuleDialog()"
+        [data]="{label: 'Add Module', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}">
+      </app-button>
+    </div>
   </div>
-</div>
 
-<app-table
-  [data]="moduleList"
-  [displayedColumns]="['id', 'name', 'description']"
-  [totalItems]="totalModules"
-  [pageSize]="5"
-  [pageIndex]="currentPage"
-  (pageChange)="fetchModules($event)"
->
-</app-table>
+  <app-table [data]="moduleList" [displayedColumns]="['id', 'name', 'description']" [totalItems]="totalModules"
+    [pageSize]="5" [pageIndex]="currentPage" (pageChange)="fetchModules($event)">
+  </app-table>
+</div>

@@ -140,4 +140,10 @@ export class RolemanagementComponent implements OnInit {
   openDeleteDialog(data: any) {
     this.deleteDialog('500ms', '500ms', data)
   }
+
+    redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.common.redirectTo('user');
+    }
+  }
 }

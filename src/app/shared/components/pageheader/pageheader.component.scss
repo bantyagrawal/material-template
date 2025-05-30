@@ -1,9 +1,37 @@
 .custom-header {
-  background-color: #6e0536;
-  color: white;             
-  padding-bottom: 10px;
+  background-color: #2196f3;
+  color: white;
 }
 
-.custom-header mat-card-subtitle{
-  color: white;           
+mat-card {
+  padding-bottom: 16px;
+  border-radius: 0 !important;
+}
+
+.custom-header mat-card-subtitle {
+  color: white;
+}
+
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  // margin: 14px;
+  // margin-bottom: 16px;
+  margin-top: 10px;
+}
+
+.span {
+  cursor: pointer;
+}
+
+span {
+  font-size: larger;
+  font-weight: 400;
+}
+
+.title {
+  font-size: x-large;
+  font-weight: 500;
+
 }

@@ -5,27 +5,30 @@
 
   <div class="list">
 
-    <mat-nav-list>
+    <!-- <mat-nav-list>
       <mat-list-item (click)="redirectTo('')">
         <span matLine>Home</span>
   </mat-list-item>
   <mat-list-item (click)="redirectTo('usermanagement')">
     <span matLine>User </span>
   </mat-list-item>
-</mat-nav-list>
+</mat-nav-list> -->
 </div>
 
 
   <span class="spacer"></span>
-  <button mat-icon-button>
+  <!-- <button mat-icon-button>
     <mat-icon>search</mat-icon>
-  </button>
+  </button> -->
+<button mat-icon-button (click)="toggleDarkMode()">
+  <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+</button> 
   <button mat-icon-button (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
   </button>
-  <button mat-icon-button>
+  <!-- <button mat-icon-button>
     <mat-icon>list</mat-icon>
-  </button>
+  </button> -->
 
   <!-- Notifications -->
   <button mat-icon-button [matMenuTriggerFor]="menu1">
@@ -33,8 +36,8 @@
   </button>
   <mat-menu #menu1="matMenu">
     <mat-nav-list>
-      <mat-list-item *ngFor="let message of messages">
-        <mat-icon matListItemIcon>info</mat-icon>
+      <mat-list-item *ngFor="let message of messages" >
+        <mat-icon matListItemIcon style="margin-right: 10px;">info</mat-icon>
         <span matLine>{{ message }}</span>
       </mat-list-item>
     </mat-nav-list>
@@ -49,7 +52,7 @@
       <mat-icon>account_circle</mat-icon>
       <span>Profile</span>
     </button>
-    <button mat-menu-item routerLink="/profile/settings">
+    <button mat-menu-item (click)="redirectTo('edit')">
       <mat-icon>edit</mat-icon>
       <span>Edit Profile</span>
     </button>

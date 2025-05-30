@@ -9,6 +9,7 @@ import { UserComponent } from './user.component';
 import { LevelmanagementComponent } from './levelmanagement/levelmanagement.component';
 import { ModulemanagementComponent } from './modulemanagement/modulemanagement.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,11 @@ const routes: Routes = [
       { path: 'levelmanagement', component: LevelmanagementComponent },
       { path: 'modulemanagement', component: ModulemanagementComponent },
       { path: 'profile', component: UserProfileComponent },
-      { path: 'roleform', component: AddRoleComponent }]
+      { path: 'roleform', component: AddRoleComponent },
+      {
+        path: 'edit',
+        component: EditProfileComponent,
+      },]
   }
 ];
 

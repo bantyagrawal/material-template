@@ -1,6 +1,11 @@
 <mat-card [ngClass]="customClass? customClass: 'custom-header'">
-  <mat-card-header>
-    <mat-card-title>{{title}}</mat-card-title>
-    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+  <mat-card-header style="margin-left: 5px;">
+    <mat-card-title class="title">{{title}}</mat-card-title>
+    <mat-card-subtitle class="subtitle">
+      <div *ngFor="let data of subtitle; let last = last">
+        <span class="span" (click)="onSpanClick(data)" *ngIf="!last">{{ data }}&nbsp; &gt; &nbsp;</span>
+        <span class="" (click)="onSpanClick(data)" *ngIf="last">{{ data }}</span>
+      </div>
+    </mat-card-subtitle>
   </mat-card-header>
 </mat-card>
