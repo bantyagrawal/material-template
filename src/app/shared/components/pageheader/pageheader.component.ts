@@ -13,7 +13,6 @@ export class PageheaderComponent {
   @Output() spanClicked = new EventEmitter<string>();
 
   ngOnChanges() {
-    console.log('Input changed:', this.customClass);
   }
 
   onSpanClick(data: string) {

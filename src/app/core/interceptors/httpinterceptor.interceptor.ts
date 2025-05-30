@@ -32,7 +32,7 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
           try {
             const decryptedData = JSON.parse(
               this.decrypt.decrypt(event.body.data)
-            );            
+            );
             return event.clone({ body: decryptedData });
           } catch (error) { }
         }
@@ -50,9 +50,6 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
           message == 'jwt expired' ||
           error.status === 401
         ) {
-          this.api.logOut().subscribe({
-            next: (res: any) => { },
-          });
           this.common.permissions = null;
           this.router.navigate(['/login']);
         }

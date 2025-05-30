@@ -163,7 +163,6 @@ export class AddUserComponent implements OnInit {
   getChildRole() {
     this.api.getChildRole().subscribe({
       next: (res: any) => {
-        console.log("CHILD ROLE", res);
         if (res.data.length === 0) {
           this.toastr.error('Please add the child role first');
           this.dialogRef.close();

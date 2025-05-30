@@ -35,10 +35,7 @@ export class InputComponent {
 
   onfocus(event: Event) {
     this.onFocus.emit(event)
-    console.log(this.data.customClass, "CUSTOM CLASS");
  }
   ngOnChanges() {
-  console.log(this.data.icon?.length);
-
   }
 }

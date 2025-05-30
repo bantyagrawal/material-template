@@ -79,7 +79,6 @@ export class AddRoleComponent implements OnInit {
   getRole() {
     this.api.loggedInUser().subscribe((res: any) => {      
       const roleData = res.data;
-      console.log('LOGGED IN ROLE', roleData);
       if (roleData) {
         this.roles = roleData.RoleModulePermissions.map((permission: any) => {
           const permissionObj = permission.permission;

@@ -30,7 +30,6 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder , private apiService: ApiService, private profile:CommonService,private toastr: ToastrService) {
     this.data=profile.permissions;
-    console.log('Permissions data from CommonService (constructor):', this.data);
   }
 
  
@@ -57,8 +56,7 @@ export class EditProfileComponent implements OnInit {
   // }
   onSubmit(): void {
     if (this.isProcessing) return;
-  
-    if (this.reactiveForm.invalid) {
+      if (this.reactiveForm.invalid) {
       this.reactiveForm.markAllAsTouched();
       this.toastr.error('Please fill all required fields correctly.');
       return;

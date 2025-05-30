@@ -15,8 +15,6 @@ export class SelectComponent {
   return value === 'fill' || value === 'outline' ? value : 'outline';
 }
 
-onfocus() {
-  console.log(this.data.customClass,"CUSTOM CLASS");
-  
+onfocus() {  
 }
 }
