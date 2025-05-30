@@ -10,9 +10,22 @@ body {
   --primary-color: #E7BE43;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent; /* Optional: just to be sure */
+}
+
 body {
   margin: 0;
   font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+/* Optional: Prevent scrolling if needed */
+html, body {
+  overflow: hidden; // Optional: only if you want to block scroll entirely
 }
 
 .my-input-style {
