@@ -27,7 +27,7 @@ export class LoginComponent {
 
   ) {
     this.loginForm = new FormGroup({
-      identifier: new FormControl('', [Validators.required]),
+      identifier: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
@@ -81,7 +81,17 @@ export class LoginComponent {
       return "Password must have one digit";
     }
     if (!this.hasSpecialCharacter()) {
-     return "Password must have one special latter";
+      return "Password must have one special latter";
+    }
+    return "";
+  }
+
+  emailError(): string {
+    if (this.identifierControl?.hasError('required')) {
+      return "Email is required";
+    }
+    if (this.identifierControl?.hasError('email')) {
+      return "Please provide correct email";
     }
     return "";
   }

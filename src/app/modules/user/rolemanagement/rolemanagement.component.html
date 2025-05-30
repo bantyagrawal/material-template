@@ -1,23 +1,27 @@
-<app-pageheader [title]="'Role Management'" [subtitle]="['Home','Role Management']" (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
+<app-pageheader [title]="'Role Management'" [subtitle]="['Home','Role Management']"
+  (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
 
-<div class="toolbar-row">
-  <app-search-bar (search)="onSearch($event)"></app-search-bar>
-  <div class="adduser" *ngIf="permissions('Role Management','write')">
-    <app-button
-      [data]="{label: 'Add Role', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}"
-      (click)="openAddRolelDialog()">
-    </app-button>
+<div class="main-containt">
+
+  <div class="toolbar-row">
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
+    <div class="adduser" *ngIf="permissions('Role Management','write')">
+      <app-button
+        [data]="{label: 'Add Role', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}"
+        (click)="openAddRolelDialog()">
+      </app-button>
+    </div>
   </div>
+
+  <app-table [data]="roleList" [displayedColumns]="tableColumns" [totalItems]="totalRoles" [pageSize]="5"
+    [pageIndex]="currentPage" (pageChange)="fetchUsers($event)" [columnTemplates]="columnTemplatesMap">
+  </app-table>
+
+  <ng-template #statusTemplate let-row>
+    <mat-icon (click)="openPermissionDialog(row)" color="primary">{{ 'add' }}</mat-icon>
+  </ng-template>
+
+  <ng-template #deleteTemplate let-row>
+    <mat-icon (click)="openDeleteDialog(row)" color="primary">{{ 'delete' }}</mat-icon>
+  </ng-template>
 </div>
-
-<app-table [data]="roleList" [displayedColumns]="tableColumns" [totalItems]="totalRoles"
-  [pageSize]="5" [pageIndex]="currentPage" (pageChange)="fetchUsers($event)" [columnTemplates]="columnTemplatesMap">
-</app-table>
-
-<ng-template #statusTemplate let-row>
-  <mat-icon (click)="openPermissionDialog(row)" color="primary">{{ 'add' }}</mat-icon>
-</ng-template>
-
-<ng-template #deleteTemplate let-row>
-  <mat-icon (click)="openDeleteDialog(row)" color="primary">{{ 'delete' }}</mat-icon>
-</ng-template>

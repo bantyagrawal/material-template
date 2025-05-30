@@ -1,4 +1,7 @@
-<mat-form-field [ngClass]="data.customClass" appearance="outline" class="full-width">
+<mat-form-field   [ngClass]="[
+    data.customClass,
+    data.control.invalid && data.control.touched ? 'error-spacing' : ''
+  ]" appearance="outline" class="full-width">
   <mat-label>{{ data.label || 'Text Field' }}</mat-label>
   <input
     matInput
@@ -21,9 +24,10 @@
     (click)="togglePasswordVisibility()"
     type="button"
   >
+  
     <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
   </button>
   <mat-error class="error" *ngIf="data.control.invalid && data.control.touched">
-    {{ data.errorMessage || 'Invalid field' }}
+   <span> {{ data.errorMessage || 'Invalid field' }}</span>
   </mat-error>
 </mat-form-field>

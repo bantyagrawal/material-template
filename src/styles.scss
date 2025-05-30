@@ -67,35 +67,35 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
 }
 
 .dashboard-custom-header {
-  color: black;
-  padding-bottom: 10px;
-  background-color: #27b139 !important;
+  color: white;
+  background-color: #bdb96a !important;
 }
 
 .dashboard-custom-header mat-card-subtitle {
-  color: black;
+  color: white;
 }
 
 .level-custom-header {
-  color: black;
-  padding-bottom: 10px;
+  color: white;
   background-color: #2791b1 !important;
 }
 
 .level-custom-header mat-card-subtitle {
-  color: black;
+  color: white;
 }
 
 .user-custom-header {
   color: white;
-  padding-bottom: 10px;
-  background-color: #b12783 !important;
+  background-color: #7d99aa !important;
 }
 
 .edit-profile-header {
-  margin-bottom: 16px;
-  padding-bottom: 10px;
+  color: white;
   background-color: #279cb1 !important;
+}
+
+.edit-profile-header mat-card-subtitle {
+  color: white;
 }
 
 .user-custom-header mat-card-subtitle {

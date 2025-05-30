@@ -1,7 +1,8 @@
 <app-pageheader [title]="'User Management'" [subtitle]="['Home','User Management']" [customClass]="'user-custom-header'" (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
 
-<div class="toolbar-row">
-  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+<div class="main-containt">
+  <div class="toolbar-row">
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
   <div class="adduser" *ngIf="checkAddPermission()">
     <app-button
     [data]="{label: 'Add User',color: 'primary',disabled: false,type: 'button',customClass: 'my-button-class'}" (click)="openAddUserlDialog()">
@@ -11,3 +12,4 @@
 <app-table [data]="userList" [displayedColumns]="['id','name', 'email','mobile', 'role', 'userId']" [totalItems]="totalUsers" [pageSize]="5"
   [pageIndex]="currentPage" (pageChange)="fetchUsers($event)">
 </app-table>
+</div>

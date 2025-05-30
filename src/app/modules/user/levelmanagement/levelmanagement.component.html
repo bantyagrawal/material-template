@@ -1,14 +1,16 @@
 <app-pageheader [title]="'Level Management'" (spanClicked)="redirectFromPageHeader($event)" [subtitle]="['Home','Level Management']" [customClass]="'level-custom-header'"></app-pageheader>
 
-<div class="toolbar-row">
-  <app-search-bar (search)="onSearch($event)"></app-search-bar>
-  <div class="adduser" *ngIf="checkAddPermission()">
-    <app-button (click)="openAddLevelDialog()"
+<div class="main-containt">
+  <div class="toolbar-row">
+    <app-search-bar (search)="onSearch($event)"></app-search-bar>
+    <div class="adduser" *ngIf="checkAddPermission()">
+      <app-button (click)="openAddLevelDialog()"
       [data]="{label: 'Add Level', color: 'primary', disabled: false, type: 'button', customClass: 'my-button-class'}">
     </app-button>
   </div>
 </div>
 
 <app-table [data]="levelList" [displayedColumns]="['id','name', 'level']" [totalItems]="totalLevels" [pageSize]="5"
-  [pageIndex]="currentPage" (pageChange)="fetchLevels($event)">
+[pageIndex]="currentPage" (pageChange)="fetchLevels($event)">
 </app-table>
+</div>
