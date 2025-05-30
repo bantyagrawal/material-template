@@ -1,8 +1,11 @@
+<app-pageheader 
+  [title]="'Edit Profile'" 
+  [subtitle]="['Home','Edit Profile']" 
+  [customClass]="'edit-profile-header'"(spanClicked)="redirectFromPageHeader($event)">
+</app-pageheader>
 <mat-card>
-    <mat-card-header class="">
-      <mat-card-title>Edit Profile</mat-card-title>
-    </mat-card-header>
   
+
     <mat-card-content class="white-container">
       <form [formGroup]="reactiveForm" class="form-field-full" (ngSubmit)="onSubmit()">
         <div class="two-column-container">
@@ -108,11 +111,11 @@
             <div class="input">
                 <app-select
                 [data]="{
-                  label: 'Select Role',
-                  placeholder: 'Select role',
-                  options: roleOptions,
+                  label: 'Select Wallet',
+                  placeholder: 'Select Wallet',
+                  options: walletOptions,
                   control: walletTypeControl,
-                  errorMessage: 'Role is required',
+                  errorMessage: 'Wallet is required',
                   customClass: 'edit-profile-input'
                 }"
               ></app-select>

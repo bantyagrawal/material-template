@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 
@@ -11,14 +12,23 @@ import { CommonService } from 'src/app/core/services/common.service';
 export class EditProfileComponent implements OnInit {
   reactiveForm!: FormGroup;
   data:any;
-  roleOptions = [
-    { label: 'Admin', value: 'admin' },
-    { label: 'User', value: 'user' },
-    { label: 'Manager', value: 'manager' },
-    { label: 'Guest', value: 'guest' }
+  isProcessing!: boolean;
+  walletOptions = [
+    {
+      label: 'SINGLE',
+      value: 'Single'
+    },
+    {
+      label: 'MULTI',
+      value: 'Multi'
+    },
+    {
+      label: 'BOTH',
+      value: 'Both'
+    }
   ];
 
-  constructor(private fb: FormBuilder , private apiService: ApiService, profile:CommonService) {
+  constructor(private fb: FormBuilder , private apiService: ApiService, private profile:CommonService,private toastr: ToastrService) {
     this.data=profile.permissions;
     console.log('Permissions data from CommonService (constructor):', this.data);
   }
@@ -38,14 +48,48 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+  // onSubmit(): void {
+  //   if (this.reactiveForm.valid) {
+  //     console.log('Form Submitted:', this.reactiveForm.value);
+  //   } else {
+  //     this.reactiveForm.markAllAsTouched();
+  //   }
+  // }
   onSubmit(): void {
-    if (this.reactiveForm.valid) {
-      console.log('Form Submitted:', this.reactiveForm.value);
-    } else {
+    if (this.isProcessing) return;
+  
+    if (this.reactiveForm.invalid) {
       this.reactiveForm.markAllAsTouched();
+      this.toastr.error('Please fill all required fields correctly.');
+      return;
     }
+  
+    this.isProcessing = true;
+  
+    const updatedUser = {
+      uuid: this.data?.uuid,  
+      name: this.reactiveForm.value.name,
+      email: this.reactiveForm.value.email,
+      userId: this.reactiveForm.value.userId,
+      ipv4: this.reactiveForm.value.ipv4,
+      ipv6: this.reactiveForm.value.ipv6,
+      deviceId: this.reactiveForm.value.deviceId,
+      mobileNumber: this.reactiveForm.value.mobile
+    };
+  
+    this.apiService.editUser(updatedUser).subscribe({
+      next: (res: any) => {
+        this.toastr.success('Profile updated successfully!');
+        this.isProcessing = false;
+      },
+      error: (err: any) => {
+        console.error(err);
+        this.toastr.error('Failed to update profile');
+        this.isProcessing = false;
+      }
+    });
   }
-
+  
   get nameControl(): FormControl {
     return this.reactiveForm.get('name') as FormControl;
   }
@@ -69,5 +113,10 @@ export class EditProfileComponent implements OnInit {
   }
   get walletTypeControl(): FormControl {
     return this.reactiveForm.get('walletType') as FormControl;
+  }
+  redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.profile.redirectTo('user');
+    }
   }
 }
