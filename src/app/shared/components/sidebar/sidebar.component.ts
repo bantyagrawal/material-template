@@ -68,18 +68,22 @@ export class SidebarComponent {
       name: 'Test Link',
       icon: 'link',
       sublist: [
-        {
-          name: 'One',
-          sublist: [
-            { name: 'Item', sublist: [
-              { name : 'check2', redirectTo: '/modulemanagement'}
-            ] }
-          ]
+              {
+          name: 'Item2',
+          redirectTo: '/testlink/item2'
         },
         {
           name: 'Item2',
           redirectTo: '/testlink/item2'
-        }
+        },
+                {
+          name: 'Item2',
+          redirectTo: '/testlink/item2'
+        },
+                {
+          name: 'Item2',
+          redirectTo: '/testlink/item2'
+        },
       ]
     }
   ];
