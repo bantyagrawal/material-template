@@ -4,6 +4,16 @@
       <img src="assets/images/applogo.png" alt="Logo" class="sidenav-logo" />
       <span>MyApp</span>
     </mat-toolbar>
+
+      <div class="profile-section">
+      <img src="assets/images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg" class="avatar" alt="avatar" />
+      <div class="profile-info">
+        <div class="name">Zongbin</div>
+        <div class="email">nzb329@163.com</div>
+      </div>
+    </div>
+
+
     <mat-nav-list>
       <ng-container *ngFor="let item of sidebarItems">
         <ng-container *ngIf="hasPermission(item)">
