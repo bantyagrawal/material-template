@@ -129,9 +129,15 @@ isExpandableActive(item: SidebarItem): boolean {
   return item.sublist.some((child: SidebarItem) => this.isActive(child.redirectTo));
 }
 
-getUserInfo(){
-  
-}
+    getUserInfo() {
+    this.api.loggedInUser().subscribe((res: any) => {      
+      const roleData = res.data;
+      if (roleData) {
+        this.user.username = roleData.name;
+        this.user.userEmail = roleData.email;
+      }
+    });
+  }
 
 
 }

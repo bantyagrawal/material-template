@@ -10,7 +10,7 @@
 
       <!-- User Profile -->
       <div class="profile-section">
-        <img src="assets/images/user-avatar.png" alt="User Avatar" />
+        <img [src]="user.avatar" alt="avatar" class="avatar" />
         <div class="profile-info">
           <div class="name">{{ user.username }}</div>
           <div class="email">{{ user.userEmail }}</div>
