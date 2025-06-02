@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable, map, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonService } from 'src/app/core/services/common.service';
+import { ApiService } from 'src/app/core/services/api.service';
 
 interface SidebarItem {
   name: string;
@@ -22,9 +23,19 @@ interface SidebarItem {
 })
 export class SidebarComponent {
   isHandset: boolean = false;
+    user = {
+    avatar: 'https://i.pravatar.cc/150?img=3',
+    username: '',
+    userEmail: ''
+  };
+
+  ngOnInit(): void {
+    this.getUserInfo(); 
+  }
 
   constructor(
     private breakpointObserver: BreakpointObserver,
+    private api: ApiService,
     private common: CommonService,
     private router: Router
   ) {}
@@ -116,6 +127,10 @@ export class SidebarComponent {
 isExpandableActive(item: SidebarItem): boolean {
   if (!item.sublist) return false;
   return item.sublist.some((child: SidebarItem) => this.isActive(child.redirectTo));
+}
+
+getUserInfo(){
+  
 }
 
 
