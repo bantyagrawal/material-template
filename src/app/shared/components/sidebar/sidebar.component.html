@@ -27,22 +27,22 @@
           </a>
 
           <!-- Non-expandable items -->
-          <a mat-list-item>
+          <a mat-list-item [routerLink]="['/usermanagement']" routerLinkActive="active">
             <mat-icon>group</mat-icon>
             <span>Users</span>
           </a>
 
-          <a mat-list-item>
+          <a mat-list-item [routerLink]="['/rolemanagement']" routerLinkActive="active">
             <mat-icon>admin_panel_settings</mat-icon>
             <span>Role</span>
           </a>
 
-          <a mat-list-item>
+          <a mat-list-item [routerLink]="['/levelmanagement']" routerLinkActive="active">
             <mat-icon>bar_chart</mat-icon>
             <span>Level</span>
           </a>
 
-          <a mat-list-item>
+          <a mat-list-item [routerLink]="['/modulemanagement']" routerLinkActive="active">
             <mat-icon>view_module</mat-icon>
             <span>Module</span>
           </a>
