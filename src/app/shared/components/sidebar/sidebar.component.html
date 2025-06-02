@@ -20,52 +20,66 @@
       <!-- SCROLLABLE SIDENAV NAVIGATION -->
       <div class="sidenav-scroll">
         <mat-nav-list>
-          <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
+          <a mat-list-item [routerLink]="['/']" routerLinkActive="active">
             <mat-icon>dashboard</mat-icon>
             <span>Dashboard</span>
             <!-- <span class="badge-count">5</span> -->
           </a>
 
+          <!-- Non-expandable items -->
+          <a mat-list-item>
+            <mat-icon>group</mat-icon>
+            <span>Users</span>
+          </a>
+
+          <a mat-list-item>
+            <mat-icon>admin_panel_settings</mat-icon>
+            <span>Role</span>
+          </a>
+
+          <a mat-list-item>
+            <mat-icon>bar_chart</mat-icon>
+            <span>Level</span>
+          </a>
+
+          <a mat-list-item>
+            <mat-icon>view_module</mat-icon>
+            <span>Module</span>
+          </a>
+
           <div class="custom-expansion">
-            
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
+            <mat-expansion-panel>
+                          <mat-expansion-panel-header>
               <mat-panel-title>
-                <mat-icon>palette</mat-icon>
-                <span class="expandDesign">Design</span>
+                <mat-icon>fact_check</mat-icon>
+                <span class="expandDesign">Test</span>
               </mat-panel-title>
               <!-- <span class="badge-new">NEW</span> -->
             </mat-expansion-panel-header>
-            <mat-action-list>
-              <a mat-list-item routerLink="/material" routerLinkActive="active">
-                <mat-icon>favorite</mat-icon>
-                Material
-              </a>
-              <a mat-list-item>Form Controls</a>
-              <a mat-list-item>Navigation</a>
-              <a mat-list-item>Layout</a>
-              <a mat-list-item>Buttons & Indicators</a>
-              <a mat-list-item>Popups & Modals</a>
-              <a mat-list-item>Data Table</a>
+              <mat-action-list>
+              <div class="custom-expansion">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                 <mat-icon>palette</mat-icon>
+                                 <span class="expandDesign">check</span>
+                                 </mat-panel-title>
+                  </mat-expansion-panel-header>
+                   <mat-action-list>
+                                  <a mat-list-item>
+                <mat-icon>quiz</mat-icon>Test1</a>
+                 <a mat-list-item><mat-icon>quiz</mat-icon>Test2</a>
+                 <a mat-list-item><mat-icon>quiz</mat-icon>Test3</a>
+                   </mat-action-list>
+                </mat-expansion-panel>
+              </div>
+              <a mat-list-item>
+                <mat-icon>quiz</mat-icon>Test1</a>
+              <a mat-list-item><mat-icon>quiz</mat-icon>Test2</a>
+              <a mat-list-item><mat-icon>quiz</mat-icon>Test3</a>
             </mat-action-list>
-          </mat-expansion-panel>
+            </mat-expansion-panel>
           </div>
-
-          <!-- Non-expandable items -->
-          <a mat-list-item>
-            <mat-icon>lock</mat-icon>
-            <span>Permissions</span>
-          </a>
-
-          <a mat-list-item>
-            <mat-icon>image</mat-icon>
-            <span>Media</span>
-          </a>
-
-          <a mat-list-item>
-            <mat-icon>description</mat-icon>
-            <span>Forms</span>
-          </a>
           
         </mat-nav-list>
       </div>
