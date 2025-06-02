@@ -12,37 +12,49 @@
       <div class="profile-section">
         <img src="assets/images/user-avatar.png" alt="User Avatar" />
         <div class="profile-info">
-          <div class="name">Zongbin</div>
-          <div class="email">nzb329.com</div>
+          <div class="name">{{ user.username }}</div>
+          <div class="email">{{ user.userEmail }}</div>
         </div>
       </div>
 
       <!-- SCROLLABLE SIDENAV NAVIGATION -->
       <div class="sidenav-scroll">
         <mat-nav-list>
-          <a mat-list-item [routerLink]="['/']" routerLinkActive="active">
+          <a mat-list-item              
+           (click)="redirectTo('/')" >
             <mat-icon>dashboard</mat-icon>
             <span>Dashboard</span>
             <!-- <span class="badge-count">5</span> -->
           </a>
 
           <!-- Non-expandable items -->
-          <a mat-list-item [routerLink]="['/usermanagement']" routerLinkActive="active">
+          <a mat-list-item              
+          (click)="redirectTo('/usermanagement')" 
+          [class.active]="isActive('/usermanagement')">
             <mat-icon>group</mat-icon>
             <span>Users</span>
           </a>
 
-          <a mat-list-item [routerLink]="['/rolemanagement']" routerLinkActive="active">
+          <a mat-list-item 
+            (click)="redirectTo('/rolemanagement')" 
+            [class.active]="isActive('/rolemanagement')">
             <mat-icon>admin_panel_settings</mat-icon>
             <span>Role</span>
           </a>
 
-          <a mat-list-item [routerLink]="['/levelmanagement']" routerLinkActive="active">
+
+          <a mat-list-item 
+            (click)="redirectTo('/levelmanagement')" 
+            [class.active]="isActive('/levelmanagement')"
+            routerLinkActive="active">
             <mat-icon>bar_chart</mat-icon>
             <span>Level</span>
           </a>
 
-          <a mat-list-item [routerLink]="['/modulemanagement']" routerLinkActive="active">
+          <a mat-list-item 
+            (click)="redirectTo('/modulemanagement')" 
+            [class.active]="isActive('/modulemanagement')"
+            routerLinkActive="active">
             <mat-icon>view_module</mat-icon>
             <span>Module</span>
           </a>
@@ -87,6 +99,6 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

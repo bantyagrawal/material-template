@@ -38,7 +38,7 @@ import { MatRadioModule } from '@angular/material/radio'; // <-- Add this import
 import { MtxGridModule } from '@ng-matero/extensions/grid';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -73,7 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MtxGridModule,
     MatExpansionModule,
     MatSlideToggleModule,
-    RouterModule,
+    // RouterModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
