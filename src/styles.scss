@@ -357,3 +357,29 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
 }
 
 }
+
+.custom-expansion{
+  mat-expansion-panel-header{ 
+    width: 200px !important;
+  }
+}
+
+a.mdc-list-item{
+  padding: 0 !important;
+}
+
+mat-drawer-inner-container::-webkit-scrollbar {
+  display: none !important; /* hides scrollbar */
+}
+
+mat-icon {
+  margin-right: 5px !important;
+}
+
+mat-panel-title{
+  .expandDesign{
+    position: relative !important;
+    left: -14px !important;
+    font-weight: 500 !important;
+  }
+}
