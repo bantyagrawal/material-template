@@ -13,9 +13,15 @@
     </div>
   </div>
 
-  <app-table [data]="roleList" [displayedColumns]="tableColumns" [totalItems]="totalRoles" [pageSize]="5"
-    [pageIndex]="currentPage" (pageChange)="fetchUsers($event)" [columnTemplates]="columnTemplatesMap">
-  </app-table>
+<!-- <app-table [data]="roleList" [displayedColumns]="tableColumns" [totalItems]="totalRoles"
+  [pageSize]="5" [pageIndex]="currentPage" (pageChange)="fetchUsers($event)" [columnTemplates]="columnTemplatesMap">
+</app-table> -->
+
+<app-table [list]="roleList" [columns]="tableColumns" [pageSize]="pageSize" [pageIndex]="currentPage"
+  [pageSizeOptions]="[5, 10, 50]" [isLoading]="false" [showPaginator]="true" [showToolbar]="true"
+  [totalItems]="totalRoles" (sortChange)="onSortChange($event)" (pageChange)="fetchUsers($event)"
+  [columnPinnable]="true" (selectionChange)="onSelectionChange($event)"></app-table>
+
 
   <ng-template #statusTemplate let-row>
     <mat-icon (click)="openPermissionDialog(row)" color="primary">{{ 'add' }}</mat-icon>

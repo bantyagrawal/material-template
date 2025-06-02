@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 import { AddUserComponent } from './add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { USER_TABLE_COLUMNS } from 'src/app/core/models/table.column.model';
 
 interface User {
   id: number;
@@ -23,7 +24,8 @@ export class UsermanagementComponent implements OnInit {
   currentPage = 0;
   pageSize = 5;
   searchText!: string;
-
+  tableColumns = USER_TABLE_COLUMNS;
+  
   constructor(
     private common: CommonService,
     private dialog: MatDialog,
@@ -31,7 +33,33 @@ export class UsermanagementComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+        this.tableColumns = USER_TABLE_COLUMNS.map(col => {
+          if (col.field === 'edit') {
+            col.buttons = [
+              {
+                icon: 'edit',
+                type: 'icon',
+                tooltip: 'Edit',
+                click: record => this.onEdit(record)
+              },
+            ];
+          }
+    
+          if (col.field === 'delete') {
+            col.buttons = [
+              {
+                icon: 'delete',
+                type: 'icon',
+                tooltip: 'Delete',
+                click: record => this.onDelete(record)
+              }
+            ];
+          }
+          return col;
+        });
     this.getUsers()
+    this.checkDeletePermission();
+    this.checkUpdatePermission();
   }
 
   fetchUsers(event: { pageIndex: number, pageSize: number }) {
@@ -88,5 +116,38 @@ export class UsermanagementComponent implements OnInit {
     if (data === 'Home') {
       this.common.redirectTo('user');
     }
+  }
+    checkUpdatePermission() {
+    if (!this.common.checkUpdatePermission("Users Management")) {
+      const index = this.tableColumns.findIndex(col => col.header === 'Edit');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  checkDeletePermission() {
+    if (!this.common.checkDeletePermission("Users Management")) {
+      const index = this.tableColumns.findIndex(col => col.header === 'Delete');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  onSortChange(e: any) {
+    console.log('Sort changed:', e);
+  }
+
+  onSelectionChange(selected: any[]) {
+    console.log('Selection changed:', selected);
+  }
+
+    onEdit(record: any) {
+    console.log('Edit clicked:', record);
+  }
+
+  onDelete(record: any) {
+    console.log('Delete clicked:', record);
   }
 }

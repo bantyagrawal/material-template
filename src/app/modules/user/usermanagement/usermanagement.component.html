@@ -9,7 +9,22 @@
   </app-button>
 </div>
 </div>
-<app-table [data]="userList" [displayedColumns]="['id','name', 'email','mobile', 'role', 'userId']" [totalItems]="totalUsers" [pageSize]="5"
+<!-- <app-table [data]="userList" [displayedColumns]="['id','name', 'email','mobile', 'role', 'userId']" [totalItems]="totalUsers" [pageSize]="5"
   [pageIndex]="currentPage" (pageChange)="fetchUsers($event)">
-</app-table>
-</div>
+</app-table> -->
+
+<app-table
+  [list]="userList"
+  [columns]="tableColumns"
+  [pageSize]="pageSize"
+  [pageIndex]="currentPage"
+  [pageSizeOptions]="[5, 10, 50]"
+  [isLoading]="false"
+  [showPaginator]="true"
+  [showToolbar]="true"
+  [totalItems]="totalUsers"
+  (sortChange)="onSortChange($event)"
+  (pageChange)="fetchUsers($event)"
+  (selectionChange)="onSelectionChange($event)"
+  [columnPinnable]="true"
+></app-table>

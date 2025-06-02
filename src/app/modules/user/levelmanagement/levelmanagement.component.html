@@ -10,7 +10,24 @@
   </div>
 </div>
 
-<app-table [data]="levelList" [displayedColumns]="['id','name', 'level']" [totalItems]="totalLevels" [pageSize]="5"
-[pageIndex]="currentPage" (pageChange)="fetchLevels($event)">
-</app-table>
-</div>
+<!-- <app-table [data]="levelList" [displayedColumns]="['id','name', 'level']" [totalItems]="totalLevels" [pageSize]="5"
+  [pageIndex]="currentPage" (pageChange)="fetchLevels($event)">
+</app-table> -->
+
+<app-table
+  [list]="levelList"
+  [columns]="tableColumns"
+  [pageSize]="pageSize"
+  [pageIndex]="currentPage"
+  [pageSizeOptions]="[5, 10, 50]"
+  [isLoading]="false"
+  [showPaginator]="true"
+  [showToolbar]="true"
+  [totalItems]="totalLevels"
+  (sortChange)="onSortChange($event)"
+  (pageChange)="fetchLevels($event)"
+  (selectionChange)="onSelectionChange($event)"
+  (editClicked)="onEdit($event)"
+  (deleteClicked)="onDelete($event)"
+  [columnPinnable]="true"
+></app-table>

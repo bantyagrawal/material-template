@@ -1,5 +1,5 @@
 <mat-form-field   [ngClass]="[
-    data.customClass,
+    data.customClass ? data.customClass : 'default-cls',
     data.control.invalid && data.control.touched ? 'error-spacing' : ''
   ]" appearance="outline" class="full-width">
   <mat-label>{{ data.label || 'Text Field' }}</mat-label>

@@ -34,6 +34,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChartComponent } from './components/chart/chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { PageheaderComponent } from './components/pageheader/pageheader.component';
+import { MatRadioModule } from '@angular/material/radio'; // <-- Add this import
+import { MtxGridModule } from '@ng-matero/extensions/grid';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
@@ -67,6 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSelectModule,
     MatCheckboxModule,
     NgApexchartsModule,
+    MatRadioModule,
+    MtxGridModule,
     MatExpansionModule,
     MatSlideToggleModule,
     RouterModule,

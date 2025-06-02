@@ -36,15 +36,15 @@ export class DeleteDialogComponent {
     this.isProcessing = true;
     const data = { uuid: this.data.roleId };
     
-    this.api.deleteRole(data).subscribe({
-      next: (res: any) => {
-        this.toastr.success('Role Deleted Successfully!');
-        this.isProcessing = false;
-        this.dialogRef.close(true);
-      },
-      error: (err: any) => {
-        this.isProcessing = false;
-      },
-    })
+    // this.api.deleteRole(data).subscribe({
+    //   next: (res: any) => {
+    //     this.toastr.success('Role Deleted Successfully!');
+    //     this.isProcessing = false;
+    //     this.dialogRef.close(true);
+    //   },
+    //   error: (err: any) => {
+    //     this.isProcessing = false;
+    //   },
+    // })
   }
 }

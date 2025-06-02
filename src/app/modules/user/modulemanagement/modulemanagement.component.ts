@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/core/services/api.service';
 import { AddModuleComponent } from './add-module/add-module.component';
 import { CommonService } from 'src/app/core/services/common.service';
-
+import { MODULE_TABLE_COLUMNS } from 'src/app/core/models/table.column.model';
 @Component({
   selector: 'app-modulemanagement',
   templateUrl: './modulemanagement.component.html',
@@ -16,7 +16,7 @@ export class ModulemanagementComponent {
   currentPage = 0;
   pageSize = 5;
   searchText = '';
-
+  tableColumns = MODULE_TABLE_COLUMNS;
   constructor(
     private api: ApiService,
     private dialog: MatDialog,
@@ -24,7 +24,33 @@ export class ModulemanagementComponent {
   ) { }
 
   ngOnInit() {
+    this.tableColumns = MODULE_TABLE_COLUMNS.map(col => {
+      if (col.field === 'edit') {
+        col.buttons = [
+          {
+            icon: 'edit',
+            type: 'icon',
+            tooltip: 'Edit',
+            click: record => this.onEdit(record)
+          },
+        ];
+      }
+
+      if (col.field === 'delete') {
+        col.buttons = [
+          {
+            icon: 'delete',
+            type: 'icon',
+            tooltip: 'Delete',
+            click: record => this.onDelete(record)
+          }
+        ];
+      }
+      return col;
+    });
     this.getModules();
+    this.checkDeletePermission();
+    this.checkUpdatePermission();
   }
 
   fetchModules(event: { pageIndex: number; pageSize: number }) {
@@ -45,7 +71,7 @@ export class ModulemanagementComponent {
         name: module.name,
         description: module.description
       }));
-      this.totalModules = meta.totalItems;      
+      this.totalModules = meta.totalItems;
     });
   }
 
@@ -77,5 +103,44 @@ export class ModulemanagementComponent {
     if (data === 'Home') {
       this.common.redirectTo('user');
     }
+  }
+  checkUpdatePermission() {
+    if (!this.common.checkUpdatePermission("Module Management")) {
+      const index = this.tableColumns.findIndex(col => col.header === 'Edit');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  checkDeletePermission() {
+    console.log("DELETE PERMISSION",this.common.checkDeletePermission("Module Management"));
+    
+    if (!this.common.checkDeletePermission("Module Management")) {
+      const index = this.tableColumns.findIndex(col => col.header === 'Delete');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  onSortChange(e: any) {
+    console.log('Sort changed:', e);
+  }
+
+  onPageChange(event: { pageIndex: number; pageSize: number }) {
+    console.log('Page change:', event);
+  }
+
+  onSelectionChange(selected: any[]) {
+    console.log('Selection changed:', selected);
+  }
+
+  onEdit(record: any) {
+    console.log('Edit clicked:', record);
+  }
+
+  onDelete(record: any) {
+    console.log('Delete clicked:', record);
   }
 }
