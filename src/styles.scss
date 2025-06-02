@@ -138,7 +138,7 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
   font-size: 16px;
 }
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
-  gap: 15px !important;
+  gap: -5px !important;
   height: var(--mdc-list-list-item-one-line-container-height) !important;
   color: #333 !important;       // good contrast text color
   font-size: 16.1px !important; // slightly increased font size if you want
