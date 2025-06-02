@@ -37,13 +37,16 @@ import { PageheaderComponent } from './components/pageheader/pageheader.componen
 import { MatRadioModule } from '@angular/material/radio'; // <-- Add this import
 import { MtxGridModule } from '@ng-matero/extensions/grid';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent],
+  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -70,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatRadioModule,
     MtxGridModule,
     MatExpansionModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -79,6 +83,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
 
   ],
-  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent]
+  exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , 
+    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent]
 })
 export class SharedModule { }

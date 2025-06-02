@@ -40,7 +40,7 @@ export class CommonService {
   }
 
   checkpermission(module: string, operation: string): boolean {
-    console.log("PERMISSION",this.permissions);
+    // console.log("PERMISSION",this.permissions);
     const modulePermission = this.permissions?.RoleModulePermissions.find(
       (perm: any) => perm.module.name.trim() === module
     );
