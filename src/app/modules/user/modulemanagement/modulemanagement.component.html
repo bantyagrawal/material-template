@@ -11,7 +11,28 @@
     </div>
   </div>
 
-  <app-table [data]="moduleList" [displayedColumns]="['id', 'name', 'description']" [totalItems]="totalModules"
-    [pageSize]="5" [pageIndex]="currentPage" (pageChange)="fetchModules($event)">
-  </app-table>
-</div>
+<!-- <app-table
+  [data]="moduleList"
+  [displayedColumns]="['id', 'name', 'description']"
+  [totalItems]="totalModules"
+  [pageSize]="5"
+  [pageIndex]="currentPage"
+  (pageChange)="fetchModules($event)"
+>
+</app-table> -->
+
+<app-table
+  [list]="moduleList"
+  [columns]="tableColumns"
+  [pageSize]="pageSize"
+  [pageIndex]="currentPage"
+  [pageSizeOptions]="[5, 10, 50]"
+  [isLoading]="false"
+  [showPaginator]="true"
+  [showToolbar]="true"
+  [totalItems]="totalModules"
+  (sortChange)="onSortChange($event)"
+  (pageChange)="fetchModules($event)"
+  [columnPinnable]="true"
+  (selectionChange)="onSelectionChange($event)"
+></app-table>

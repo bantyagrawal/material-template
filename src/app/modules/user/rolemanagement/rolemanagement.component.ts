@@ -5,6 +5,7 @@ import { AddRoleComponent } from './add-role/add-role.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RoleUpdateComponent } from './role-update/role-update.component';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { ROLE_TABLE_COLUMNS } from 'src/app/core/models/table.column.model';
 
 @Component({
   selector: 'app-rolemanagement',
@@ -18,7 +19,7 @@ export class RolemanagementComponent implements OnInit {
   currentPage = 0;
   pageSize = 5;
   searchText = '';
-  tableColumns: string[] = ['id', 'name', 'level', 'status'];
+  tableColumns = ROLE_TABLE_COLUMNS;
   @ViewChild('statusTemplate') statusTemplate: any;
   @ViewChild('deleteTemplate') deleteTemplate: any;
 
@@ -31,6 +32,41 @@ export class RolemanagementComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tableColumns = ROLE_TABLE_COLUMNS.map(col => {
+      if (col.field === 'edit') {
+        col.buttons = [
+          {
+            icon: 'edit',
+            type: 'icon',
+            tooltip: 'Edit',
+            click: record => this.onEdit(record)
+          },
+        ];
+      }
+
+      if (col.field === 'delete') {
+        col.buttons = [
+          {
+            icon: 'delete',
+            type: 'icon',
+            tooltip: 'Delete',
+            click: record => this.openDeleteDialog(record)
+          }
+        ];
+      }
+
+      if (col.field === 'status') {
+        col.buttons = [
+          {
+            icon: 'add',
+            type: 'icon',
+            tooltip: 'Edit Permission',
+            click: record => this.openPermissionDialog(record)
+          },
+        ];
+      }
+      return col;
+    });
     this.checkUpdatePermission();
     this.checkDeletePermission();
     this.getRole();
@@ -78,7 +114,7 @@ export class RolemanagementComponent implements OnInit {
 
   openAddRolelDialog(): void {
     const dialogRef = this.dialog.open(AddRoleComponent, {
-      
+
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getRole();
@@ -119,9 +155,9 @@ export class RolemanagementComponent implements OnInit {
     });
   }
 
-  checkUpdatePermission() {
+  checkUpdatePermission(){
     if (!this.common.checkUpdatePermission('Role Management')) {
-      const index = this.tableColumns.indexOf('status');
+      const index = this.tableColumns.findIndex(col => col.header === 'Edit');
       if (index !== -1) {
         this.tableColumns.splice(index, 1);
       }
@@ -130,7 +166,7 @@ export class RolemanagementComponent implements OnInit {
 
   checkDeletePermission() {
     if (!this.common.checkDeletePermission('Role Management')) {
-      const index = this.tableColumns.indexOf('delete');
+      const index = this.tableColumns.findIndex(col => col.header === 'Delete');
       if (index !== -1) {
         this.tableColumns.splice(index, 1);
       }
@@ -145,5 +181,17 @@ export class RolemanagementComponent implements OnInit {
     if (data === 'Home') {
       this.common.redirectTo('user');
     }
+  }
+  
+  onSortChange(e: any) {
+    console.log('Sort changed:', e);
+  }
+
+  onSelectionChange(selected: any[]) {
+    console.log('Selection changed:', selected);
+  }
+
+  onEdit(record: any) {
+    console.log('Edit clicked:', record);
   }
 }

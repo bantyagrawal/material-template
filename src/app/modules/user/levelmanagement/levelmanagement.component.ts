@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/core/services/common.service';
 import { LevelDialogComponent } from './level-dialog/level-dialog.component';
 import { ApiService } from 'src/app/core/services/api.service';
+import { LEVEL_TABLE_COLUMNS } from 'src/app/core/models/table.column.model';
 
 @Component({
   selector: 'app-levelmanagement',
@@ -16,6 +17,8 @@ export class LevelmanagementComponent {
   currentPage = 0;
   pageSize = 5;
   searchText!: string;
+  tableColumns = LEVEL_TABLE_COLUMNS;
+
 
   constructor(
     private common: CommonService,
@@ -24,8 +27,35 @@ export class LevelmanagementComponent {
   ) { }
 
   ngOnInit() {
+    this.tableColumns = LEVEL_TABLE_COLUMNS.map(col => {
+      if (col.field === 'edit') {
+        col.buttons = [
+          {
+            icon: 'edit',
+            type: 'icon',
+            tooltip: 'Edit',
+            click: record => this.onEdit(record)
+          },
+        ];
+      }
+
+      if (col.field === 'delete') {
+        col.buttons = [
+          {
+            icon: 'delete',
+            type: 'icon',
+            tooltip: 'Delete',
+            click: record => this.onDelete(record)
+          }
+        ];
+      }
+      return col;
+    });
     this.getLevel();
+    this.checkDeletePermission();
+    this.checkUpdatePermission();
   }
+
 
   fetchLevels(event: { pageIndex: number, pageSize: number }) {
     this.currentPage = event.pageIndex;
@@ -79,6 +109,46 @@ export class LevelmanagementComponent {
     if (data === 'Home') {
       this.common.redirectTo('user');
     }
+  }
+
+    checkUpdatePermission() {
+    if (!this.common.checkUpdatePermission("Level Management")) {
+      const index = this.tableColumns.findIndex(col => col.header === 'Edit');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  checkDeletePermission() {
+    if (!this.common.checkDeletePermission("Level Management")) {
+      const index = this.tableColumns.findIndex(col => col.header === 'Delete');
+      if (index !== -1) {
+        this.tableColumns.splice(index, 1);
+      }
+    }
+  }
+
+  onSortChange(e: any) {
+    console.log('Sort changed:', e);
+  }
+
+  onPageChange(event: { pageIndex: number; pageSize: number }) {
+    console.log('Page change:', event);
+  }
+
+  onSelectionChange(selected: any[]) {
+    console.log('Selection changed:', selected);
+  }
+
+  onEdit(record: any) {
+    console.log(this.levelList);
+
+    console.log('Edit clicked:', record);
+  }
+
+  onDelete(record: any) {
+    console.log('Delete clicked:', record);
   }
 
 }
