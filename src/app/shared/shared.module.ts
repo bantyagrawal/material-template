@@ -35,6 +35,8 @@ import { ChartComponent } from './components/chart/chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { PageheaderComponent } from './components/pageheader/pageheader.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { RouterModule } from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,6 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     NgApexchartsModule,
     MatExpansionModule,
+    MatSlideToggleModule,
+    RouterModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

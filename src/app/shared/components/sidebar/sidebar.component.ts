@@ -112,4 +112,11 @@ export class SidebarComponent {
     if (!item.permission) return true;
     return this.permissions(item.permission.module, item.permission.operation);
   }
+
+isExpandableActive(item: SidebarItem): boolean {
+  if (!item.sublist) return false;
+  return item.sublist.some((child: SidebarItem) => this.isActive(child.redirectTo));
+}
+
+
 }

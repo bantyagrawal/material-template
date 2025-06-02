@@ -356,4 +356,41 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #404040 !important;
 }
 
+.mat-mdc-dialog-actions {
+    justify-content: start;
+    background-color: #404040;
+}
+
+.mat-mdc-dialog-container {
+    --mdc-dialog-container-color: #202020;
+    --mdc-dialog-subhead-color: #404040;
+    --mdc-dialog-supporting-text-color: rgba(0, 0, 0, 0.6);
+}
+
+}
+
+.custom-expansion{
+  mat-expansion-panel-header{ 
+    width: 200px !important;
+  }
+}
+
+a.mdc-list-item{
+  padding: 0 !important;
+}
+
+mat-drawer-inner-container::-webkit-scrollbar {
+  display: none !important; /* hides scrollbar */
+}
+
+mat-icon {
+  margin-right: 5px !important;
+}
+
+mat-panel-title{
+  .expandDesign{
+    position: relative !important;
+    left: -14px !important;
+    font-weight: 500 !important;
+  }
 }
