@@ -56,24 +56,24 @@ export class SidebarComponent {
       redirectTo: '/'
     },
     {
-      name: 'User Management',
+      name: 'User ',
       icon: 'group',
       redirectTo: '/usermanagement',
       permission: { module: 'Users Management', operation: 'read' }
     },
     {
-      name: 'Role Management',
+      name: 'Role',
       icon: 'admin_panel_settings',
       redirectTo: '/rolemanagement',
       permission: { module: 'Module Management', operation: 'read' }
     },
     {
-      name: 'Level Management',
+      name: 'Level',
       icon: 'layers',
       redirectTo: '/levelmanagement'
     },
     {
-      name: 'Module Management',
+      name: 'Module',
       icon: 'view_module',
       redirectTo: '/modulemanagement'
     },
