@@ -29,7 +29,7 @@ import {
   styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent implements OnInit, OnDestroy {
-  @Input() text = '';
+  @Input() text = 'Text';
   @Input() position: 'top' | 'bottom' | 'left' | 'right' = 'top';
   @Input() delay = 300;
 

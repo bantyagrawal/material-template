@@ -39,7 +39,7 @@ import { MtxGridModule } from '@ng-matero/extensions/grid';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TooltipComponent } from './tooltip/tooltip.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
