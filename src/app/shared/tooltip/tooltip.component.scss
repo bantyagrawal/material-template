@@ -1,0 +1,14 @@
+::ng-deep span {
+  transition: opacity 0.2s ease-in-out;
+}
+.dynamic-tooltip {
+  position: absolute;
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000;
+  pointer-events: none; // optional, prevents tooltip from blocking mouse
+  transition: opacity 0.2s ease-in-out;
+}

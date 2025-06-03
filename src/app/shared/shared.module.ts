@@ -39,6 +39,7 @@ import { MtxGridModule } from '@ng-matero/extensions/grid';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TooltipComponent } from './tooltip/tooltip.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent],
+  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -84,6 +85,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   ],
   exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , 
-    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent]
+    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent]
 })
 export class SharedModule { }
