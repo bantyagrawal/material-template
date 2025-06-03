@@ -30,7 +30,12 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder , private apiService: ApiService, private profile:CommonService,private toastr: ToastrService) {
     this.data=profile.permissions;
+    
   }
+  user = {
+    avatar: 'https://i.pravatar.cc/150?img=3',
+    name: 'John Doe'
+  };
 
  
 

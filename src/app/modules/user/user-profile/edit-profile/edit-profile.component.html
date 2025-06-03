@@ -1,128 +1,66 @@
 <app-pageheader 
   [title]="'Edit Profile'" 
   [subtitle]="['Home','Edit Profile']" 
-  [customClass]="'edit-profile-header'"(spanClicked)="redirectFromPageHeader($event)">
+  [customClass]="'edit-profile-header'"
+  (spanClicked)="redirectFromPageHeader($event)">
 </app-pageheader>
-<mat-card>
-  
 
+<div class="edit-profile-container">
+ 
+  <mat-card class="profile-card">
+    <mat-card-content class="white-container">
+      <img [src]="user.avatar" alt="avatar" class="avatar" />
+      <h2 class="name">{{ data.name }}</h2>
+      <p class="job-title">{{ data.email }}</p>
+      <p class="bio">I like reading, writing and drawing.</p>
+
+      <div class="actions">
+        <a mat-flat-button color="primary" href="https://github.com/nzbin" target="_blank">Follow Me</a>
+        <button mat-flat-button color="warn">Contact Me</button>
+      </div>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/profile">
+        <mat-icon matListItemIcon>account_circle</mat-icon>
+        {{ 'profile' | translate }}
+      </a>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>edit</mat-icon>
+        {{ 'edit_profile' | translate }}
+      </a>
+      <a mat-list-item>
+        <mat-icon matListItemIcon>exit_to_app</mat-icon>
+        {{ 'logout' | translate }}
+      </a>
+    </mat-nav-list>
+  </mat-card>
+
+
+  <mat-card class="edit-form-card">
     <mat-card-content class="white-container">
       <form [formGroup]="reactiveForm" class="form-field-full" (ngSubmit)="onSubmit()">
         <div class="two-column-container">
-          <!-- Left column -->
+      
           <div class="column">
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'Name',
-                  type: 'text',
-                  control: nameControl,
-                  placeholder: 'Enter name',
-                  errorMessage: 'Please enter name',
-                  customClass: 'edit-profile-input'
-                }"
-              ></app-input>
-            </div>
-  
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'Email',
-                  type: 'email',
-                  control: emailControl,
-                  placeholder: 'Enter email',
-                  errorMessage: 'Please enter valid email',
-                  customClass: 'edit-profile-input'
-                }"
-              ></app-input>
-            </div>
-  
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'IPv4',
-                  type: 'text',
-                  control: ipv4Control,
-                  placeholder: 'Enter IPv4',
-                  errorMessage: 'Please enter IPv4',
-                  customClass: 'edit-profile-input'
-                }"
-              ></app-input>
-            </div>
-  
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'IPv6',
-                  type: 'text',
-                  control: ipv6Control,
-                  placeholder: 'Enter IPv6',
-                  errorMessage: 'Please enter IPv6',
-                  customClass: 'edit-profile-input'
-                }"
-              ></app-input>
-            </div>
+            <app-input [data]="{ label: 'Name', type: 'text', control: nameControl, placeholder: 'Enter name', errorMessage: 'Please enter name', customClass: 'edit-profile-input' }"></app-input>
+            <app-input [data]="{ label: 'Email', type: 'email', control: emailControl, placeholder: 'Enter email', errorMessage: 'Please enter valid email', customClass: 'edit-profile-input' }"></app-input>
+            <app-input [data]="{ label: 'IPv4', type: 'text', control: ipv4Control, placeholder: 'Enter IPv4', errorMessage: 'Please enter IPv4', customClass: 'edit-profile-input' }"></app-input>
+            <app-input [data]="{ label: 'IPv6', type: 'text', control: ipv6Control, placeholder: 'Enter IPv6', errorMessage: 'Please enter IPv6', customClass: 'edit-profile-input' }"></app-input>
           </div>
-  
-          <!-- Right column -->
+   
           <div class="column">
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'UserId',
-                  type: 'text',
-                  control: userIdControl,
-                  placeholder: 'Enter user ID',
-                  errorMessage: 'Please enter user ID',
-                  customClass: 'edit-profile-input'
-                }"
-              ></app-input>
-            </div>
-  
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'Mobile',
-                  type: 'number',
-                  control: mobileControl,
-                  placeholder: 'Enter mobile',
-                  errorMessage: 'Please enter mobile number',
-                  customClass: 'edit-profile-input',
-                  icon: 'smartphone'
-                }"
-              ></app-input>
-            </div>
-  
-            <div class="input">
-              <app-input
-                [data]="{
-                  label: 'DeviceId',
-                  type: 'number',
-                  control: deviceIdControl,
-                  placeholder: 'Enter device ID',
-                  errorMessage: 'Please enter device ID',
-                  customClass: 'edit-profile-input'
-                }"
-              >
-                <mat-icon matSuffix>phone</mat-icon>
-              </app-input>
-            </div>
-  
-            <div class="input">
-                <app-select
-                [data]="{
-                  label: 'Select Wallet',
-                  placeholder: 'Select Wallet',
-                  options: walletOptions,
-                  control: walletTypeControl,
-                  errorMessage: 'Wallet is required',
-                  customClass: 'edit-profile-input'
-                }"
-              ></app-select>
-            </div>
+            <app-input [data]="{ label: 'UserId', type: 'text', control: userIdControl, placeholder: 'Enter user ID', errorMessage: 'Please enter user ID', customClass: 'edit-profile-input' }"></app-input>
+            <app-input [data]="{ label: 'Mobile', type: 'number', control: mobileControl, placeholder: 'Enter mobile', errorMessage: 'Please enter mobile number', customClass: 'edit-profile-input', icon: 'smartphone' }"></app-input>
+            <app-input [data]="{ label: 'DeviceId', type: 'number', control: deviceIdControl, placeholder: 'Enter device ID', errorMessage: 'Please enter device ID', customClass: 'edit-profile-input' }">
+              <mat-icon matSuffix>phone</mat-icon>
+            </app-input>
+            <app-select [data]="{ label: 'Select Wallet', placeholder: 'Select Wallet', options: walletOptions, control: walletTypeControl, errorMessage: 'Wallet is required', customClass: 'edit-profile-input' }"></app-select>
           </div>
         </div>
-  
+
         <app-button
           [data]="{
             label: 'Save',
@@ -130,9 +68,9 @@
             type: 'submit',
             disabled: reactiveForm.invalid,
             customClass: 'save-button'
-          }"
-        ></app-button>
+          }">
+        </app-button>
       </form>
     </mat-card-content>
   </mat-card>
-  
+</div>
