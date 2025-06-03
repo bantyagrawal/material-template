@@ -16,7 +16,7 @@ export class TableComponent {
   @Input() hideRowSelectionCheckbox = false;
   @Input() showToolbar = true;
   @Input() columnHideable = true;
-  @Input() columnSortable = true;
+  @Input() columnSortable = false;
   @Input() columnPinnable!: boolean;
   @Input() rowHover = false;
   @Input() rowStriped = false;
