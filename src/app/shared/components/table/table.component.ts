@@ -6,7 +6,7 @@ import { MtxGridColumn } from '@ng-matero/extensions/grid';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-  
+
   @Input() pageOnFront = false;
   @Input() list: any[] = [];
   @Input() columns: MtxGridColumn[] = [];
@@ -17,7 +17,7 @@ export class TableComponent {
   @Input() showToolbar = true;
   @Input() columnHideable = true;
   @Input() columnSortable = true;
-  @Input() columnPinnable = false;
+  @Input() columnPinnable!: boolean;
   @Input() rowHover = false;
   @Input() rowStriped = false;
   @Input() expandable = false;
@@ -34,7 +34,10 @@ export class TableComponent {
   @Output() editClicked = new EventEmitter<any>();
   @Output() deleteClicked = new EventEmitter<any>();
 
-  
+  enableRowExpandable() {
+    this.columns[0].showExpand = this.expandable;
+  }
+
   changeSort(e: any) {
     this.sortChange.emit(e);
   }
@@ -42,7 +45,7 @@ export class TableComponent {
     this.selectionChange.emit(e);
   }
   onPageChange(event: any) {
-    console.log("EVENT",event);
+    console.log("EVENT", event);
     this.pageChange.emit({ pageIndex: event.pageIndex, pageSize: event.pageSize });
   }
   edit(record: any) {
@@ -51,5 +54,11 @@ export class TableComponent {
   }
   delete(record: any) {
     this.deleteClicked.emit(record);
+  }
+
+  logPin(event: any) {
+    console.log("EVENT", event);
+    console.log("PINNED", this.columnPinnable);
+    
   }
 }

@@ -26,5 +26,7 @@
   (sortChange)="onSortChange($event)"
   (pageChange)="fetchUsers($event)"
   (selectionChange)="onSelectionChange($event)"
+  [expandable]="false"
   [columnPinnable]="true"
+  [columnResizable]="true"
 ></app-table>
