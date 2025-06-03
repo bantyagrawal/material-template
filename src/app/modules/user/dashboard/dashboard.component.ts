@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ChartOptions } from 'src/app/core/models/chart.model';
 import { CommonService } from 'src/app/core/services/common.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogWelcomeComponent } from 'src/app/shared/components/dialog/dialog.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +13,15 @@ import { CommonService } from 'src/app/core/services/common.service';
 export class DashboardComponent {
 
   constructor(
-    private common: CommonService
+    private common: CommonService,
+    private dialog: MatDialog
   ) { }
+
+  // display popup on refresh
+  ngAfterViewInit(){
+     this.dialog.open(DialogWelcomeComponent);
+  }
+
   title = 'dash';
   stats = [
     {

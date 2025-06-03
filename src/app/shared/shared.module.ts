@@ -37,13 +37,20 @@ import { PageheaderComponent } from './components/pageheader/pageheader.componen
 import { MatRadioModule } from '@angular/material/radio'; // <-- Add this import
 import { MtxGridModule } from '@ng-matero/extensions/grid';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { DialogWelcomeComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
+
+
+const COMPONENTS_DYNAMIC: any[] = [
+  DialogWelcomeComponent,
+];
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent],
+  declarations: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, COMPONENTS_DYNAMIC],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -70,6 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatRadioModule,
     MtxGridModule,
     MatExpansionModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
