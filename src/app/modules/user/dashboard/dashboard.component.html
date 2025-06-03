@@ -1,25 +1,43 @@
-
 <app-pageheader [title]="'Dashboard'" [subtitle]="['Home']" [customClass]="'dashboard-custom-header'" (spanClicked)="redirectFromPageHeader($event)"></app-pageheader>
-  <!-- Your content here -->
-<div class="stats-grid">
-  <div class="stat-card" *ngFor="let stat of stats">
-    <mat-card [ngClass]="['stat-card-content', stat.color]">
-      <mat-card-header>
-        <mat-card-subtitle class="stat-title">{{ stat.title }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <h2 class="stat-amount">{{ stat.amount }}</h2>
 
-        <mat-progress-bar mode="determinate" [value]="stat.progress.value" color="primary"
-          class="stat-progress-bar"></mat-progress-bar>
+<app-tab>
+  <app-tab-item title="Tab 1" [active]="true">
+    <!-- Tab1 Content Start here -->
+    <ng-template>
+        <div class="stats-grid">
+          <div class="stat-card" *ngFor="let stat of stats">
+            <mat-card [ngClass]="['stat-card-content', stat.color]">
+              <mat-card-header>
+                <mat-card-subtitle class="stat-title">{{ stat.title }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <h2 class="stat-amount">{{ stat.amount }}</h2>
 
-        <small class="stat-footer">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-<div class="chart">
-  <app-chart [chartOptions]="chartOptions"></app-chart>
-  <app-chart [chartOptions]="chartOptions"></app-chart>
-</div>
+                <mat-progress-bar mode="determinate" [value]="stat.progress.value" color="primary"
+                  class="stat-progress-bar"></mat-progress-bar>
+
+                <small class="stat-footer">Monthly</small>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="chart">
+          <app-chart [chartOptions]="chartOptions"></app-chart>
+          <app-chart [chartOptions]="chartOptions"></app-chart>
+        </div>
+    </ng-template>
+  </app-tab-item>
+
+  <app-tab-item title="Tab 2">
+    <!-- Tab2 Content Start here -->
+    <ng-template>
+      <p>This is Tab 2 content.</p>
+    </ng-template>
+  </app-tab-item>
+</app-tab>
+
+
+
+
+
   
