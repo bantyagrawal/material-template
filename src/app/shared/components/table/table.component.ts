@@ -18,7 +18,7 @@ export class TableComponent {
   @Input() columnHideable = true;
   @Input() columnSortable = true;
   @Input() columnPinnable = false;
-  @Input() rowHover = false;
+  @Input() rowHover = true;
   @Input() rowStriped = false;
   @Input() expandable = false;
   @Input() showPaginator = true;

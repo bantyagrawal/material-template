@@ -131,5 +131,12 @@ $icon-color: #666;
 }
 
 .table-head-bg {
-  background-color: rgb(221, 218, 218) !important;
+  background-color: #bfe7e8 !important;
 }
+
+
+::ng-deep .mat-table-hover .mat-mdc-row:hover {
+  background-color: #c7e7f3 !important;
+  cursor: pointer;
+}
+

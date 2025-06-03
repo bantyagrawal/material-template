@@ -383,3 +383,7 @@ mat-panel-title{
     font-weight: 500 !important;
   }
 }
+.mat-table-striped .mat-mdc-row:nth-child(even) {
+  background-color: #f4eded !important;
+}
+

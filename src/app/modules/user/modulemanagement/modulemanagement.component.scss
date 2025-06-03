@@ -4,26 +4,24 @@
   text-align: center;
 }
 
-/* Toolbar container */
+
 .toolbar-row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.2rem;
+  justify-content: space-between;
+  margin: 1rem 0;
+  flex-wrap: wrap; // allows wrapping on smaller screens
   gap: 1rem;
-  padding-top: 10px;
-}
 
-/* Search bar full width on small screens */
-app-search-bar {
-  flex: 1 1 300px; /* grow and shrink, min 300px */
-  min-width: 200px;
-}
+  app-search-bar {
+    flex: 1 1 300px; // grow, shrink, min width
+    min-width: 250px;
+  }
 
-/* Button container aligned right */
-.add-module {
-  flex: 0 0 auto;
+  .add-module {
+    flex: 0 0 auto; // no grow, no shrink, width auto
+    // make button smaller on mobile if needed
+  }
 }
 .custom-dialog-container {
   padding: 0;  /* remove extra padding */
@@ -45,18 +43,12 @@ app-table {
     font-size: 1.5rem;
   }
 
-
-
-  .toolbar-row {
-    flex-direction: column;
-    align-items: stretch;
+  .add-module app-button {
+    width: 100%;
   }
 
-  .add-module {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 0.5rem;
-  }
+
+  
 }
 
 .main-containt {
