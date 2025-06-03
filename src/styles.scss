@@ -138,7 +138,7 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
   font-size: 16px;
 }
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
-  gap: 15px !important;
+  gap: -5px !important;
   height: var(--mdc-list-list-item-one-line-container-height) !important;
   color: #333 !important;       // good contrast text color
   font-size: 16.1px !important; // slightly increased font size if you want
@@ -356,4 +356,30 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #404040 !important;
 }
 
+}
+
+.custom-expansion{
+  mat-expansion-panel-header{ 
+    width: 200px !important;
+  }
+}
+
+a.mdc-list-item{
+  padding: 0 !important;
+}
+
+mat-drawer-inner-container::-webkit-scrollbar {
+  display: none !important; /* hides scrollbar */
+}
+
+mat-icon {
+  margin-right: 5px !important;
+}
+
+mat-panel-title{
+  .expandDesign{
+    position: relative !important;
+    left: -14px !important;
+    font-weight: 500 !important;
+  }
 }

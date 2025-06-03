@@ -1,4 +1,5 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
+import { NotificationService } from './core/services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component, HostListener, ViewChild } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private notificationService: NotificationService) {}
   title = 'frontendStructure';
  isScreenSmall = false;
 
