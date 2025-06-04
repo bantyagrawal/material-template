@@ -130,3 +130,29 @@ a.mat-list-item {
   position: absolute;
   right: 16px;
 }
+
+.sidebar-link {
+  cursor: pointer;
+  border-radius: 8px; 
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+  color: rgba(0, 0, 0, 0.87); 
+
+  mat-icon {
+    margin-right: 10px;
+  }
+}
+
+.sidebar-link:hover {
+  background-color: rgb(153, 148, 148); 
+  color: white;
+  border-radius: 20px;
+}
+
+// .sidebar-link.active {
+//   background-color:rgb(212, 179, 179); 
+//   color: white;
+//   font-weight: 600;
+// }
