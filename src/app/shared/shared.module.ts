@@ -42,6 +42,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { TabComponent } from './components/tab/tab.component';
 import { TabItemComponent } from './components/tab/tab-item.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { RouterModule } from '@angular/router';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -49,11 +51,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent],
+  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent , ProfileCardComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
@@ -87,6 +90,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   ],
   exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , 
-    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent]
+    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent , ProfileCardComponent]
 })
 export class SharedModule { }

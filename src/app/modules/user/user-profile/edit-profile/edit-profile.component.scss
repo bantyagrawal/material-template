@@ -1,47 +1,18 @@
+.profile-card-wrapper {
+  width: 100%; 
+  max-width: 100%;
+  
+  @media (min-width: 768px) { 
+    width: 25%;
+    max-width: 25%;
+  }
+}
+
 .edit-profile-container {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
   padding: 10px;
-}
-
-.profile-card {
-  flex: 0 0 300px;
-  max-width: 300px;
-  width: 300px;
-  text-align: center;
-}
-
-.avatar {
-  border-radius: 50%;
-  margin-bottom: 8px;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-}
-
-.name {
-  margin: 8px 0;
-  font-weight: 400;
-}
-
-.job-title {
-  margin: 8px 0;
-}
-
-.bio {
-  margin: 8px 0;
-  color: grey;
-}
-
-.actions {
-  margin-top: 8px;
-
-  a,
-  button {
-    margin-right: 8px;
-    border-radius: 20px;
-  }
 }
 
 .navlist {
@@ -50,20 +21,21 @@
 
 .edit-form-card {
   flex: 1;
-  min-width: 400px;
+  width: 100%;
+  min-width: 0; 
 }
 
 .two-column-container {
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .column {
+  flex: 1 1 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%;
 }
 
 .input {
@@ -75,11 +47,21 @@
 }
 
 @media (max-width: 768px) {
-  .two-column-container {
-    flex-wrap: wrap;
+  .edit-profile-container {
+    flex-direction: column;
+  }
+
+  .edit-form-card {
+    width: 100%;
   }
 }
 
-.white-container{
-  padding: 16px 16px 16px;
+@media (min-width: 768px) {
+  .column {
+    flex: 1 1 0;
+  }
+}
+
+.mat-mdc-card-header {
+  padding: 16px 16px 19px;
 }

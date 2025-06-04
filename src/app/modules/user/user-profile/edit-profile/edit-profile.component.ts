@@ -122,4 +122,14 @@ export class EditProfileComponent implements OnInit {
       this.profile.redirectTo('user');
     }
   }
+  redirectTo(path: string) {
+    this.profile.redirectTo(path);
+  }
+
+  logout() {
+    this.apiService.logOut().subscribe((res: any) => {
+      this.redirectTo('login');
+    });
+  }
+  
 }

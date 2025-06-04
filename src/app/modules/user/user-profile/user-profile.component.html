@@ -1,32 +1,32 @@
-<div class="container">
-  <mat-card class="profile-card">
-    <mat-card-content>
-      <img [src]="user.avatar" alt="avatar" class="avatar" />
-      <h2 class="name">{{ data.name }}</h2>
-      <p class="job-title">{{ data.email }}</p>
-      <p class="bio">I like reading, writing and drawing.</p>
+<app-pageheader
+  [title]="'User Profile'"
+  [subtitle]="['Home', 'Profile']"
+  [customClass]="'edit-profile-header'"
+  (spanClicked)="redirectFromPageHeader($event)"
+>
+</app-pageheader>
 
-      <div class="actions">
-        <a mat-flat-button color="primary" href="https://github.com/nzbin" target="_blank">Follow Me</a>
-        <button mat-flat-button color="warn">Contact Me</button>
-      </div>
+<div class="edit-profile-container">
+  <div class="profile-card-wrapper">
+    <app-profile-card [user]="user" [data]="data" (logoutClicked)="logout()">
+    </app-profile-card>
+  </div>
+
+  <mat-card class="edit-form-card">
+    <mat-card-content class="white-container">
+      <h2>About</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non velit
+        vel nulla luctus lacinia. Sed vitae sodales tortor. Nulla facilisi. Cras
+        ac sapien at tortor vehicula commodo. Aenean bibendum orci id facilisis
+        suscipit. Integer sagittis lacus sit amet nunc consectetur, a commodo
+        erat fermentum.
+      </p>
+      <p>
+        Proin vulputate metus vel ligula suscipit, et egestas urna consequat.
+        Pellentesque habitant morbi tristique senectus et netus et malesuada
+        fames ac turpis egestas. Suspendisse potenti.
+      </p>
     </mat-card-content>
-
-    <mat-divider class="divider"></mat-divider>
-
-    <mat-nav-list class="navlist">
-      <a mat-list-item routerLink="/user/profile/overview">
-        <mat-icon matListItemIcon>account_circle</mat-icon>
-        {{ 'profile' | translate }}
-      </a>
-      <a mat-list-item routerLink="/edit">
-        <mat-icon matListItemIcon>edit</mat-icon>
-        {{ 'edit_profile' | translate }}
-      </a>
-      <a mat-list-item tabindex="0">
-        <mat-icon matListItemIcon>exit_to_app</mat-icon>
-        {{ 'logout' | translate }}
-      </a>
-    </mat-nav-list>  
   </mat-card>
 </div>

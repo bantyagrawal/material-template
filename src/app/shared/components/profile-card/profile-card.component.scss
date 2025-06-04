@@ -1,0 +1,43 @@
+.profile-card {
+    flex: 0 0 300px;
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .avatar {
+    border-radius: 50%;
+    margin-bottom: 8px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .name {
+    margin: 8px 0;
+    font-weight: 400;
+  }
+  
+  .job-title {
+    margin: 8px 0;
+  }
+  
+  .bio {
+    margin: 8px 0;
+    color: grey;
+  }
+  
+  .actions {
+    margin-top: 8px;
+  
+    a,
+    button {
+      margin-right: 8px;
+      border-radius: 20px;
+    }
+  }
+  
+  .white-container {
+    padding: 16px;
+  }
+  

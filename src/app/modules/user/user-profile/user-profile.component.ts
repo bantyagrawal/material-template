@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/core/services/api.service';
 import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CommonService } from 'src/app/core/services/common.service';
 })
 export class UserProfileComponent {
   data:any
-constructor(private profile:CommonService){
+constructor(private profile:CommonService ,  private apiService:ApiService){
    this.data=profile.permissions;
   
 }
@@ -17,4 +18,18 @@ constructor(private profile:CommonService){
     avatar: 'https://i.pravatar.cc/150?img=3',
     name: 'John Doe'
   };
+  redirectTo(path: string) {
+    this.profile.redirectTo(path);
+  }
+
+  logout() {
+    this.apiService.logOut().subscribe((res: any) => {
+      this.redirectTo('login');
+    });
+  }
+  redirectFromPageHeader(data: string) {
+    if (data === 'Home') {
+      this.profile.redirectTo('user');
+    }
+  }
 }
