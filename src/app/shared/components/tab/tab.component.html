@@ -1,0 +1,25 @@
+<!-- The first div renders all the tab titles using *ngFor.
+When a tab title is clicked, selectTab(i) changes the active tab.
+The ngTemplateOutlet dynamically renders the tab content of the active tab. -->
+
+
+<!-- Tab Headers -->
+<div class="tab-header">
+  <div
+    class="tab-title"
+    *ngFor="let tab of tabItems.toArray(); let i = index"
+    [class.active]="i === activeTabIndex"
+    (click)="selectTab(i)"
+  >
+    {{ tab.title }}
+  </div>
+</div>
+
+<!-- Tab Content -->
+<div class="tab-content">
+  <ng-container *ngFor="let tab of tabItems.toArray(); let i = index">
+    <ng-container *ngIf="i === activeTabIndex">
+      <ng-template [ngTemplateOutlet]="tab.templateRef"></ng-template>
+    </ng-container>
+  </ng-container>
+</div>

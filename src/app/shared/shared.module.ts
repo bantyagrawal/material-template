@@ -40,6 +40,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NotificationDialogComponent } from './components/notification-dialog/notification-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { TabComponent } from './components/tab/tab.component';
+import { TabItemComponent } from './components/tab/tab-item.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent],
+  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -85,6 +87,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   ],
   exports: [InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , 
-    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent]
+    SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent]
 })
 export class SharedModule { }
