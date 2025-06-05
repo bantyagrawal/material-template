@@ -537,6 +537,8 @@ mat-panel-title {
 .search-bar-field .mat-mdc-form-field-subscript-wrapper {
   display: none !important;
 }
-
+.data-grid-options .mdc-form-field > label {
+  padding-left: 0 !important;
+}
 
 ///////////////////////// Ashish////////////////////////////////
