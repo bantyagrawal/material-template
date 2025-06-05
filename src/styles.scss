@@ -225,6 +225,20 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #f5f5f5 !important;
   }
 
+  .mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+    // -moz-osx-font-smoothing: grayscale;
+    // -webkit-font-smoothing: antialiased;
+    // white-space: normal;
+    // font-family: var(--mat-menu-item-label-text-font);
+    // line-height: var(--mat-menu-item-label-text-line-height);
+    // font-size: var(--mat-menu-item-label-text-size);
+    // letter-spacing: var(--mat-menu-item-label-text-tracking);
+    // font-weight: var(--mat-menu-item-label-text-weight);
+    background-color: black;
+}
+
+
+
   // Checkbox fill on check
   .mat-mdc-checkbox-checked .mdc-checkbox__background {
     background-color: #E7BE43 !important; // your primary color
@@ -268,6 +282,9 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background: #424242;
     color: #ffffff;
   }
+
+
+
 
 
   mat-icon,
@@ -537,6 +554,8 @@ mat-panel-title {
 .search-bar-field .mat-mdc-form-field-subscript-wrapper {
   display: none !important;
 }
+
+
 
 
 ///////////////////////// Ashish////////////////////////////////
