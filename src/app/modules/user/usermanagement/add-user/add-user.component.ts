@@ -62,13 +62,7 @@ export class AddUserComponent implements OnInit {
       deviceId: ['', Validators.required],
       walletType: ['', Validators.required],
       role: ['', Validators.required]
-    }, { validators: this.matchPasswords });
-  }
-
-  matchPasswords(group: AbstractControl) {
-    const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordMismatch: true };
+    });
   }
 
   get nameControl(): FormControl {
@@ -129,6 +123,19 @@ export class AddUserComponent implements OnInit {
 
   hasSpecialCharacter(): boolean {
     return /[@$!%*?&]/.test(this.myForm.get('password')?.value);
+  }
+
+  showConfirmPasswordError(): string {
+    const password = this.myForm.get('password');
+    const confirmPasswordControl = this.myForm.get('confirmPassword');
+    if (confirmPasswordControl?.hasError('required')) {
+      return "Confirm password is required";
+    }    
+    if (password?.value != confirmPasswordControl?.value) {
+      confirmPasswordControl?.setErrors({ passwordMismatch: true });
+      return "Password and confirm password do not match";
+    }
+    return '';
   }
 
   showPasswordError(): string {
