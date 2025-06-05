@@ -237,6 +237,11 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: black;
 }
 
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    // background-color: var(--mdc-dialog-container-color, white);
+    background-color: black;
+}
+
 
 
   // Checkbox fill on check
