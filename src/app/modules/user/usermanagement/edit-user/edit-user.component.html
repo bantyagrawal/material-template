@@ -1,0 +1,75 @@
+<div class="responsive-form">
+  <h2 class="form-title">Add User</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <div class="form-group">
+        <app-input [data]="{
+          label: 'Name',
+          placeholder: 'Enter name',
+          type: 'text',
+          control: nameControl,
+          errorMessage: 'Name is required'
+        }"></app-input>
+      </div>
+
+      <div class="form-group">
+        <app-input [data]="{
+          label: 'Email',
+          placeholder: 'Enter email',
+          type: 'email',
+          control: emailControl,
+          errorMessage: 'Valid email required'
+        }"></app-input>
+      </div>
+
+      <div class="form-group">
+        <app-input [data]="{
+          label: 'Mobile',
+          placeholder: 'Enter mobile number',
+          type: 'tel',
+          control: mobileControl,
+          errorMessage: 'Mobile is required'
+        }"></app-input>
+      </div>
+
+      <div class="form-group">
+        <app-input [data]="{
+          label: 'User ID',
+          placeholder: 'Enter user ID',
+          type: 'text',
+          control: userIdControl,
+          errorMessage: 'User ID is required'
+        }"></app-input>
+      </div>
+
+      <div class="form-group">
+        <app-select [data]="{
+          label: 'Role',
+          placeholder: 'Select role',
+          options: roleOptions,
+          control: roleControl,
+          errorMessage: 'Role is required'
+        }"></app-select>
+      </div>
+
+      <div class="form-group">
+        <app-select [data]="{
+          label: 'User Type',
+          placeholder: 'Select user type',
+          options: userTypeOptions,
+          control: userTypeControl,
+          errorMessage: 'User type is required'
+        }"></app-select>
+      </div>
+    </div>
+
+    <div class="form-footer">
+      <app-button [data]="{
+        label: 'Submit',
+        color: 'primary',
+        type: 'submit',
+        customClass: 'submit-btn'
+      }"></app-button>
+    </div>
+  </form>
+</div>
