@@ -303,7 +303,8 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
   .dashboard-wrapper,
   .main-content-wrapper {
     background-color: #181818 !important;
-    color: #ffffff !important;
+    // color: black !important;
+    color: white! important;
   }
 
   // Toolbar
@@ -331,7 +332,7 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
   .mat-mdc-list-item,
   .mat-mdc-list-option,
   .mdc-list-item__primary-text {
-    background-color: #1e1e1e !important;
+    // background-color: #1e1e1e !important;
     color: #f5f5f5 !important;
   }
 
@@ -443,6 +444,7 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     --mdc-elevated-card-container-shape: 4px;
     --mdc-outlined-card-container-shape: 4px;
     --mdc-outlined-card-outline-width: 1px;
+    background-color: black !important;
 }
 
 .custom-header[_ngcontent-ng-c73868651] {
