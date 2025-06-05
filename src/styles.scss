@@ -257,6 +257,16 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     color: #f5f5f5 !important; // light icon color
   }
 
+    .profile-section {
+    background-color: #44474e !important;
+  }
+
+  .sidenav-main{
+   .active{
+  background-color: #44474e !important;  
+  }
+}
+
   // Buttons me icons ka color (edit/delete icons etc.)
   .mat-mdc-icon-button,
   .mat-mdc-button,
@@ -309,6 +319,15 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     color: #f5f5f5 !important;
   }
 
+  .container[_ngcontent-ng-c1550191237] {
+    width: auto;
+    margin: 40px auto;
+    background: #1c1c1c !important;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
   .mat-mdc-list-item,
   .mat-mdc-list-option,
   .mdc-list-item__primary-text {
@@ -349,9 +368,9 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
   }
 
   // Buttons and icons
-  .mat-icon {
-    color: light-dark(#1a1b1f, #e3e2e6) !important;
-  }
+  // .mat-icon {
+  //   color: light-dark(#1a1b1f, #e3e2e6) !important;
+  // }
 
   .mat-raised-button,
   .mat-flat-button,
