@@ -30,8 +30,10 @@ export class AddUserComponent implements OnInit {
     }
   ];
 
-    userTypeOptions: SelectOption[] = [
-   
+  userTypeOptions: SelectOption[] = [
+    { label: 'Internal', value: 'internal' },
+    { label: 'External', value: 'external' }
+
   ];
   roleOptions!: SelectOption[];
   isProcessing!: boolean;
