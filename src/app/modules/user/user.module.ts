@@ -30,7 +30,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core'; // For datepicker
+import { MatNativeDateModule } from '@angular/material/core';
+import { EditUserComponent } from './usermanagement/edit-user/edit-user.component'; // For datepicker
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core'; // For datepicker
     AddModuleComponent,
     DeleteDialogComponent,
     UserProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,

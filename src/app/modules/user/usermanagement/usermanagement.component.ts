@@ -4,6 +4,7 @@ import { CommonService } from 'src/app/core/services/common.service';
 import { AddUserComponent } from './add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { USER_TABLE_COLUMNS } from 'src/app/core/models/table.column.model';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 interface User {
   id: number;
@@ -87,6 +88,18 @@ export class UsermanagementComponent implements OnInit {
       }
     });
   }
+
+
+ openEditUserlDialog(): void {
+    const dialogRef = this.dialog.open(EditUserComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+      }
+    });
+  }
+
   getUsers(page = 1, limit = 5) {
     const params: any = { page, limit };
     if (this.searchText?.trim()) {
@@ -145,6 +158,7 @@ export class UsermanagementComponent implements OnInit {
 
     onEdit(record: any) {
     console.log('Edit clicked:', record);
+    this.openEditUserlDialog()
   }
 
   onDelete(record: any) {
