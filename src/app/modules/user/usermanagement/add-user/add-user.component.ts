@@ -29,6 +29,10 @@ export class AddUserComponent implements OnInit {
       value: 'Both'
     }
   ];
+
+    userTypeOptions: SelectOption[] = [
+   
+  ];
   roleOptions!: SelectOption[];
   isProcessing!: boolean;
 
@@ -61,6 +65,7 @@ export class AddUserComponent implements OnInit {
       ipv6: ['', Validators.required],
       deviceId: ['', Validators.required],
       walletType: ['', Validators.required],
+      userType: ['', Validators.required],
       role: ['', Validators.required]
     });
   }
@@ -109,6 +114,10 @@ export class AddUserComponent implements OnInit {
     return this.myForm.get('role') as FormControl;
   }
 
+  get userTypeControl(): FormControl {
+    return this.myForm.get('userType') as FormControl;
+  }
+
   hasUppercase(): boolean {
     return /[A-Z]/.test(this.myForm.get('password')?.value);
   }
@@ -130,7 +139,7 @@ export class AddUserComponent implements OnInit {
     const confirmPasswordControl = this.myForm.get('confirmPassword');
     if (confirmPasswordControl?.hasError('required')) {
       return "Confirm password is required";
-    }    
+    }
     if (password?.value != confirmPasswordControl?.value) {
       confirmPasswordControl?.setErrors({ passwordMismatch: true });
       return "Password and confirm password do not match";
