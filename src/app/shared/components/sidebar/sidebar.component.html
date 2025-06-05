@@ -1,27 +1,29 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav [mode]="isHandset ? 'over' : 'side'" [opened]="!isHandset" class="sidenav">
-    <mat-toolbar color="primary" class="sidenav-toolbar">
-      <img src="assets/images/applogo.png" alt="Logo" class="sidenav-logo" />
-      <span>MyApp</span>
-    </mat-toolbar>
+    <div class="sidenav-main">
+          <mat-toolbar color="primary" class="sidenav-toolbar">
+          <img src="assets/images/applogo.png" alt="Logo" class="sidenav-logo" />
+          <span>MyApp</span>
+        </mat-toolbar>
 
-      <div class="profile-section">
-      <!-- <img src="assets/images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg" class="avatar" alt="avatar" /> -->
-       <img [src]="user.avatar" alt="avatar" class="avatar" />
-      <div class="profile-info">
-        <div class="name">{{ user.username }}</div>
-        <div class="email">{{ user.userEmail }}</div>
-      </div>
+          <div class="profile-section">
+          <!-- <img src="assets/images/54b19ada-d53e-4ee9-8882-9dfed1bf1396.jpg" class="avatar" alt="avatar" /> -->
+          <img [src]="user.avatar" alt="avatar" class="avatar" />
+          <div class="profile-info">
+            <div class="name">{{ user.username }}</div>
+            <div class="email">{{ user.userEmail }}</div>
+          </div>
+        </div>
+
+
+        <mat-nav-list>
+          <ng-container *ngFor="let item of sidebarItems">
+            <ng-container *ngIf="hasPermission(item)">
+              <ng-container *ngTemplateOutlet="renderItem; context: { $implicit: item }"></ng-container>
+            </ng-container>
+          </ng-container>
+        </mat-nav-list>
     </div>
-
-
-    <mat-nav-list>
-      <ng-container *ngFor="let item of sidebarItems">
-        <ng-container *ngIf="hasPermission(item)">
-          <ng-container *ngTemplateOutlet="renderItem; context: { $implicit: item }"></ng-container>
-        </ng-container>
-      </ng-container>
-    </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
