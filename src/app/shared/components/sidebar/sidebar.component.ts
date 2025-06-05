@@ -24,7 +24,8 @@ interface SidebarItem {
 export class SidebarComponent {
   isHandset: boolean = false;
     user = {
-    avatar: 'https://i.pravatar.cc/150?img=3',
+    // avatar: 'https://i.pravatar.cc/150?img=3',
+    avatar: "/assets/images/avatar.jpg",
     username: '',
     userEmail: ''
   };

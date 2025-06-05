@@ -4,6 +4,7 @@
 html,
 body {
   height: 100%;
+  background-color: #efedf0 !important;
 }
 
 :root {
@@ -250,7 +251,7 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
 
   // Buttons and icons
   .mat-icon {
-    color: #f5f5f5 !important;
+    color: light-dark(#1a1b1f, #e3e2e6) !important;
   }
 
   .mat-raised-button,
@@ -373,7 +374,7 @@ mat-drawer-inner-container::-webkit-scrollbar {
 }
 
 mat-icon {
-  margin-right: 5px !important;
+  margin-right: .75rem !important;
 }
 
 mat-panel-title{
@@ -382,6 +383,15 @@ mat-panel-title{
     left: -14px !important;
     font-weight: 500 !important;
   }
+}
+
+.sidenav{
+.mat-drawer-inner-container{
+  overflow: hidden !important;
+}
+}
+.mat-drawer-container{
+  background-color: inherit !important;
 }
 
 .search-bar-field .mat-mdc-form-field-subscript-wrapper {
