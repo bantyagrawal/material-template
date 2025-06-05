@@ -554,8 +554,10 @@ mat-panel-title {
 .search-bar-field .mat-mdc-form-field-subscript-wrapper {
   display: none !important;
 }
-
-
-
-
+.data-grid-options .mdc-form-field > label {
+  padding-left: 0 !important;
+}
+.mat-table-striped .mat-mdc-row:nth-child(even) {
+  background-color: #f9f9f9 !important;
+}
 ///////////////////////// Ashish////////////////////////////////
