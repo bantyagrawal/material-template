@@ -179,6 +179,105 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     color: #f5f5f5;
   }
 
+
+
+
+ mat-checkbox,
+  mat-radio-button {
+    color: #f5f5f5 !important;
+  }
+
+  // Checkbox inner label
+  .mat-mdc-checkbox .mdc-label,
+  .mat-mdc-radio-button .mdc-label {
+    color: #f5f5f5 !important;
+  }
+
+  // Checkbox checkmark and radio selected icon
+  .mat-mdc-checkbox .mdc-checkbox__background,
+  .mat-mdc-radio-button .mdc-radio__background {
+    background-color: #404040 !important;
+    border-color: #f5f5f5 !important;
+  }
+
+  .mat-mdc-checkbox .mdc-checkbox__checkmark-path,
+  .mat-mdc-radio-button .mdc-radio__outer-circle,
+  .mat-mdc-radio-button .mdc-radio__inner-circle {
+    stroke: #f5f5f5 !important;
+    background-color: #f5f5f5 !important;
+  }
+
+  // Checkbox fill on check
+  .mat-mdc-checkbox-checked .mdc-checkbox__background {
+    background-color: #E7BE43 !important; // your primary color
+    border: none;
+  }
+
+  // Radio button selected background
+  .mat-mdc-radio-checked .mdc-radio__background {
+    border-color: #E7BE43 !important;
+    background-color: #E7BE43 !important;
+  }
+
+  // mtx-grid default table and text styling
+  mtx-grid,
+  .mat-mdc-table,
+  .mat-table {
+    background-color: #202020 !important;
+    color: #ffffff !important;
+  }
+
+  .mat-mdc-header-cell,
+  .mat-mdc-cell,
+  .mat-mdc-row {
+    color: #ffffff !important;
+    background-color: #202020 !important;
+  }
+
+  .mat-mdc-paginator,
+  .mat-paginator {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+
+  .mat-mdc-checkbox .mdc-checkbox__ripple,
+  .mat-mdc-radio-button .mdc-radio__ripple {
+    background-color: transparent !important;
+  }
+
+  // Tooltip if you use any
+  .mat-tooltip {
+    background: #424242;
+    color: #ffffff;
+  }
+
+
+  mat-icon,
+  .mat-icon {
+    color: #f5f5f5 !important; // light icon color
+  }
+
+  // Buttons me icons ka color (edit/delete icons etc.)
+  .mat-mdc-icon-button,
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-fab {
+    color: #f5f5f5 !important;
+  }
+
+  // Grid ke andar icons (MtxGrid specific override agar zarurat ho)
+  .mtx-grid .mat-icon {
+    color: #f5f5f5 !important;
+  }
+
+  // Optional: hover pr color change
+  .mat-icon:hover {
+    color: #e7be43 !important; // your gold hover color
+  }
+
+  
+
+
   table {
     th, td, tr { 
       color: #ccc ;
