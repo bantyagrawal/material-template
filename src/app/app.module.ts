@@ -8,24 +8,29 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar'; // If you're using a header
-import { MatIconModule } from '@angular/material/icon'; // If icons are used
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpinterceptorInterceptor } from './core/interceptors/httpinterceptor.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { CommonService } from './core/services/common.service';
-import { NgApexchartsModule } from 'ng-apexcharts'; // ✅ Make sure this is directly imported
+import { NgApexchartsModule } from 'ng-apexcharts'; 
 
-export function initApp(common: CommonService,) {
-  return () => common.assignPermission(window.location.href.slice(-5))
+export function initApp(common: CommonService) {
+  return () => {
+    return common.assignPermission(window.location.href.slice(-5))
+      .catch(err => {
+        console.error('Permission initialization failed:', err);
+        return Promise.resolve();
+      });
+  };
 }
+
 @NgModule({
   declarations: [
     AppComponent,

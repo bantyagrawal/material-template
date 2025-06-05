@@ -31,8 +31,8 @@ export class AddUserComponent implements OnInit {
   ];
 
   userTypeOptions: SelectOption[] = [
-    { label: 'Internal', value: 'internal' },
-    { label: 'External', value: 'external' }
+    { label: 'Sequelize', value: 'SEQUELIZE' },
+    { label: 'Non-Sequelize', value: 'NON-SEQUELIZE' }
 
   ];
   roleOptions!: SelectOption[];
@@ -67,7 +67,7 @@ export class AddUserComponent implements OnInit {
       ipv6: ['', Validators.required],
       deviceId: ['', Validators.required],
       walletType: ['', Validators.required],
-      userType: ['', Validators.required],
+      user_type: ['', Validators.required],
       role: ['', Validators.required]
     });
   }
@@ -117,7 +117,7 @@ export class AddUserComponent implements OnInit {
   }
 
   get userTypeControl(): FormControl {
-    return this.myForm.get('userType') as FormControl;
+    return this.myForm.get('user_type') as FormControl;
   }
 
   hasUppercase(): boolean {
@@ -146,6 +146,7 @@ export class AddUserComponent implements OnInit {
       confirmPasswordControl?.setErrors({ passwordMismatch: true });
       return "Password and confirm password do not match";
     }
+    confirmPasswordControl?.setErrors(null);
     return '';
   }
 

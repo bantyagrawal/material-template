@@ -124,6 +124,7 @@ export const USER_TABLE_COLUMNS: MtxGridColumn[] = [
     { header: 'Mobile', field: 'mobile', sortable: true },
     { header: 'Role', field: 'role' },
     { header: 'UserId', field: 'userId' },
+    { header: 'UserType', field: 'user_type' },
     {
         header: 'Edit',
         field: 'edit',

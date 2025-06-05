@@ -107,6 +107,7 @@ export class UsermanagementComponent implements OnInit {
     }
     this.api.getUser(params).subscribe((res: any) => {
       const { users, meta } = res.data;
+      console.log("USERS",users);
       this.userList = users.map((user: any, index: number) => {
         return {
           id: index + 1,
@@ -114,7 +115,8 @@ export class UsermanagementComponent implements OnInit {
           email: user.email,
           mobile: user.mobileNumber,
           role: user.role.roleName,
-          userId: user.userId
+          userId: user.userId,
+          user_type: user.user_type
         }
       })
       this.totalUsers = meta.totalItems;
