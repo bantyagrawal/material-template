@@ -15,7 +15,7 @@
     </div>
 
 
-    <mat-nav-list>
+    <mat-nav-list >
       <ng-container *ngFor="let item of sidebarItems">
         <ng-container *ngIf="hasPermission(item)">
           <ng-container *ngTemplateOutlet="renderItem; context: { $implicit: item }"></ng-container>

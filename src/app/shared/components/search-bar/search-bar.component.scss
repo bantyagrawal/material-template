@@ -32,3 +32,14 @@
   .search-button{
     height: 55px;
   }
+  .search-bar-field {
+    background-color: white;
+  
+    .mat-form-field-flex {
+      background-color: white;
+    }
+  
+    input.mat-input-element {
+      background-color: white;
+    }
+  }
