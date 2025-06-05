@@ -303,9 +303,6 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     color: #e7be43 !important; // your gold hover color
   }
 
-
-
-
   table {
 
     th,
@@ -465,6 +462,7 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     --mdc-elevated-card-container-shape: 4px;
     --mdc-outlined-card-container-shape: 4px;
     --mdc-outlined-card-outline-width: 1px;
+    background-color: black !important;
   }
 
   .custom-header[_ngcontent-ng-c73868651] {
