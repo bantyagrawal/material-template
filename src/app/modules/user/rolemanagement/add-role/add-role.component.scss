@@ -49,8 +49,6 @@
 
 .container {
   width: auto;
-  // max-width: 600px;
-  margin: 40px auto;
   background: #fff;
   padding: 30px;
   border-radius: 16px;
@@ -71,7 +69,6 @@
 }
 
 .permissions-section {
-  margin-top: 30px;
   max-height: 300px;         /* fixed height for the whole section */
   overflow-y: auto;          /* vertical scroll on entire section */
   padding-right: 6px;        /* space for scrollbar */
