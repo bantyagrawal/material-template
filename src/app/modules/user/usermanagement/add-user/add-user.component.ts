@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SelectData } from 'src/app/core/models/select.model';
 import { SelectOption } from 'src/app/core/models/select.model';
 import { ApiService } from 'src/app/core/services/api.service';
+import { CommonService } from 'src/app/core/services/common.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -37,14 +38,17 @@ export class AddUserComponent implements OnInit {
   ];
   roleOptions!: SelectOption[];
   isProcessing!: boolean;
+  shares!: number;
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
     private api: ApiService,
+    private common: CommonService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.getChildRole();
+    this.shares = common.permissions.remaining_share;
   }
 
   ngOnInit(): void {
@@ -69,7 +73,7 @@ export class AddUserComponent implements OnInit {
       walletType: ['', Validators.required],
       user_type: ['', Validators.required],
       role: ['', Validators.required],
-      share: ['', Validators.requiredTrue],
+      share: [0, Validators.required],
     });
   }
 
@@ -105,7 +109,7 @@ export class AddUserComponent implements OnInit {
     return this.myForm.get('ipv6') as FormControl;
   }
 
-   get shareControl(): FormControl {
+  get shareControl(): FormControl {
     return this.myForm.get('share') as FormControl;
   }
 
@@ -152,6 +156,21 @@ export class AddUserComponent implements OnInit {
       return "Password and confirm password do not match";
     }
     confirmPasswordControl?.setErrors(null);
+    return '';
+  }
+
+  showSharedError(): string {
+    const share = this.myForm.get('share');
+    if (share?.hasError('required')) {
+      return "Share is required";
+    }
+
+    if (share?.value > this.shares) {
+      share?.setErrors({ shareOverReach: true });
+      return "You does not have enouch shares";
+    }
+
+    share?.setErrors(null);
     return '';
   }
 
@@ -225,6 +244,11 @@ export class AddUserComponent implements OnInit {
         this.toastr.success('User added successfully!');
         this.myForm.reset();
         this.isProcessing = false;
+        this.api.loggedInUser().subscribe({
+          next: (res: any) => {
+            this.common.permissions = res.data;
+          }
+        })
         this.dialogRef.close(res.data);
       },
       error: (err: any) => {

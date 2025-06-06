@@ -50,7 +50,7 @@
 
               <div class="form-group">
                 <app-input
-                    [data]="{label: 'Share', placeholder: 'Enter partnership value', type: 'number', control: shareControl, errorMessage: 'Share is  required', customClass: 'add-user-input'}">
+                    [data]="{label: 'Share', placeholder: 'Enter partnership value', type: 'number', control: shareControl, errorMessage: showSharedError(), customClass: 'add-user-input'}">
                 </app-input>
             </div>
 
@@ -78,6 +78,6 @@
         </div>
     </form>
 </div>
-  <div  style="min-width: 200px; margin-top: 45px;">
-    <p><strong>Share Value:</strong> {{ shareControl.value || 0 }}</p>
+  <div  style="margin-left: 2%;">
+    <p><strong>Share Value:</strong> {{ shares || 0 }}</p>
   </div>
