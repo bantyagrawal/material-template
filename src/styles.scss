@@ -574,6 +574,10 @@ mat-panel-title {
   }
 }
 
+app-table .mdc-checkbox{
+  padding-right: 4px !important;
+}
+
 .mat-drawer-container {
   background-color: inherit !important;
 }
