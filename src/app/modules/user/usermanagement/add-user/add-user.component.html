@@ -1,3 +1,4 @@
+
 <div class="responsive-form">
     <h2 class="form-title">Add User</h2>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
@@ -77,3 +78,6 @@
         </div>
     </form>
 </div>
+  <div  style="min-width: 200px; margin-top: 45px;">
+    <p><strong>Share Value:</strong> {{ shareControl.value || 0 }}</p>
+  </div>
