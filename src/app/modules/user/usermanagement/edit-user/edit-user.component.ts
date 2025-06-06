@@ -12,7 +12,6 @@ import { ApiService } from 'src/app/core/services/api.service';
 export class EditUserComponent {
 
   userForm: FormGroup;
-
   nameControl = new FormControl('', Validators.required);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   mobileControl = new FormControl('', Validators.required);
@@ -20,21 +19,19 @@ export class EditUserComponent {
   roleControl = new FormControl('', Validators.required);
   userTypeControl = new FormControl('', Validators.required);
 
-  roleOptions = [
-  
-  ];
+  roleOptions = [];
 
   userTypeOptions = [
-    { label: 'Internal', value: 'internal' },
-    { label: 'External', value: 'external' }
+    { label: 'Sequelize', value: 'SEQUELIZE' },
+    { label: 'Non-Sequelize', value: 'NON-SEQUELIZE' }
   ];
 
   constructor(private fb: FormBuilder,
-        private api: ApiService,
-      public dialogRef: MatDialogRef<EditUserComponent>,
-      private toastr: ToastrService,
-        @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
+    private api: ApiService,
+    public dialogRef: MatDialogRef<EditUserComponent>,
+    private toastr: ToastrService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {    
     this.userForm = this.fb.group({
       name: this.nameControl,
       email: this.emailControl,
@@ -44,7 +41,15 @@ export class EditUserComponent {
       userType: this.userTypeControl
     });
 
-        this.getChildRole();
+    this.userForm.patchValue({
+      name: this.data.name,
+      email: this.data.email,
+      mobile: this.data.mobile,
+      userId: this.data.userId,
+      role: this.data.roleId,
+      userType: this.data.user_type
+    })
+    this.getChildRole();
 
   }
 

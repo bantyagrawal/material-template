@@ -26,7 +26,7 @@ export class UsermanagementComponent implements OnInit {
   pageSize = 5;
   searchText!: string;
   tableColumns = USER_TABLE_COLUMNS;
-  
+
   constructor(
     private common: CommonService,
     private dialog: MatDialog,
@@ -34,30 +34,30 @@ export class UsermanagementComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-        this.tableColumns = USER_TABLE_COLUMNS.map(col => {
-          if (col.field === 'edit') {
-            col.buttons = [
-              {
-                icon: 'edit',
-                type: 'icon',
-                tooltip: 'Edit',
-                click: record => this.onEdit(record)
-              },
-            ];
+    this.tableColumns = USER_TABLE_COLUMNS.map(col => {
+      if (col.field === 'edit') {
+        col.buttons = [
+          {
+            icon: 'edit',
+            type: 'icon',
+            tooltip: 'Edit',
+            click: record => this.onEdit(record)
+          },
+        ];
+      }
+
+      if (col.field === 'delete') {
+        col.buttons = [
+          {
+            icon: 'delete',
+            type: 'icon',
+            tooltip: 'Delete',
+            click: record => this.onDelete(record)
           }
-    
-          if (col.field === 'delete') {
-            col.buttons = [
-              {
-                icon: 'delete',
-                type: 'icon',
-                tooltip: 'Delete',
-                click: record => this.onDelete(record)
-              }
-            ];
-          }
-          return col;
-        });
+        ];
+      }
+      return col;
+    });
     this.getUsers()
     this.checkDeletePermission();
     this.checkUpdatePermission();
@@ -90,8 +90,9 @@ export class UsermanagementComponent implements OnInit {
   }
 
 
- openEditUserlDialog(): void {
+  openEditUserlDialog(data: any): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
+      data
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -115,7 +116,9 @@ export class UsermanagementComponent implements OnInit {
           mobile: user.mobileNumber,
           role: user.role.roleName,
           userId: user.userId,
-          user_type: user.user_type
+          user_type: user.user_type,
+          _id: user.uuid,
+          roleId: user.roleId
         }
       })
       this.totalUsers = meta.totalItems;
@@ -131,7 +134,7 @@ export class UsermanagementComponent implements OnInit {
       this.common.redirectTo('user');
     }
   }
-    checkUpdatePermission() {
+  checkUpdatePermission() {
     if (!this.common.checkUpdatePermission("Users Management")) {
       const index = this.tableColumns.findIndex(col => col.header === 'Edit');
       if (index !== -1) {
@@ -157,9 +160,8 @@ export class UsermanagementComponent implements OnInit {
     console.log('Selection changed:', selected);
   }
 
-    onEdit(record: any) {
-    console.log('Edit clicked:', record);
-    this.openEditUserlDialog()
+  onEdit(record: any) {
+    this.openEditUserlDialog(record)
   }
 
   onDelete(record: any) {
