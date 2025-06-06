@@ -68,7 +68,8 @@ export class AddUserComponent implements OnInit {
       deviceId: ['', Validators.required],
       walletType: ['', Validators.required],
       user_type: ['', Validators.required],
-      role: ['', Validators.required]
+      role: ['', Validators.required],
+      share: ['', Validators.requiredTrue],
     });
   }
 
@@ -102,6 +103,10 @@ export class AddUserComponent implements OnInit {
 
   get iv6Control(): FormControl {
     return this.myForm.get('ipv6') as FormControl;
+  }
+
+   get shareControl(): FormControl {
+    return this.myForm.get('share') as FormControl;
   }
 
   get deviceIdControl(): FormControl {

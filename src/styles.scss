@@ -205,6 +205,8 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     color: #f5f5f5 !important;
   }
 
+  
+
   // Checkbox inner label
   .mat-mdc-checkbox .mdc-label,
   .mat-mdc-radio-button .mdc-label {
@@ -225,6 +227,8 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #f5f5f5 !important;
   }
 
+
+  
   .mat-mdc-menu-content, .mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
     // -moz-osx-font-smoothing: grayscale;
     // -webkit-font-smoothing: antialiased;
@@ -256,6 +260,8 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #E7BE43 !important;
   }
 
+  
+
   // mtx-grid default table and text styling
   mtx-grid,
   .mat-mdc-table,
@@ -263,6 +269,10 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #202020 !important;
     color: #ffffff !important;
   }
+
+  
+
+  
 
   .mat-mdc-header-cell,
   .mat-mdc-cell,
@@ -287,6 +297,8 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background: #424242;
     color: #ffffff;
   }
+
+  
 
 
 
@@ -517,7 +529,17 @@ app-input .login-input .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-con
     background-color: #404040 !important;
   }
 
+
+
+  
+
 }
+
+
+
+
+
+
 
 .custom-expansion {
   mat-expansion-panel-header {
