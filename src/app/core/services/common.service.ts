@@ -39,7 +39,7 @@ export class CommonService {
     });
   }
 
-  checkpermission(module: string, operation: string): boolean {    
+  checkpermission(module: string, operation: string): boolean {
     const modulePermission = this.permissions?.RoleModulePermissions.find(
       (perm: any) => perm.module.name.trim() === module
     );
@@ -59,4 +59,36 @@ export class CommonService {
     return this.checkpermission(module, 'write');
   }
 
+  emailValidation(event: KeyboardEvent): boolean {
+    const forbiddenKeys = [
+      '!', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=', ':', ';', '"',
+      '<', '>', '?', '/', ',', '{', '}', '[', ']', '|', '`', '~'
+    ];
+    return forbiddenKeys.includes(event.key);
+  }
+
+  nameValidation(event: KeyboardEvent): boolean {
+    const forbiddenKeys = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=', '{', '}', '[', ']', ':', ';', '"', '<', '>', ',', '.', '?', '/', '|', "'\'", '~', '`', "'", '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    return forbiddenKeys.includes(event.key);
+  }
+
+  mobileValidation(event: KeyboardEvent): boolean {
+    const forbiddenKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    return !forbiddenKeys.includes(event.key);
+  }
+
+  useridValidation(event: KeyboardEvent): boolean {
+    const forbiddenKeys = [' '];
+    return forbiddenKeys.includes(event.key);
+  }
+
+  ipv4Validation(event: KeyboardEvent): boolean {
+    const forbiddenKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', 'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    return !forbiddenKeys.includes(event.key);
+  }
+
+  ipv6Validation(event: KeyboardEvent): boolean {
+    const forbiddenKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ':', 'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    return !forbiddenKeys.includes(event.key);
+  }
 }

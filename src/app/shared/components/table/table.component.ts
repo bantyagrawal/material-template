@@ -37,7 +37,6 @@ export class TableComponent {
   enableRowExpandable() {
     this.columns[0].showExpand = this.expandable;
   }
-
   changeSort(e: any) {
     this.sortChange.emit(e);
   }
@@ -45,7 +44,6 @@ export class TableComponent {
     this.selectionChange.emit(e);
   }
   onPageChange(event: any) {
-    console.log("EVENT", event);
     this.pageChange.emit({ pageIndex: event.pageIndex, pageSize: event.pageSize });
   }
   edit(record: any) {
@@ -55,10 +53,6 @@ export class TableComponent {
   delete(record: any) {
     this.deleteClicked.emit(record);
   }
-
   logPin(event: any) {
-    console.log("EVENT", event);
-    console.log("PINNED", this.columnPinnable);
-    
   }
 }

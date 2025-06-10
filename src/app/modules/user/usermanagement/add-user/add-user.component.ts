@@ -258,4 +258,25 @@ export class AddUserComponent implements OnInit {
       },
     });
   }
+
+  nameValidation = (event: KeyboardEvent): boolean => {
+    return this.common.nameValidation(event);
+  };
+
+  emailValidation = (event: KeyboardEvent): boolean => {
+    return this.common.emailValidation(event);
+  };
+
+  mobileValidation = (event: KeyboardEvent): boolean => {
+    return this.common.mobileValidation(event);
+  };
+  useridValidation = (event: KeyboardEvent): boolean => {
+    return this.common.useridValidation(event);
+  };
+  ipv4Validation = (event: KeyboardEvent): boolean => {
+    return this.common.ipv4Validation(event);
+  };
+  ipv6Validation = (event: KeyboardEvent): boolean => {
+    return this.common.ipv6Validation(event);
+  };
 }

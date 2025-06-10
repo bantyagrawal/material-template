@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/core/services/api.service';
+import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
   selector: 'app-add-role',
@@ -18,6 +19,7 @@ export class AddRoleComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiService,
     private toastr: ToastrService,
+    private common: CommonService,
     public dialogRef: MatDialogRef<AddRoleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -77,7 +79,7 @@ export class AddRoleComponent implements OnInit {
   }
 
   getRole() {
-    this.api.loggedInUser().subscribe((res: any) => {      
+    this.api.loggedInUser().subscribe((res: any) => {
       const roleData = res.data;
       if (roleData) {
         this.roles = roleData.RoleModulePermissions.map((permission: any) => {
@@ -116,5 +118,7 @@ export class AddRoleComponent implements OnInit {
     role.permissions[permissionKey] = checked;
   }
 
-
+  nameValidation = (event: KeyboardEvent): boolean => {
+    return this.common.nameValidation(event);
+  }
 }

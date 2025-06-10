@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LevelDialogComponent } from '../../levelmanagement/level-dialog/level-dialog.component';
 import { ApiService } from 'src/app/core/services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
   selector: 'app-add-module',
@@ -18,6 +19,7 @@ export class AddModuleComponent {
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
+    private common: CommonService,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<LevelDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -61,5 +63,8 @@ export class AddModuleComponent {
       }); 
     }
   }
+  nameValidation = (event: KeyboardEvent): boolean => {
+    return this.common.nameValidation(event);
+  };
 
 }

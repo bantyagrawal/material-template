@@ -9,7 +9,7 @@
           control: nameControl,
           errorMessage: 'Name is required',
           customClass: 'input-style'
-        }">
+        }" [preventKeyPressFn]="nameValidation">
       </app-input>
 
       <app-select [data]="{

@@ -12,6 +12,7 @@
     (blur)="onBlur.emit($event)"
     (input)="onInput.emit($event)"
     (change)="onChangeTrigger($event)"
+    (keydown)="onKeyDown($event)"
   >
 
   <mat-icon *ngIf="data.icon?.length" matSuffix>{{ data.icon }}</mat-icon>

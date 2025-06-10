@@ -3,10 +3,10 @@
   <mat-dialog-content>
     <form [formGroup]="ModuleForm">
       <app-input
-        [data]="{label: 'Module Name', placeholder: 'Enter your Module', type: 'text', control: ModuleControl, errorMessage: 'Module is required',customClass: 'add-module-input'}">
+        [data]="{label: 'Module Name', placeholder: 'Enter your Module', type: 'text', control: ModuleControl, errorMessage: 'Module is required',customClass: 'add-module-input'}" [preventKeyPressFn]="nameValidation">
       </app-input>
       <app-input
-        [data]="{label: 'Description', placeholder: 'Enter your Description', type: 'text', control: ModuledesControl, errorMessage: 'Description is required',customClass: 'add-module-input'}">
+        [data]="{label: 'Description', placeholder: 'Enter your Description', type: 'text', control: ModuledesControl, errorMessage: 'Description is required',customClass: 'add-module-input'}" [preventKeyPressFn]="nameValidation">
       </app-input>
     </form>
   </mat-dialog-content>

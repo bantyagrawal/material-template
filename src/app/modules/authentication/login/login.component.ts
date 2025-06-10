@@ -32,7 +32,7 @@ export class LoginComponent {
         Validators.required,
         Validators.minLength(6),
         Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{6,}$/
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{8,}$/
         ),
       ]),
     });
@@ -69,7 +69,7 @@ export class LoginComponent {
       return "Password is required";
     }
     if (passwordControl?.hasError('minlength')) {
-      return "Password should be more then 6 digit";
+      return "Password should be more then 8 digit";
     }
     if (!this.hasUppercase()) {
       return "Password must have one upper case";
@@ -124,4 +124,8 @@ export class LoginComponent {
       }
     });
   }
+  
+  handleKeyPress = (event: KeyboardEvent): boolean => {
+    return this.common.emailValidation(event);
+  };
 }
