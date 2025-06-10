@@ -9,7 +9,7 @@ import { CommonService } from 'src/app/core/services/common.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styleUrls: ['./add-user.component.scss'],
 })
 
 export class AddUserComponent implements OnInit {
@@ -115,6 +115,7 @@ export class AddUserComponent implements OnInit {
 
   get deviceIdControl(): FormControl {
     return this.myForm.get('deviceId') as FormControl;
+
   }
 
   get walletControl(): FormControl {
@@ -167,7 +168,7 @@ export class AddUserComponent implements OnInit {
 
     if (share?.value > this.shares) {
       share?.setErrors({ shareOverReach: true });
-      return "You does not have enouch shares";
+      return "You do not have enough shares";
     }
 
     share?.setErrors(null);
