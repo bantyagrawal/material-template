@@ -78,7 +78,7 @@ export class CommonService {
   }
 
   useridValidation(event: KeyboardEvent): boolean {
-    const forbiddenKeys = [' '];
+    const forbiddenKeys = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '{', '}', '[', ']', ':', ';', '"', '<', '>', ',', '.', '?', '/', '|', "'\'", '~', '`', "'",' '];
     return forbiddenKeys.includes(event.key);
   }
 
