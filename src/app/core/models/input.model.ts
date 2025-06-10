@@ -9,4 +9,5 @@ export interface InputData {
   customClass?: string;
   icon?: string; 
   isPasswordToggle?: boolean;
+  validation?: number;
 }

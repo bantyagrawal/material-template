@@ -15,7 +15,6 @@ export class InputComponent {
   @Output() onBlur = new EventEmitter<Event>();
   @Output() onInput = new EventEmitter<Event>();
   @Output() onChange = new EventEmitter<Event>();
-  @Input() preventKeyPressFn!: (event: KeyboardEvent) => boolean;
 
   hidePassword = true;
 
@@ -38,11 +37,5 @@ export class InputComponent {
     this.onFocus.emit(event)
   }
   ngOnChanges() {
-  }
-
-  onKeyDown(event: KeyboardEvent): void {
-    if (this.preventKeyPressFn && this.preventKeyPressFn(event)) {
-      event.preventDefault();
-    }
   }
 }

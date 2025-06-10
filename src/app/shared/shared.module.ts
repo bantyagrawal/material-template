@@ -44,6 +44,7 @@ import { TabComponent } from './components/tab/tab.component';
 import { TabItemComponent } from './components/tab/tab-item.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 import { RouterModule } from '@angular/router';
+import { ValidationDirective } from './directives/validation.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent , ProfileCardComponent],
+  declarations: [NotificationDialogComponent, InputComponent, ButtonComponent, HeaderComponent, FooterComponent, SidebarComponent, DatePickerComponent, TableComponent, SelectComponent , SearchBarComponent, CheckboxComponent, ChartComponent, PageheaderComponent, NotificationDialogComponent, TooltipComponent, TabComponent, TabItemComponent , ProfileCardComponent, ValidationDirective],
   imports: [
     CommonModule,
     MatFormFieldModule,
