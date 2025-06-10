@@ -37,6 +37,7 @@ export class HeaderComponent {
 
   logout() {
     this.api.logOut().subscribe((res: any) => {
+      this.common.permissions = null;
       this.redirectTo('login');
     })
   }

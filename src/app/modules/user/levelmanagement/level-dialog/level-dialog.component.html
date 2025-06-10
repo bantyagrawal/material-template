@@ -3,7 +3,7 @@
 <mat-dialog-content>
   <form [formGroup]="levelForm" (ngSubmit)="onSave()">
     <app-input
-      [data]="{label: 'Level', placeholder: 'Enter your level', type: 'number', control: levelControl, errorMessage: 'Level is required', customClass: 'my-input-style'}">
+      [data]="{label: 'Level', placeholder: 'Enter your level', type: 'number', control: levelControl, errorMessage: 'Level is required', customClass: 'my-input-style', validation: 2}">
     </app-input>
   
     <div class="button-container">
